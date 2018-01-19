@@ -1,7 +1,10 @@
 angular.module('project').config(['$routeProvider', function($routeProvider) {
     $routeProvider
+    	.when('/home', {
+    		templateUrl: "./html/home.html"
+    	})
         .when('/research', {
-            templateUrl: './html/research.html',
+            templateUrl: './templates/research.html',
             controller: 'controllerProject'
         });
     $routeProvider.otherwise({
