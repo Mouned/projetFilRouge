@@ -17,9 +17,6 @@ body{
 	color: white;
 	font-size: 3em;
 }
-#user-menu i.fa-arrow-down {
-	color: white;
-}
 #user-menu{
 	padding: 0.3em;
 }
@@ -108,6 +105,7 @@ input {
 	left: 0;
 	background-color: grey;
 	height: 100%;
+	transition-duration: 0.5s;
 }
 
 #nav-mobile ul{
@@ -132,9 +130,8 @@ input {
 }
 
 
-.invisible{
-	display: none;
+.hors-ecran {
+	visibility: hidden;
 }
-
 
 
