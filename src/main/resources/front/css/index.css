@@ -125,11 +125,13 @@ input {
 	
 }
 .user-mobile{
-	    text-align: center;
-	    border-bottom: solid 1px white;
+	text-align: center;
+	border-bottom: solid 1px white;
 }
 
-
+.invisible{
+	display: none;
+}
 .hors-ecran {
 	visibility: hidden;
 }
