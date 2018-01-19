@@ -2,7 +2,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 
 #Other files
-model.png
+image/
 
 # Eclipse
 .classpath
