@@ -1,3 +1,7 @@
+body{
+    background-image: url("../image/fond2.jpg");
+}
+
 *{
 	font-size: 16px;
 }

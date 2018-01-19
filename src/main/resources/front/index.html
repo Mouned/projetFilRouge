@@ -8,12 +8,15 @@
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/carroussel.css">
 
+<!-- Jquerry -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<!-- Angular -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
 
+<!-- Insertion de script JS -->
 <script src="js/menu.js"></script>
 </head>
 
@@ -59,10 +62,11 @@
 				    <!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse row" id="">
 					<ul class="nav navbar-nav col-lg-6 col-md-6 col-sm-6 col-xs-6">
-				        <li><a href="#">Home</a></li>
-				        <li><a href="#">About</a></li>
-				        <li><a href="#">Contact</a></li>
-				    </ul>
+				        <li><a href="#">Acceuil</a></li>
+				        <li><a href="#">A propos</a></li>
+				        <li><a href="#!/research">Recherche</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
 				    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				    	<form action="#" method="" class="form form-search ">
 							<div class="form__field">
@@ -97,6 +101,7 @@
 			</ul>
 		</div>
 	</header>
+	<div ng-view></div>
 	
 	<main class="container" x-ng-view>
 		
