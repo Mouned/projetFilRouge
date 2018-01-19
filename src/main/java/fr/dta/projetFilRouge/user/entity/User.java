@@ -9,12 +9,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import lombok.Getter;
+import lombok.Setter;
+
 
 
 @Entity
 @SequenceGenerator(name = "seq_versionUser",sequenceName = "seq_versionUser", initialValue = 1, allocationSize = 1)
+@Getter
+@Setter
+@Table(name = "member")
 public class User {
 
 	
@@ -34,7 +43,7 @@ public class User {
 	@NotBlank
 	private String password;
 	
-	@NotBlank
+	@NotNull
 	private LocalDate birthDate;
 	
 	@NotBlank
@@ -48,8 +57,8 @@ public class User {
 	 * Un client possède une liste de commandes.
 	 * 1 commande est associée à un unique client.
 	 */
-	@OneToMany(mappedBy = "userOrdered")
-	private List<Order> listClientPrefere = new ArrayList<Order>();	
+	@OneToMany(mappedBy = "user")
+	private List<Order> orders = new ArrayList<>();	
 	
 
 	public User(String lastname, String firstname, String login, String password, LocalDate birthDate, String email,
@@ -61,93 +70,9 @@ public class User {
 		this.birthDate = birthDate;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.listClientPrefere = listClientPrefere;
+		this.orders = listClientPrefere;
 	}
 
 	public User() {
-		super();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
-
-	public String getFirstname() {
-		return firstname;
-	}
-
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-
-	public String getLogin() {
-		return login;
-	}
-
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
-	public LocalDate getBirthDate() {
-		return birthDate;
-	}
-
-
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-
-	public List<Order> getListClientPrefere() {
-		return listClientPrefere;
-	}
-
-
-	public void setListClientPrefere(List<Order> listClientPrefere) {
-		this.listClientPrefere = listClientPrefere;
-	}		
+	}	
 }

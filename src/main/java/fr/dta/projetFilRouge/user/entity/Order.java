@@ -3,18 +3,25 @@ package fr.dta.projetFilRouge.user.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @SequenceGenerator(name = "seq_versionOrder",sequenceName = "seq_versionOrder", initialValue = 1, allocationSize = 1)
+@Getter
+@Setter
+@Table(name = "order_")
 public class Order {
 
 	
@@ -22,7 +29,7 @@ public class Order {
 	@GeneratedValue(generator = "seq_versionOrder")
 	private Long id;
 	
-	@NotBlank
+	@NotNull
 	private Long totalPrice;
 	
 	@NotBlank
@@ -34,61 +41,24 @@ public class Order {
 	 * 1 commande est associée à un unique client.
 	 */
 	@ManyToOne
-	private User userOrdered;
+	private User user;
 	
 	/*
 	 * Relation de jointure avec la table Order.
 	 * Un produit est présent dans plusieurs commandes différentes.
 	 * Une commande peut contenir plusieurs produits différents.
 	 */
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Products> orderProducts = new ArrayList<Products>();
+	@ManyToMany
+	private List<Products> products = new ArrayList<>();
 
 	public Order(Long totalPrice, String orderNumber, User userOrdered, List<Products> orderProducts) {
 		this.totalPrice = totalPrice;
 		this.orderNumber = orderNumber;
-		this.userOrdered = userOrdered;
-		this.orderProducts = orderProducts;
+		this.user = userOrdered;
+		this.products = orderProducts;
 	}
 
 	public Order() {
 		super();
 	}
-
-	public Long getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(Long totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
-	public String getOrderNumber() {
-		return orderNumber;
-	}
-
-	public void setOrderNumber(String orderNumber) {
-		this.orderNumber = orderNumber;
-	}
-
-	public User getUserOrdered() {
-		return userOrdered;
-	}
-
-	public void setUserOrdered(User userOrdered) {
-		this.userOrdered = userOrdered;
-	}
-
-	public List<Products> getOrderProducts() {
-		return orderProducts;
-	}
-
-	public void setOrderProducts(List<Products> orderProducts) {
-		this.orderProducts = orderProducts;
-	}
-
-	public Long getId() {
-		return id;
-	}
-	
 }
