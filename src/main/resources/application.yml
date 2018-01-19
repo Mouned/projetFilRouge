@@ -3,9 +3,9 @@ server:
 spring:
     datasource:
         dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgresql://localhost/ecommerce
-        username: eco
-        password: eco
+        url: jdbc:postgresql://localhost:5432/ecommerce
+        username: admin
+        password: admin
         
     session:
         store-type: jdbc
@@ -24,10 +24,3 @@ spring:
              hibernate.cache.use_query_cache: true
              hibernate.generate_statistics: false
              hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
-
-fs:
-    path: C:\Users\iocean\workspace\ecommerce\src\main\webapp\WEB-INF\uploaded
-
-management:
-    security:
-        enabled: false

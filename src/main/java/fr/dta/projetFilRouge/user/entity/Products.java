@@ -1,26 +1,33 @@
 package fr.dta.projetFilRouge.user.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 import fr.dta.projetFilRouge.user.enumeration.Pegi;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @SequenceGenerator(name = "seq_versionProducts",sequenceName = "seq_versionProducts", initialValue = 1, allocationSize = 1)
-public class Products {
+@Getter
+@Setter
+public class Products implements Serializable{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1009609691074522512L;
+
 	@Id
 	@GeneratedValue(generator = "seq_versionProducts")
 	private Long id;
@@ -34,33 +41,36 @@ public class Products {
 	@NotBlank
 	private String gamePublisher;
 	
-	@NotBlank
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Pegi pegi;
 	
 	@NotBlank
 	private String type;
 	
-	/*
-	 * Relation de jointure avec la table Order.
-	 * Un produit est présent dans plusieurs commandes différentes.
-	 * Une commande peut contenir plusieurs produits différents.
-	 */
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Order> productOrders = new ArrayList<Order>();
-
-	public Products(String title, Long price, String gamePublisher, Pegi pegi, String type, List<Order> productOrders) {
+	public Products(String title, Long price, String gamePublisher, Pegi pegi, String type) {
 		this.title = title;
 		this.price = price;
 		this.gamePublisher = gamePublisher;
 		this.pegi = pegi;
 		this.type = type;
-		this.productOrders = productOrders;
 	}
-	
 
 	public Products() {
-		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Products [id=" + id + ", title=" + title + ", price=" + price + ", gamePublisher=" + gamePublisher
+				+ ", pegi=" + pegi + ", type=" + type + "]";
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -101,18 +111,5 @@ public class Products {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public List<Order> getProductOrders() {
-		return productOrders;
-	}
-
-	public void setProductOrders(List<Order> productOrders) {
-		this.productOrders = productOrders;
-	}
-
-	public Long getId() {
-		return id;
-	}
-	
+	}		
 }
