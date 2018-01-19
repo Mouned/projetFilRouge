@@ -1,0 +1,129 @@
+*{
+	font-size: 16px;
+}
+
+#user-menu i.fa-user, #nav-mobile .user-icon{
+	color: white;
+	font-size: 3em;
+}
+#user-menu i.fa-arrow-down {
+	color: white;
+}
+#user-menu{
+	padding: 0.3em;
+}
+
+#nav-banner{
+	background: black;
+    background: -webkit-radial-gradient(bottom,900px 90%,#3c3c3c,black);
+    background: radial-gradient(900px 90% at bottom,#3c3c3c,black);
+}
+
+#nav-menu{
+	background: #363636;
+    border-top: 1px solid #474747;
+    box-shadow: inset 0 -11px 11px -13px black;
+	
+}
+
+
+/* helpers/align.css */
+
+.align {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* layout/base.css */
+
+
+/* modules/form.css */
+
+::placeholder {
+  color: #777;
+}
+
+input {
+  background: none;
+  border: 0;
+  color: #777;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+}
+#nav-menu .row form{
+	padding: 8px;
+}
+.form__field {
+  height: 2.1em;
+  align-items: center;
+  background-color: #343434;
+  border-radius: 0.125em;
+  box-shadow: inset 1px 1px 1px #242424, inset -1px -1px 1px #565656;
+  color: #aaa;
+  display: flex;
+}
+
+.form-search input[type='search'] {
+  flex-grow: 1;
+  padding-bottom: 0.75em;
+  padding-right: 0.75em;
+  padding-top: 0.75em;
+}
+
+.form-search input[type='submit'] {
+  background-image: url('https://cdn.rawgit.com/marcobiedermann/playground/master/ui/search/simple-search-bar/dist/assets/images/magnifier.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 1.5em;
+  order: -1;
+  padding: 0.75em;
+  text-indent: -999px;
+  width: 3em;
+}
+.fa-shopping-basket{
+	color: white;
+	margin-top: 0.57em;
+    font-size: 1.4em;
+}
+
+
+/* NAV-MOBILE */
+
+#nav-mobile{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: grey;
+	height: 100%;
+}
+
+#nav-mobile ul{
+	list-style: none;
+    padding: 0;
+}
+#nav-mobile ul a{
+	color: white;
+	text-decoration: none;
+}
+#nav-mobile ul li{
+	padding: 0.5em 2.8em;
+}
+
+#nav-mobile ul li:hover{
+	background-color: navy;
+	
+}
+.user-mobile{
+	    text-align: center;
+	    border-bottom: solid 1px white;
+}
+
+
+.invisible{
+	display: none;
+}
+
+
+
