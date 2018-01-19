@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="project">
 <head>
-<meta charset="utf-8">
-<title>Master Game</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/style.css">
+	<meta charset="utf-8">
+	<title>Master Game</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
 
-<!-- Jquerry -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
 
-<!-- Angular -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
+	<!-- Bootstrap -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!-- Insertion de script JS -->
-<script src="js/menu.js"></script>
+	<!-- Ajout des fichier pour angularJS -->
+	<script src="moduleProject/project.js"></script>
+	<script src="moduleProject/controller/controllerProject.js"></script>
+	<script src="moduleProject/route/routeProject.js"></script>
+
+	<!-- Insertion de script JS -->
+	<script src="js/menu.js"></script>
 </head>
 
 <body>
@@ -58,7 +63,7 @@
 					<ul class="nav navbar-nav col-lg-6 col-md-6 col-sm-6 col-xs-6">
 				        <li><a href="#">Acceuil</a></li>
 				        <li><a href="#">A propos</a></li>
-				        <li><a href="#!/research">Recherche</a></li>
+				        <li><a href="#!/res">Recherche</a></li>
 						<li><a href="#">Contact</a></li>
 					</ul>
 				    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -95,10 +100,9 @@
 			</ul>
 		</div>
 	</header>
-	<div ng-view></div>
-	
+
 	<main class="container">
-		
+
 	</main>
 </body>
 </html>
