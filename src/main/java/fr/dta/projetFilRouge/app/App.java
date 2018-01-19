@@ -10,6 +10,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class App {
 
 	public App() {
-		System.out.println("Start created");
+		System.err.println("Start created");
 	}
 }
