@@ -1,5 +1,6 @@
 package fr.dta.projetFilRouge.user.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +23,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "order_")
-public class Order {
+public class Order implements Serializable{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1909969806549750380L;
+
 	@Id
 	@GeneratedValue(generator = "seq_versionOrder")
 	private Long id;

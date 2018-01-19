@@ -1,5 +1,6 @@
 package fr.dta.projetFilRouge.user.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +25,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "member")
-public class User {
+public class User implements Serializable {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -675152126074975436L;
+
 	@Id
 	@GeneratedValue(generator = "seq_versionUser")
 	private Long id;
