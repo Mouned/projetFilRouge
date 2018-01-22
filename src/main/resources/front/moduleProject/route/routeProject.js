@@ -8,6 +8,7 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
             templateUrl: './templates/research.html',
             controller: 'controllerProject'
         });
+
     $routeProvider.otherwise({
         redirectTo : '/'
     });

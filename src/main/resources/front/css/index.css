@@ -1,11 +1,11 @@
 body{
-    background-image: url("../image/fond2.jpg");
+    background-image: url("../image/fond2.1.jpg");
 }
 /* //////////////////////////////////////////////// TEST POUR JULIEN //////////////////////////////////////////////// */
-
-#test{
+#text{
     color: white;
 }
+
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -52,7 +52,7 @@ body{
   color: #777;
 }
 
-input {
+.inputmenu {
   background: none;
   border: 0;
   color: #777;
