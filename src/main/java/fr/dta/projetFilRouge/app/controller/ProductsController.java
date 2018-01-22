@@ -34,6 +34,14 @@ public class ProductsController {
 		return list;
 	}
 	
+	@RequestMapping(path = "public/products/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Products> getAllProducts() {
+		
+		List<Products> products = productsService.getAllProducts();
+
+		return products;
+	}
+	
 	@RequestMapping(path = "public/products", params = {"page"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Page<Products> getAllProductsByPage(@RequestParam("page") int page) {
 		
