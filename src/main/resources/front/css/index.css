@@ -1,3 +1,10 @@
+
+
+
+@font-face {
+	font-family: 'slant';
+	src: url('SLANT.TTF');
+}
 body{
     background-image: url("../image/fond2.1.jpg");
 }
@@ -16,6 +23,11 @@ hr{
     text-align: center;
 }
 
+#logo{
+	color: white;
+	font-size: 2em;
+	font-family: slant;
+}
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -145,5 +157,6 @@ hr{
 .hors-ecran {
 	visibility: hidden;
 }
+
 
 
