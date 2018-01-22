@@ -1,0 +1,100 @@
+.quotes-carousel-container {
+  height: 23rem;
+  margin: 0 auto;
+  width: 30em;
+  position: relative;
+}
+
+.quotes.carousel{
+  height: 22rem;
+  position: relative;
+  width: 100%;
+}
+
+.quote{
+  cursor: pointer;
+  margin: 4em auto;
+  opacity: 0;
+  list-style: none;
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(100% + 12em), -50%) scale(.6);
+  transition: transform 1.5s cubic-bezier(.7, -.3, .2, 1.3), opacity .5s .6s ease-out;
+  width: 16em;
+}
+
+.quote-image {
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.5) inset;
+  height: 7em;
+  position: absolute;
+  top: -7em;
+  left: calc(50% - 3.5em);
+  width: 7em;
+}
+
+.quote.previous{
+  opacity: .5;
+  transform: translate(-150%, -50%) scale(.8);
+}
+
+.quote.current{
+  cursor:default;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.quote.next {
+  opacity: .5;
+  transform: translate(50%, -50%) scale(.8);
+}
+
+.quote.left {
+  transform: translate( calc(-150% - 12em), -50%) scale(.6); 
+}
+
+.quotes-carousel-pips {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.quotes-carousel-pips ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.pip {
+  background-color: #888;
+  border-radius: 50%;
+  border: 2px solid #555;
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  margin: 0 .1em;
+  padding: 0;
+  transform: scale(.5);
+  transition: all .8s cubic-bezier(0,1,.3,1);
+  width: 20px;
+}
+
+.pip.previous, .pip.next {
+  background-color: #ccc;
+  transform: scale(.6);
+}
+
+.pip.current {
+  background-color: #fff;
+  cursor: default;
+  transform: scale(.7);
+}
+
+.pip:not(.current):hover {
+  transform: scale(1);
+}
