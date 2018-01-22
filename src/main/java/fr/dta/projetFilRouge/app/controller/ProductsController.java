@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,12 +29,14 @@ public class ProductsController {
 
 	private final int sizeElement = 12;
 	
+	@CrossOrigin
 	@RequestMapping(path = "public/product/search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Products> getProductsByTitle(@RequestParam("title") String title) {
 		List<Products> list = productsService.getProductsByTitle(title);
 		return list;
 	}
 	
+	@CrossOrigin
 	@RequestMapping(path = "public/products/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Products> getAllProducts() {
 		
@@ -42,6 +45,7 @@ public class ProductsController {
 		return products;
 	}
 	
+	@CrossOrigin
 	@RequestMapping(path = "public/products", params = {"page"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Page<Products> getAllProductsByPage(@RequestParam("page") int page) {
 		
@@ -50,7 +54,7 @@ public class ProductsController {
 		return resultPage;
 	}
 	
-	
+	@CrossOrigin
 	@RequestMapping(path = "public/products/create", method = RequestMethod.POST)
 	@ResponseBody
 	public void createProduct(
