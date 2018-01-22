@@ -2,6 +2,7 @@ package fr.dta.projetFilRouge.app.service;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,22 @@ public class UserService {
 		List<User> list = userRepository.findAll();
 		return list;
 	}
+	
+	public User getUserById(Long id) {
+		User u = userRepository.findById(id);
+		
+		//Hibernate.initialize(u.getOrders());
+		
+		return u;
+	}
     
-    public void createProduct(User user) {
+    public User findByEmail(String email) {
+    	return userRepository.findByEmail(email);
+    }
+    
+    public Long createUser(User user) {
     	userRepository.saveAndFlush(user);
+    	if(user!=null)return user.getId();
+    	return -1L;
     }
 }
