@@ -10,4 +10,6 @@ import fr.dta.projetFilRouge.user.entity.Products;
 public interface ProductsRepository extends JpaRepository<Products, Long>{
 
 	List<Products> findByTitle(@Param("title") String title);
+	
+	List<Products> findAll(); 
 }

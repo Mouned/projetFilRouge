@@ -28,4 +28,10 @@ public class ProductsController {
 		List<Products> list = searchService.getProductsByTitle(title);
 		return list;
 	}
+	
+	@RequestMapping(path = "public/products", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Products> getAllProducts() {
+		List<Products> list = searchService.getAllProducts();
+		return list;
+	}
 }

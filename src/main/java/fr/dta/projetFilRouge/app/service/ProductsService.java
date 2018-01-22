@@ -19,4 +19,9 @@ public class ProductsService {
 		List<Products> list = searchRepository.findByTitle(title);
 		return list;
 	}
+	
+	public List<Products> getAllProducts() {
+		List<Products> list = searchRepository.findAll();
+		return list;
+	}
 }
