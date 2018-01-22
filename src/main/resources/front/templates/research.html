@@ -5,5 +5,22 @@
     <label>Titre</label><br>
     <input type="text" placeholder="titre du jeux"><br><br>
     <label>Prix</label><br>
-    <input type="range" value="0" max="500" min="0" step="1">
-</div>
+    <input width="50" height="50" type="range" aria-valuemax="2" value="0" max="500" min="0" step="1">
+</div><br><br><br><br>
+
+<hr>
+<p id="liste">Liste de jeux</p>
+<hr>
+<table>
+    <tr ng-repeat="jeux in liste">
+        <td>
+            <span ng-bind="jeux.title"></span>
+        </td>
+        <td>
+            <span ng-bind="jeux.price"></span>
+        </td>
+        <td>
+            <span ng-bind="jeux.type"></span>
+        </td>
+    </tr>
+</table>
