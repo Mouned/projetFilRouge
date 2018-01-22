@@ -1,11 +1,21 @@
 body{
-    background-image: url("../image/fond2.jpg");
+    background-image: url("../image/fond2.1.jpg");
 }
 /* //////////////////////////////////////////////// TEST POUR JULIEN //////////////////////////////////////////////// */
-
-#test{
+#text{
     color: white;
 }
+hr{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+}
+#liste{
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -52,7 +62,7 @@ body{
   color: #777;
 }
 
-input {
+.inputmenu {
   background: none;
   border: 0;
   color: #777;
