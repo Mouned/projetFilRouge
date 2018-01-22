@@ -63,7 +63,4 @@ public class ProductsController {
 		productsService.createProduct(p);
 	}
 	
-	//use DELETE service
-	
-	
 }
