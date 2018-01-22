@@ -1,0 +1,54 @@
+
+
+.box-product{
+	margin-bottom: 2em;
+	color: black !important;
+}
+.box-product > div{
+	background-color: white;
+	box-shadow: 0 0 3px rgba(0,0,0,.39);
+	position: relative;
+
+}
+.box-product h1{
+	font-size: 1.5em;
+	margin:0;
+	color: black;
+}
+.box-product > img{
+	float: left;
+    width: 102px;
+    height: 144px;
+    position: relative;
+    margin-right: 4px;
+}
+
+.box-product a:hover, .box-product a:visited{
+	box-shadow: 0 0 3px rgba(0,0,0,.39);
+	text-decoration: none;
+}
+
+.box-product > div:hover{
+	
+}
+
+.hover-box{
+	position: absolute;
+}
+
+.hover-box:hover{
+	box-shadow: 0 0 8px rgba(0, 226, 255, 0.91);
+    background-color: rgba(19, 21, 24, 0.58);
+}
+.hover-box i{
+	font-size: 3.2em;
+    top: 40%;
+    left: 40%;
+    color: white;
+    position: absolute;
+}
+
+.under-box{
+	text-align:center;
+	padding: 10px;
+}
