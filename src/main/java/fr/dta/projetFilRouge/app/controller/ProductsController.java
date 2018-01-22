@@ -19,7 +19,7 @@ import fr.dta.projetFilRouge.user.entity.Products;
 import fr.dta.projetFilRouge.user.enumeration.Pegi;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/api/product")
 @Transactional
 public class ProductsController {
 
@@ -27,17 +27,30 @@ public class ProductsController {
 	@Autowired
 	ProductsService productsService;
 
-	private final int sizeElement = 12;
+//	private final int sizeElement = 12;
 	
 	@CrossOrigin
-	@RequestMapping(path = "public/product/search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Products> getProductsByTitle(@RequestParam("title") String title) {
 		List<Products> list = productsService.getProductsByTitle(title);
 		return list;
 	}
+
+	@CrossOrigin
+	@RequestMapping(value = "advanced-search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Products> getProductsByCriteria(
+			@RequestParam(value="title", required=false) String title, 
+			@RequestParam(value="gamePublisher", required=false) String gamePublisher, 
+			@RequestParam(value="pegi", required=false) Pegi pegi,
+			@RequestParam(value="priceMin", required=false, defaultValue="0") Float priceMin,
+			@RequestParam(value="priceMax", required=false, defaultValue="1000") Float priceMax,
+			@RequestParam(value="type", required=false) String type) {
+		List<Products> list = productsService.findByCriteria(title, gamePublisher, pegi, priceMin, priceMax, type);
+		return list;
+	}
 	
 	@CrossOrigin
-	@RequestMapping(path = "public/products/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Products> getAllProducts() {
 		
 		List<Products> products = productsService.getAllProducts();
@@ -45,17 +58,17 @@ public class ProductsController {
 		return products;
 	}
 	
-	@CrossOrigin
-	@RequestMapping(path = "public/products", params = {"page"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Page<Products> getAllProductsByPage(@RequestParam("page") int page) {
-		
-		Page<Products> resultPage = productsService.findPaginated(page,sizeElement);
-
-		return resultPage;
-	}
+//	@CrossOrigin
+//	@RequestMapping(path = "public/products", params = {"page"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//	public Page<Products> getAllProductsByPage(@RequestParam("page") int page) {
+//		
+//		Page<Products> resultPage = productsService.findPaginated(page,sizeElement);
+//
+//		return resultPage;
+//	}
 	
 	@CrossOrigin
-	@RequestMapping(path = "public/products/create", method = RequestMethod.POST)
+	@RequestMapping(value = "create", method = RequestMethod.POST)
 	@ResponseBody
 	public void createProduct(
 			@RequestParam("game_publisher") String game_publisher, 
