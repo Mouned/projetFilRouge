@@ -2,6 +2,7 @@ package fr.dta.projetFilRouge.user.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -36,7 +37,8 @@ public class Products implements Serializable{
 	private String title;
 	
 	@NotBlank
-	private Long price;
+	//@Column(precision=10, scale=2)
+	private Float price;
 	
 	@NotBlank
 	private String gamePublisher;
@@ -48,7 +50,7 @@ public class Products implements Serializable{
 	@NotBlank
 	private String type;
 	
-	public Products(String title, Long price, String gamePublisher, Pegi pegi, String type) {
+	public Products(String title, Float price, String gamePublisher, Pegi pegi, String type) {
 		this.title = title;
 		this.price = price;
 		this.gamePublisher = gamePublisher;
@@ -81,11 +83,11 @@ public class Products implements Serializable{
 		this.title = title;
 	}
 
-	public Long getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 
