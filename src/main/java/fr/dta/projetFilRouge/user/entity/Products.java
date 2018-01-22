@@ -36,7 +36,7 @@ public class Products implements Serializable{
 	@NotBlank
 	private String title;
 	
-	@NotBlank
+	@NotNull
 	//@Column(precision=10, scale=2)
 	private Float price;
 	
