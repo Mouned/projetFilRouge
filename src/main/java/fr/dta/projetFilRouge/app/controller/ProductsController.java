@@ -10,10 +10,12 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.dta.projetFilRouge.app.service.ProductsService;
 import fr.dta.projetFilRouge.user.entity.Products;
+import fr.dta.projetFilRouge.user.enumeration.Pegi;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -47,4 +49,29 @@ public class ProductsController {
 
 		return resultPage;
 	}
+	
+	
+	@RequestMapping(path = "public/products/create", method = RequestMethod.POST)
+	@ResponseBody
+	public void createProduct(
+			@RequestParam("game_publisher") String game_publisher, 
+			@RequestParam("pegi") String pegi, 
+			@RequestParam("price") float price,
+			@RequestParam("title") String title,
+			@RequestParam("type") String type) 
+	{
+		
+		Products p = new Products();
+		p.setGamePublisher(game_publisher);
+		p.setPegi(Pegi.valueOf(pegi));
+		p.setPrice(price);
+		p.setTitle(title);
+		p.setType(type);
+		
+		productsService.createProduct(p);
+	}
+	
+	//use DELETE service
+	
+	
 }
