@@ -1,6 +1,7 @@
 package fr.dta.projetFilRouge.user.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,9 @@ public class Order implements Serializable{
 	@NotBlank
 	private String orderNumber;
 	
+	@NotNull
+	private LocalDate orderDate;
+	
 	/*
 	 * Relation de jointure avec la table User.
 	 * Un client possède une liste de commandes.
@@ -57,14 +61,70 @@ public class Order implements Serializable{
 	@ManyToMany
 	private List<Products> products = new ArrayList<>();
 
-	public Order(Long totalPrice, String orderNumber, User userOrdered, List<Products> orderProducts) {
-		this.totalPrice = totalPrice;
-		this.orderNumber = orderNumber;
-		this.user = userOrdered;
-		this.products = orderProducts;
-	}
-
 	public Order() {
 		super();
+	}
+
+	public Order(Long totalPrice, String orderNumber, LocalDate orderDate, User user, List<Products> products) {
+		super();
+		this.totalPrice = totalPrice;
+		this.orderNumber = orderNumber;
+		this.orderDate = orderDate;
+		this.user = user;
+		this.products = products;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Long totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public String getOrderNumber() {
+		return orderNumber;
+	}
+
+	public void setOrderNumber(String orderNumber) {
+		this.orderNumber = orderNumber;
+	}
+
+	public LocalDate getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(LocalDate orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Products> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Products> products) {
+		this.products = products;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", totalPrice=" + totalPrice + ", orderNumber=" + orderNumber + ", orderDate="
+				+ orderDate + ", user=" + user + ", products=" + products + "]";
 	}
 }

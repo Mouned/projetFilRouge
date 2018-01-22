@@ -3,6 +3,8 @@ package fr.dta.projetFilRouge.app.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import fr.dta.projetFilRouge.app.repository.ProductsRepository;
@@ -13,15 +15,20 @@ public class ProductsService {
 
 	
 	@Autowired
-	ProductsRepository searchRepository;
+	ProductsRepository productsRepository;
+	
 	
 	public List<Products> getProductsByTitle(String title) {
-		List<Products> list = searchRepository.findByTitle(title);
+		List<Products> list = productsRepository.findByTitle(title);
 		return list;
 	}
 	
 	public List<Products> getAllProducts() {
-		List<Products> list = searchRepository.findAll();
+		List<Products> list = productsRepository.findAll();
 		return list;
 	}
+	
+    public Page<Products> findPaginated(int page, int sizeElement) {
+        return productsRepository.findAll(new PageRequest(page,sizeElement));
+    }
 }
