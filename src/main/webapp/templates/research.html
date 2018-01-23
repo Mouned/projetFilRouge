@@ -1,5 +1,5 @@
-<meta charset="utf-8"><
-<head>
+<meta charset="utf-8">
+<!-- <head>
     <script>
         $(function() {
             $('.range').next().text('--'); // Valeur par dÃ©faut
@@ -9,7 +9,7 @@
             });
         });
     </script>
-<</head>
+</head> -->
 <div id="text">
     <h1>Recherche de jeux</h1>
 </div>
@@ -29,21 +29,13 @@
 	</select>
     <br>
     <br>
-    <label>Prix minimum :</label>
-    <form>
-        <fieldset>
-            <input class="curseur" type="range" name="d1" value="0" min="0" max="200" step="0.5" oninput="result41.value=parseInt(d1.value)" ng-model="recherche.priceMin" />
-            <input class="rechercheprix" placeholder="" disabled name="result41">
-        </fieldset>
-    </form>
-    <label>Prix maximum :</label>
-    <form>
-        <fieldset>
-            <input class="curseur" type="range" name="d2" value="200" min="0" max="200" step="0.5" oninput="result42.value=parseInt(d2.value)" ng-model="recherche.priceMax" />
-            <input class="rechercheprix" placeholder="" disabled name="result42">
-        </fieldset>
+    <div role = "alert">
+    	<label>Prix minimum :</label>
+		<input class="rechercheprix" type="number" ng-model="recherche.priceMin" min="0" max="200" value="0"><br>
+    	<label>Prix maximum :</label>
+    	<input class="rechercheprix" type="number" ng-model="recherche.priceMax" min="0"  max="200" value = "200"><br>
         <span class="error remove" ng-show="recherche.priceMax < recherche.priceMin">Le prix maximum ne doit pas être inférieur au prix mininmum</span>
-    </form>
+    </div>
     <br>
     <br>
 </form>
@@ -70,9 +62,6 @@
                 <span ng-bind="jeux.title"></span>
             </td>
             <td>
-                <span class="prix" ng-bind="jeux.price"></span>
-            </td>
-            <td>
                 <span ng-bind="jeux.type"></span>
             </td>
              <td>
@@ -82,7 +71,7 @@
                 <span ng-bind="jeux.gamePublisher"></span>
             </td>
             <td>
-                <span ng-bind="jeux.prix"></span>
+                <span ng-bind="jeux.price"></span>
             </td>
         </tr>
     </tbody>

@@ -7,8 +7,6 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
     
    $scope.search = function(){
 	   
-	   console.log($scope.recherche);
-	   
 	   if($scope.recherche === undefined)
 		   return;
 	   
@@ -30,12 +28,9 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
 	   if($scope.recherche.priceMax === undefined){
 		   $scope.recherche.priceMax = '';
 	   }
-		   
-	   console.log($scope.recherche);
 	   
     	searchService.search($scope.recherche).then(function(data){
     		$scope.liste = data;
-    		console.log($scope.liste);
     		$scope.recherche = {};
     	});
 	 }

@@ -16,11 +16,12 @@ public enum Pegi {
 	
 	public static Pegi valueByCode(String code) {
 		switch(code) {
+			case("3") : return third;
 			case("7") : return seven;
 			case("12") : return twelve;
 			case("16") : return sixteen;
 			case("18") : return eighteen;
-			default : return third;
+			default : return null;
 		}
 	}
 }
