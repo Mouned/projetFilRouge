@@ -1,9 +1,7 @@
 /**
  * Controller for menu
  */
-angular.module('project').controller('menuCtrl', ['menuService', function(menuService){
-	$scope user = {};
-	menuService.getUser().then(function(response) {
-		$scope.user = response.data;
-	});
+angular.module('project').controller('menuCtrl', ['menuService', '$scope', function(menuService, $scope){
+	$scope.user = {};
+	
 }]);

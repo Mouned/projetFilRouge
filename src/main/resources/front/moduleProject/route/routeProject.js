@@ -8,8 +8,8 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
             templateUrl: './templates/research.html',
             controller: 'controllerProject'
         })
-        .when('/registration', {
-            templateUrl: './templates/registration.html',
+        .when('/sign', {
+            templateUrl: './html/LogSignIn.html',
             controller: 'registerCtrl'
         });
     

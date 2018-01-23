@@ -22,7 +22,10 @@
 	<script src="moduleProject/controller/controllerProject.js"></script>
 	<script src="moduleProject/controller/homeCtrl.js"></script>
 	<script src="moduleProject/controller/registerCtrl.js"></script>
+	<script src="moduleProject/controller/menuCtrl.js"></script>
 	<script src="moduleProject/service/gameService.js"></script>
+	<script src="moduleProject/service/menuService.js"></script>
+	<script src="moduleProject/service/connectionService.js"></script>
     <script src="moduleProject/service/searchService.js"></script>
     <script src="moduleProject/service/registerService.js"></script>
 	<script src="moduleProject/route/routeProject.js"></script>
@@ -34,7 +37,7 @@
 
 <body>
 	<!-- Menu for navigation through the website -->
-	<header x-ng-include src="'html/menu.html'">
+	<header x-ng-include="'html/menu.html'">
 	</header>
 	<main class="container" x-ng-view>
 	</main>

@@ -1,0 +1,13 @@
+<div id="text">
+	<form novalidate x-ng-submit="login()" name="loginForm">
+		<div role="alert">
+			<label>Username</label>
+			<input type="text" class="registerText" x-ng-model="log.username" required x-ng-empty>
+		</div>
+		<div role="alert">
+			<label>Password</label>
+			<input type="password" class="registerText" x-ng-model="log.password" required x-ng-empty>
+		</div>
+		<button class="btn" type="submit" x-ng-disabled="loginForm.$invalid"></button>
+	</form>
+</div>
