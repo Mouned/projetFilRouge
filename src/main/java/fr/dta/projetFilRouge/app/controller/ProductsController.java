@@ -19,7 +19,7 @@ import fr.dta.projetFilRouge.user.entity.Products;
 import fr.dta.projetFilRouge.user.enumeration.Pegi;
 
 @RestController
-@RequestMapping(value = "/api/product")
+@RequestMapping(value = "/api/products")
 @Transactional
 public class ProductsController {
 
