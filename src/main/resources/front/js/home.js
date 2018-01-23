@@ -8,7 +8,6 @@ window.onload = function (){
 			var H = this.offsetHeight;
 			var W = this.offsetWidth;
 			
-			console.log(H, W);
 			var hoverBox = this.querySelector('.hover-box');
 			hoverBox.style.height = H+'px';
 			hoverBox.style.width = W+'px';
