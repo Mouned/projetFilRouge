@@ -1,14 +1,22 @@
 package fr.dta.projetFilRouge.app.service;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
+import org.apache.coyote.http11.OutputFilter;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.result.Output;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import fr.dta.projetFilRouge.app.repository.*;
 import fr.dta.projetFilRouge.user.entity.Products;
@@ -44,6 +52,20 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     
     public List<Products> findByCriteria() {
     	return null;
+    }
+    
+    public boolean store(MultipartFile file) {
+        File convFile = new File("" + file.getOriginalFilename());
+        try {
+			convFile.createNewFile();
+	        FileOutputStream fos = new FileOutputStream(convFile); 
+	        fos.write(file.getBytes());
+	        fos.close();
+	        return true;
+		} catch (IOException e) {
+			System.err.println("Erreur de suavegarde de fichier" + e.getMessage());
+			return false;
+		} 
     }
 
 	@Override
