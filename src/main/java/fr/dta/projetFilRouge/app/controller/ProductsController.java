@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import fr.dta.projetFilRouge.app.service.ProductsService;
 import fr.dta.projetFilRouge.user.entity.Products;
 import fr.dta.projetFilRouge.user.enumeration.Pegi;
@@ -79,37 +80,15 @@ public class ProductsController {
 	
 	
 	
-	@CrossOrigin
-	@RequestMapping(value = "create", method = RequestMethod.POST)
-	@ResponseBody
-	public void createProduct(
-			@RequestParam("game_publisher") String game_publisher, 
-			@RequestParam("pegi") String pegi, 
-			@RequestParam("price") float price,
-			@RequestParam("title") String title,
-			@RequestParam("type") String type) 
-	{
-		
-		Products p = new Products();
-		p.setGamePublisher(game_publisher);
-		p.setPegi(Pegi.valueOf(pegi));
-		p.setPrice(price);
-		p.setTitle(title);
-		p.setType(type);
-		
-		productsService.createProduct(p);
-	}
-	
 //	@CrossOrigin
-//	@RequestMapping(value = "create/{id}", method = RequestMethod.POST)
+//	@RequestMapping(value = "create", method = RequestMethod.POST)
 //	@ResponseBody
 //	public void createProduct(
 //			@RequestParam("game_publisher") String game_publisher, 
 //			@RequestParam("pegi") String pegi, 
 //			@RequestParam("price") float price,
 //			@RequestParam("title") String title,
-//			@RequestParam("type") String type,
-//			@RequestParam MultipartFile file)
+//			@RequestParam("type") String type) 
 //	{
 //		
 //		Products p = new Products();
@@ -118,12 +97,36 @@ public class ProductsController {
 //		p.setPrice(price);
 //		p.setTitle(title);
 //		p.setType(type);
-//		p.setUrl(file.getOriginalFilename());
-//		
-//		productsService.store(id, file);
 //		
 //		productsService.createProduct(p);
 //	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "create", method = RequestMethod.POST)
+	@ResponseBody
+	public void createProduct(
+			@RequestParam("game_publisher") String game_publisher, 
+			@RequestParam("pegi") String pegi, 
+			@RequestParam("price") float price,
+			@RequestParam("title") String title,
+			@RequestParam("type") String type,
+			@RequestParam MultipartFile file)
+	{
+		
+		Products p = new Products();
+		p.setGamePublisher(game_publisher);
+		p.setPegi(Pegi.valueOf(pegi));
+		p.setPrice(price);
+		p.setTitle(title);
+		p.setType(type);
+		p.setUrl(file.getOriginalFilename());
+		
+		productsService.createProduct(p);
+		
+		System.out.println(p.getId());
+		productsService.store(p.getId(), file);
+		
+	}
 	
 	
 	

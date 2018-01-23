@@ -50,6 +50,11 @@ public class Products implements Serializable{
 	@NotBlank
 	private String type;
 	
+	
+	@Column
+	private String url;
+	
+	
 	public Products(String title, Float price, String gamePublisher, Pegi pegi, String type) {
 		this.title = title;
 		this.price = price;
@@ -114,4 +119,14 @@ public class Products implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}		
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	
 }
