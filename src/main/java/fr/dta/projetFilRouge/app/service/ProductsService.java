@@ -54,20 +54,26 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     	return null;
     }
     
-    public boolean store(MultipartFile file) {
-        File convFile = new File("" + file.getOriginalFilename());
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// CREATE FILE
+    public boolean store(long id, MultipartFile file) {
+        File convFile = new File( ".\\src\\main\\resources\\front\\images\\" + id + "\\"  + file.getOriginalFilename());
+        System.out.println("Création du fichier : " + convFile.getAbsolutePath() + " : En cours");
         try {
+        	convFile.getParentFile().mkdirs();//creer dossier manquant
 			convFile.createNewFile();
 	        FileOutputStream fos = new FileOutputStream(convFile); 
 	        fos.write(file.getBytes());
 	        fos.close();
+	        System.out.println("Création du fichier : " + convFile.getAbsolutePath()  + " : OK");
 	        return true;
 		} catch (IOException e) {
-			System.err.println("Erreur de suavegarde de fichier" + e.getMessage());
+			System.err.println("Erreur de suavegarde de fichier : " + e.getMessage());
 			return false;
 		} 
     }
-
+    
+    
 	@Override
 	public List<Products> findByCriteria(String title, String gamePub, Pegi pegi, Float priceMin, Float priceMax, String type) {
 		Criteria crit = getSession().createCriteria(Products.class);

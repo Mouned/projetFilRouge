@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -69,6 +70,9 @@ public class ProductsController {
 //		return resultPage;
 //	}
 	
+	
+	
+	
 	@CrossOrigin
 	@RequestMapping(value = "create", method = RequestMethod.POST)
 	@ResponseBody
@@ -90,10 +94,39 @@ public class ProductsController {
 		productsService.createProduct(p);
 	}
 	
+//	@CrossOrigin
+//	@RequestMapping(value = "create/{id}", method = RequestMethod.POST)
+//	@ResponseBody
+//	public void createProduct(
+//			@RequestParam("game_publisher") String game_publisher, 
+//			@RequestParam("pegi") String pegi, 
+//			@RequestParam("price") float price,
+//			@RequestParam("title") String title,
+//			@RequestParam("type") String type,
+//			@RequestParam MultipartFile file)
+//	{
+//		
+//		Products p = new Products();
+//		p.setGamePublisher(game_publisher);
+//		p.setPegi(Pegi.valueOf(pegi));
+//		p.setPrice(price);
+//		p.setTitle(title);
+//		p.setType(type);
+//		p.setUrl(file.getOriginalFilename());
+//		
+//		productsService.store(id, file);
+//		
+//		productsService.createProduct(p);
+//	}
+	
+	
+	
+	
+	@CrossOrigin
 	@RequestMapping(value = "upload/{id}", method = RequestMethod.POST)
-    public String uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("id") long id ) {
-		productsService.store(file);
-        return "Message : OK";
+	@ResponseBody
+    public void uploadFile(@PathVariable Long id, @RequestParam MultipartFile file) {
+		productsService.store(id, file);
     }
 
 }
