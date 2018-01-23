@@ -28,7 +28,43 @@ hr{
 	font-size: 2em;
 	font-family: slant;
 }
-
+/*.curseur[type="range"]{
+    display: block;
+    width: 25%;
+}*/
+#policetable{
+    color: white;
+}
+.prix:after{
+    content: ' €';
+}
+.recherchetitre{
+    color: black;
+}
+.rechercheprix{
+    color: black;
+}
+.rechercheprix::after{
+    content: '€';
+}
+.curseur[type="range"] {
+    display: block;
+    width: 20%;
+}
+.curseur[type="range"]:after,
+.curseur[type="range"]:before {
+    position: absolute;
+    top: 1em;
+    color: #aaa;
+}
+.curseur[type="range"]:before {
+    left:0em;
+    content: attr(min);
+}
+.curseur[type="range"]:after {
+    right: 0em;
+    content: attr(max);
+}
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 *{

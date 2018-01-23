@@ -1,9 +1,9 @@
 angular.module('project').controller('controllerProject', function ($scope, $http) {
     $scope.liste = [];
-    $http.get('http://192.168.1.13:8080/api/public/products').then(function (response) {
+    $http.get('http://192.168.1.28:8080/api/public/products/all').then(function (response) {
         console.log('RechercheMedia', response);
-        for(var key in response.products) {
-            var jeux = response.products[key];
+        for(var key in response.data) {
+            var jeux = response.data[key];
             $scope.liste.push(jeux);
         }
     });/*
