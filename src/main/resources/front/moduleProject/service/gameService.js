@@ -15,6 +15,7 @@ angular.module('project').service('gameService', ['$http', function($http){
 //	getting the entire game list
 	this.getAll = function() {
 		return $http.get('http://192.168.1.17:8080/api/products/all').then(function(response) {
+			console.log(response);
 				return response;
 			});
 	}
