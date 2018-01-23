@@ -41,11 +41,17 @@ public class ProductsController {
 	public List<Products> getProductsByCriteria(
 			@RequestParam(value="title", required=false) String title, 
 			@RequestParam(value="gamePublisher", required=false) String gamePublisher, 
-			@RequestParam(value="pegi", required=false) Pegi pegi,
+			@RequestParam(value="pegi", required=false) String pegi,
 			@RequestParam(value="priceMin", required=false, defaultValue="0") Float priceMin,
 			@RequestParam(value="priceMax", required=false, defaultValue="1000") Float priceMax,
 			@RequestParam(value="type", required=false) String type) {
-		List<Products> list = productsService.findByCriteria(title, gamePublisher, pegi, priceMin, priceMax, type);
+		
+		Pegi searchPegi = null;
+		
+		if(pegi != null) 
+			searchPegi = Pegi.valueByCode(pegi);
+		
+		List<Products> list = productsService.findByCriteria(title, gamePublisher, searchPegi, priceMin, priceMax, type);
 		return list;
 	}
 	
