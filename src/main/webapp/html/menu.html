@@ -1,39 +1,4 @@
-<!DOCTYPE html>
-<html x-ng-app="project">
-<head>
-	<meta charset="utf-8">
-	<title>Master Game</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/index.css">
-	<link rel="stylesheet" href="css/carroussel.css">
-	<link rel="stylesheet" href="css/home.css">
-
-	<!-- Angular -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
-
-	<!-- Bootstrap -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-	<!-- Ajout des fichiers pour angularJS -->
-	<script src="moduleProject/project.js"></script>
-	<script src="moduleProject/controller/controllerProject.js"></script>
-	<script src="moduleProject/controller/homeCtrl.js"></script>
-	<script src="moduleProject/service/gameService.js"></script>
-	<script src="moduleProject/route/routeProject.js"></script>
-
-	<!-- Insertion de script JS -->
-	<script src="js/menu.js"></script>
-	<script src="js/carroussel.js"></script>
-	<script src="js/home.js"></script>
-</head>
-
-<body>
-	<!-- Menu for navigation through the website -->
-	<header>
-		<nav id="nav-banner" class=" navbar-inverse">
+		<nav id="nav-banner" class=" navbar-inverse" x-ng-controller="menuCtrl">
 			<div class="container">
 				<div >
 				    <a class="navbar-brand" href="#" id="logo">Master Game  <i class="fa fa-gamepad" aria-hidden="true"></i></a>
@@ -42,7 +7,7 @@
 				    	<ul class="dropdown-menu">
 				    		<li ><a href="#">Profil</a></li>
 							<li><a href="#">Commandes</a></li>
-							<li><a href="#">Connexion/Inscription</a></li>
+							<li><a href="#!/sign">Connexion/Inscription</a></li>
 							<li><a href="#">Deconnexion</a></li>
 				    	</ul>
 				    </div>
@@ -55,7 +20,7 @@
 			<div class="row">
 				<form id="search-mobile" action="#" method="" class="invisible form form-search col-lg-10 col-md-10 col-sm-10 col-xs-10">
 					<div class="form__field">
-						<input type="search" placeholder="SearchÂ â€¦">
+						<input type="search" placeholder="Search …">
 						<input type="submit" value="Search">
 					</div>
 				</form>
@@ -81,7 +46,7 @@
 				    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				    	<form action="#" method="" class="form form-search ">
 							<div class="form__field">
-						      	<input class="inputmenu" type="search" placeholder="SearchÂ â€¦">
+						      	<input class="inputmenu" type="search" placeholder="Search …">
 						     	<input class="inputmenu" type="submit" value="Search">
 							</div>
 						</form>
@@ -112,10 +77,3 @@
 				<li><a href="#">Panier</a></li>
 			</ul>
 		</div>
-	</header>
-
-	<main class="container" ng-view>
-
-	</main>
-</body>
-</html>

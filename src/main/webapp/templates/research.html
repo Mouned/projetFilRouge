@@ -1,0 +1,87 @@
+<head>
+    <script>
+        $(function() {
+            $('.range').next().text('--'); // Valeur par défaut
+            $('.range').on('input', function() {
+                var $set = $(this).val();
+                $(this).next().text($set);
+            });
+        });
+    </script>
+</head>
+<div id="text">
+    <h1>Recherche de jeux</h1>
+</div>
+<div id="text">
+<form novalidate>
+    <label>Titre</label><br>
+    <input class="recherchetitre" ng-model="recherche.titre" type="text" placeholder="Recherche par titre"><br><br>
+    <label>Editeur</label><br>
+    <input class="rechercheediteur" ng-model="recherche.editeur" type="text" placeholder="Recherche par editeur"><br><br>
+    <label>Pegi</label>
+    <select class="recherchepegi" ng-model="recherche.pegi" ng-options="x for x in pegis">
+	</select>
+    <br>
+    <br>
+    <label>Type</label>
+    <select class="recherchetype" ng-model="recherche.type" ng-options="x for x in types">
+	</select>
+    <br>
+    <br>
+    <label>Prix minimum :</label>
+    <form>
+        <fieldset>
+            <input class="curseur" type="range" name="d" min="0" max="50" step="0.5" value="0" oninput="result4.value=parseInt(d.value)"/>
+            <input class="rechercheprix" ng-model="recherche.priceMin" placeholder="0" disabled name="result4">
+        </fieldset>
+    </form>
+    <label>Prix maximum :</label>
+    <form>
+        <fieldset>
+            <input class="curseur" type="range" name="d" min="50" max="100" step="0.5" value="50" oninput="result4.value=parseInt(d.value)"/>
+            <input class="rechercheprix" ng-model="recherche.priceMax" placeholder="50" disabled name="result4">
+        </fieldset>
+    </form>
+    <br>
+    <br>
+</form>
+<form>
+	<input class="recherchetitre" value="Valider" type="submit" ng-click="search()">
+</form>
+</div>
+<hr>
+<p id="liste">Liste de jeux</p>
+<hr>
+<table class = "table" id="policetable">
+    <tbody>
+    <thead>
+    	<tr>
+    		<th>Titre</th>
+    		<th>Type</th>
+    		<th>Pegi</th>
+    		<th>Editeur</th>
+    		<th>Prix</th>
+    	</tr>
+    </thead>
+        <tr ng-repeat="jeux in liste">
+            <td>
+                <span ng-bind="jeux.title"></span>
+            </td>
+            <td>
+                <span class="prix" ng-bind="jeux.price"></span>
+            </td>
+            <td>
+                <span ng-bind="jeux.type"></span>
+            </td>
+             <td>
+                <span ng-bind="jeux.pegi"></span>
+            </td>
+            <td>
+                <span ng-bind="jeux.gamePublisher"></span>
+            </td>
+            <td>
+                <span ng-bind="jeux.prix"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

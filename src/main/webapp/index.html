@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html x-ng-app="project">
+<head>
+	<meta charset="utf-8">
+	<title>Master Game</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/carroussel.css">
+	<link rel="stylesheet" href="css/home.css">
+
+	<!-- Angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
+
+	<!-- Bootstrap -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- Ajout des fichiers pour angularJS -->
+	<script src="moduleProject/project.js"></script>
+	<script src="moduleProject/controller/controllerProject.js"></script>
+	<script src="moduleProject/controller/homeCtrl.js"></script>
+	<script src="moduleProject/controller/registerCtrl.js"></script>
+	<script src="moduleProject/controller/menuCtrl.js"></script>
+	<script src="moduleProject/service/gameService.js"></script>
+	<script src="moduleProject/service/menuService.js"></script>
+	<script src="moduleProject/service/connectionService.js"></script>
+    <script src="moduleProject/service/searchService.js"></script>
+    <script src="moduleProject/service/registerService.js"></script>
+	<script src="moduleProject/route/routeProject.js"></script>
+	<!-- Insertion de script JS -->
+	<script src="js/menu.js"></script>
+	<script src="js/carroussel.js"></script>
+	<script src="js/home.js"></script>
+</head>
+
+<body>
+	<!-- Menu for navigation through the website -->
+	<header x-ng-include="'html/menu.html'">
+	</header>
+	<main class="container" x-ng-view>
+	</main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<meta charset="utf-8">
+<div id="text">
+	<form name="form" class="css-form" novalidate>
+		
+		<div role="alert">
+			<label>Nom</label><br>
+			<input class="registerText" type="text" ng-model="user.firstname" name="uNom" required ng-empty>
+			<span class="error remove" ng-show="form.uNom.$error.required">nom requis</span>
+		</div>
+		
+		<div role="alert">
+			<label>Prénom</label><br>
+			<input class="registerText" type="text" ng-model="user.lastname" name="uPrenom" required ng-empty>
+			<span class="error remove" ng-show="form.uPrenom.$error.required">prénom requis</span>
+		</div>
+		
+		<div role="alert">
+			<label>Date de naissance</label><br>
+			<input class="registerText" type="date" ng-model="user.birthDate" name="uDate" required ng-empty>
+			<span class="error remove" ng-show="form.uDate.$error.required">date de naissance requise</span>
+		</div>
+		
+		<div role="alert">
+			<label>Email</label><br>
+			<input class="registerText" type="email" ng-model="user.email" name="uEmail" required ng-empty>	
+      		<span class="error remove" ng-show="form.uEmail.$error.email">email invalide</span>
+      		<span class="error remove"" ng-show="form.uEmail.$error.required">email requis</span>
+    	</div>
+    	
+    	<div role="alert">
+			<label>Numéro de téléphone</label><br>
+			<input class="registerText" type="tel" ng-model="user.phoneNumber" name="uPhone" required ng-empty onkeypress='return event.charCode >= 48 && event.charCode <= 57'>	
+      		<span class="error remove" ng-show="form.uPhone.$error.required">numéro de téléphone requis</span>
+    	</div>
+		
+		<div role="alert">
+			<label>Login</label><br>
+			<input class="registerText" class="registerText" type="text" ng-model="user.login" name="uLogin" required ng-empty>
+			<span class="error remove" ng-show="form.uLogin.$error.required">login requis</span>
+		</div>
+		
+		<div role="alert">
+			<label>Password</label><br>
+			<input class="registerText" type="password" ng-model="user.password" name="uPassword" required ng-empty>
+			<span class="error remove" ng-show="form.uPassword.$error.required">password requis</span>
+		</div>
+		
+		<div role="alert">
+			<label>Entrez à nouveau votre password</label><br>
+			<input class="registerText" type="password" ng-model="user.password2" name="uPassword2" required ng-empty>
+			<span class="error remove" ng-show="user.password!=user.password2">password différent</span>
+		</div>
+	
+	</form>
+</div>
+<br>
+<br>
+<div>
+	<button type="button" class="btn btn-default" ng-click="addUser(user)" ng-disabled="form.$invalid">Send</button>
+</div>

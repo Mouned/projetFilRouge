@@ -7,7 +7,12 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
         .when('/research', {
             templateUrl: './templates/research.html',
             controller: 'controllerProject'
+        })
+        .when('/sign', {
+            templateUrl: './html/LogSignIn.html',
+            controller: 'registerCtrl'
         });
+    
 
     $routeProvider.otherwise({
         redirectTo : '/home'
