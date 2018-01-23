@@ -6,6 +6,7 @@
 				    	<i class="fa fa-user dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-hidden="true"></i>
 				    	<ul class="dropdown-menu">
 				    		<li><a href="#">Profil</a></li>
+				    		<li ng-if="isAdmin()"><a href="#admin">Page Admin</a></li>
 							<li><a href="#">Commandes</a></li>
 							<li ng-if="!isAuthenticate()"><a href="#!/sign">Connexion/Inscription</a></li>
 							<li ng-if="isAuthenticate()"><a href="#" ng-click = 'deconnect()'>Deconnexion</a></li>

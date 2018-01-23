@@ -11,8 +11,11 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
         .when('/sign', {
             templateUrl: './html/LogSignIn.html',
             controller: 'registerCtrl'
-        });
-    
+        })
+    	.when('/admin', {
+    		templateUrl: './html/pageAdmin.html',
+    		controller: 'pageAdminCtrl'
+    	});
 
     $routeProvider.otherwise({
         redirectTo : '/home'
