@@ -1,6 +1,6 @@
 angular.module('project').controller('controllerProject', function ($scope, $http) {
     $scope.liste = [];
-    $http.get('http://192.168.1.13:8080/api/public/products').then(function (response) {
+    $http.get('http://192.168.1.17:8080/api/product').then(function (response) {
         console.log('RechercheMedia', response);
         for(var key in response.products) {
             var jeux = response.products[key];

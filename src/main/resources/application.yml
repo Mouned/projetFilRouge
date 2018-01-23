@@ -3,7 +3,7 @@ server:
 spring:
     datasource:
         dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgresql://192.168.1.13:5432/ecommerce
+        url: jdbc:postgresql://192.168.1.17:5432/ecommerce
         username: admin
         password: admin
         
