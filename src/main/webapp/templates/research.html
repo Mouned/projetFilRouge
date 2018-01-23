@@ -1,19 +1,20 @@
+<meta charset="utf-8"><
 <head>
     <script>
         $(function() {
-            $('.range').next().text('--'); // Valeur par défaut
+            $('.range').next().text('--'); // Valeur par dÃ©faut
             $('.range').on('input', function() {
                 var $set = $(this).val();
                 $(this).next().text($set);
             });
         });
     </script>
-</head>
+<</head>
 <div id="text">
     <h1>Recherche de jeux</h1>
 </div>
 <div id="text">
-<form novalidate>
+<form name = "form" novalidate>
     <label>Titre</label><br>
     <input class="recherchetitre" ng-model="recherche.titre" type="text" placeholder="Recherche par titre"><br><br>
     <label>Editeur</label><br>
@@ -31,22 +32,23 @@
     <label>Prix minimum :</label>
     <form>
         <fieldset>
-            <input class="curseur" type="range" name="d" min="0" max="50" step="0.5" value="0" oninput="result4.value=parseInt(d.value)"/>
-            <input class="rechercheprix" ng-model="recherche.priceMin" placeholder="0" disabled name="result4">
+            <input class="curseur" type="range" name="d1" value="0" min="0" max="200" step="0.5" oninput="result41.value=parseInt(d1.value)" ng-model="recherche.priceMin" />
+            <input class="rechercheprix" placeholder="" disabled name="result41">
         </fieldset>
     </form>
     <label>Prix maximum :</label>
     <form>
         <fieldset>
-            <input class="curseur" type="range" name="d" min="50" max="100" step="0.5" value="50" oninput="result4.value=parseInt(d.value)"/>
-            <input class="rechercheprix" ng-model="recherche.priceMax" placeholder="50" disabled name="result4">
+            <input class="curseur" type="range" name="d2" value="200" min="0" max="200" step="0.5" oninput="result42.value=parseInt(d2.value)" ng-model="recherche.priceMax" />
+            <input class="rechercheprix" placeholder="" disabled name="result42">
         </fieldset>
+        <span class="error remove" ng-show="recherche.priceMax < recherche.priceMin">Le prix maximum ne doit pas être inférieur au prix mininmum</span>
     </form>
     <br>
     <br>
 </form>
 <form>
-	<input class="recherchetitre" value="Valider" type="submit" ng-click="search()">
+	<input class="recherchetitre" value="Valider" type="submit" ng-disabled ="form.$invalid" ng-click="search()">
 </form>
 </div>
 <hr>

@@ -2,7 +2,7 @@ angular.module('project').service('registerService', ['$http', function($http){
 	
 	
 	this.createUser = function(user){
-		return $http.post('http://192.168.1.17:8080/api/users/create', user).then(function(response) {
+		return $http.post('/api/users/create', user).then(function(response) {
 					console.log(response);
 			});
 	}

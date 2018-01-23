@@ -6,7 +6,7 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
     	})
         .when('/research', {
             templateUrl: './templates/research.html',
-            controller: 'controllerProject'
+            controller: 'searchCtrl'
         })
         .when('/sign', {
             templateUrl: './html/LogSignIn.html',

@@ -46,4 +46,11 @@ public class UserController {
 		
 		return userId;
 	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public User getUserByLogin(@RequestParam("login") String login) {
+		
+		return userService.findByLogin(login);
+	}
 }

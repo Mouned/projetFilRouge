@@ -1,4 +1,4 @@
-angular.module('project').controller('controllerProject',['$scope','$http','searchService', function ($scope, $http,searchService) {
+angular.module('project').controller('searchCtrl',['$scope','$http','searchService', function ($scope, $http,searchService) {
     $scope.liste = [];
    // var recherche = {};
     
@@ -6,6 +6,8 @@ angular.module('project').controller('controllerProject',['$scope','$http','sear
     $scope.types = ["Survie", "Stratégie", "Action", "FPS", "Course","Monde ouvert","Découverte","Aventure"];
     
    $scope.search = function(){
+	   
+	   console.log($scope.recherche);
 	   
 	   if($scope.recherche === undefined)
 		   return;
@@ -28,7 +30,7 @@ angular.module('project').controller('controllerProject',['$scope','$http','sear
 	   if($scope.recherche.priceMax === undefined){
 		   $scope.recherche.priceMax = '';
 	   }
-	   
+		   
 	   console.log($scope.recherche);
 	   
     	searchService.search($scope.recherche).then(function(data){
