@@ -38,10 +38,22 @@ hr{
 .prix:after{
     content: ' €';
 }
+.registerText{
+	color:black;
+}
 .recherchetitre{
     color: black;
 }
 .rechercheprix{
+    color: black;
+}
+.recherchepegi{
+    color: black;
+}
+.rechercheediteur{
+    color: black;
+}
+.recherchetype{
     color: black;
 }
 .rechercheprix::after{
@@ -192,6 +204,10 @@ hr{
 }
 .hors-ecran {
 	visibility: hidden;
+}
+
+.remove{
+	color: #fc4727;
 }
 
 
