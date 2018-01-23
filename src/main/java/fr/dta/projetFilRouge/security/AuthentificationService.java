@@ -21,10 +21,10 @@ public class AuthentificationService implements UserDetailsService {
     private UserRepository utilisateurRepository;
     @Override
     public UserDetails loadUserByUsername(final String username) {
-        User user = utilisateurRepository.findByEmail(username);
+        User user = utilisateurRepository.findByLogin(username);
         if (user != null) {
             List<GrantedAuthority> rules = this.getUserCredentials(user);
-            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), rules);
+            return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), rules);
         }
         throw new UsernameNotFoundException("username.not.found");
     }

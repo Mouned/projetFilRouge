@@ -26,7 +26,7 @@ public class SecurityService implements Serializable {
         
         org.springframework.security.core.userdetails.User u = (org.springframework.security.core.userdetails.User) authentication
                 .getPrincipal();
-        return utilisateurRepository.findByEmail(u.getUsername());
+        return utilisateurRepository.findByLogin(u.getUsername());
     }
 
 }
