@@ -13,4 +13,14 @@ public enum Pegi {
 	public String toString() {
 		return pegi;
 	}
+	
+	public static Pegi valueByCode(String code) {
+		switch(code) {
+			case("7") : return seven;
+			case("12") : return twelve;
+			case("16") : return sixteen;
+			case("18") : return eighteen;
+			default : return third;
+		}
+	}
 }
