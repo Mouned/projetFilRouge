@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import fr.dta.projetFilRouge.app.service.ProductsService;
 import fr.dta.projetFilRouge.user.entity.Products;
@@ -41,11 +43,17 @@ public class ProductsController {
 	public List<Products> getProductsByCriteria(
 			@RequestParam(value="title", required=false) String title, 
 			@RequestParam(value="gamePublisher", required=false) String gamePublisher, 
-			@RequestParam(value="pegi", required=false) Pegi pegi,
+			@RequestParam(value="pegi", required=false) String pegi,
 			@RequestParam(value="priceMin", required=false, defaultValue="0") Float priceMin,
 			@RequestParam(value="priceMax", required=false, defaultValue="1000") Float priceMax,
 			@RequestParam(value="type", required=false) String type) {
-		List<Products> list = productsService.findByCriteria(title, gamePublisher, pegi, priceMin, priceMax, type);
+		
+		Pegi searchPegi = null;
+		
+		if(pegi != null) 
+			searchPegi = Pegi.valueByCode(pegi);
+		
+		List<Products> list = productsService.findByCriteria(title, gamePublisher, searchPegi, priceMin, priceMax, type);
 		return list;
 	}
 	
@@ -88,4 +96,10 @@ public class ProductsController {
 		productsService.createProduct(p);
 	}
 	
+	@RequestMapping(value = "upload/{id}", method = RequestMethod.POST)
+    public String uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("id") long id ) {
+		productsService.store(file);
+        return "Message : OK";
+    }
+
 }
