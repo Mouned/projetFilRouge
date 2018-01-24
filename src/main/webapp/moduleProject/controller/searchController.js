@@ -1,4 +1,4 @@
-angular.module('project').controller('controllerProject',['$scope','$http','searchService', function ($scope, $http,searchService) {
+angular.module('project').controller('searchCtrl',['$scope','$http','searchService', function ($scope, $http,searchService) {
     $scope.liste = [];
    // var recherche = {};
     
@@ -29,11 +29,8 @@ angular.module('project').controller('controllerProject',['$scope','$http','sear
 		   $scope.recherche.priceMax = '';
 	   }
 	   
-	   console.log($scope.recherche);
-	   
     	searchService.search($scope.recherche).then(function(data){
     		$scope.liste = data;
-    		console.log($scope.liste);
     		$scope.recherche = {};
     	});
 	 }

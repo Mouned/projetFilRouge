@@ -40,4 +40,8 @@ public class UserService {
 			return user.getId();
 		return -1L;
 	}
+	
+	public User findByLogin(String login) {
+		return userRepository.findByLogin(login);
+	}
 }

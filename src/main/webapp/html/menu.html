@@ -5,10 +5,11 @@
 				    <div id="user-menu" class="pull-right btn-group">
 				    	<i class="fa fa-user dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-hidden="true"></i>
 				    	<ul class="dropdown-menu">
-				    		<li ><a href="#">Profil</a></li>
+				    		<li><a href="#">Profil</a></li>
+				    		<li ng-if="isAdmin()"><a href="#admin">Page Admin</a></li>
 							<li><a href="#">Commandes</a></li>
-							<li><a href="#!/sign">Connexion/Inscription</a></li>
-							<li><a href="#">Deconnexion</a></li>
+							<li ng-if="!isAuthenticate()"><a href="#!/sign">Connexion/Inscription</a></li>
+							<li ng-if="isAuthenticate()"><a href="#" ng-click = 'deconnect()'>Deconnexion</a></li>
 				    	</ul>
 				    </div>
 				</div>
@@ -73,6 +74,7 @@
 				<li><a href="#">Home</a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="#">Contact</a></li>
+
 				<li><a href="#">Panier</a></li>
 			</ul>
 		</div>

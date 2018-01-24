@@ -7,9 +7,13 @@ angular.module('project').controller('registerCtrl',['$scope','$http','registerS
 	}
 	
 	$scope.login = function(user){
-		console.log(user.username + ' ; '+ user.password);
-		connectionService.getUser(user.username,user.password).then(function(response) {
-			$scope.user = response.data;
+		connectionService.connectUser(user.username,user.password).then(function(response) {
+		});		
+	}
+	
+	$scope.logout = function(){
+		connectionService.deconnectUser().then(function(reponse){
+			
 		});
 	}
 }]);
