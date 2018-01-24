@@ -42,8 +42,8 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
         return productsRepository.findAll(new PageRequest(page,sizeElement));
     }
     
-    public void createProduct(Products p) {
-    	productsRepository.saveAndFlush(p);
+    public Products createProduct(Products p) {
+    	return productsRepository.saveAndFlush(p);
     }
     
     public void deleteProduct(Products p) {
@@ -68,7 +68,7 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// CREATE FILE
     public boolean store(long id, MultipartFile file) {
-        File convFile = new File( ".\\src\\main\\resources\\front\\images\\" + id + "\\"  + file.getOriginalFilename());
+        File convFile = new File( ".\\src\\main\\webapp\\images\\" + id + "\\"  + file.getOriginalFilename());
         System.out.println("Création du fichier : " + convFile.getAbsolutePath() + " : En cours");
         try {
         	convFile.getParentFile().mkdirs();//creer dossier manquant

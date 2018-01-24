@@ -210,5 +210,13 @@ hr{
 	color: #fc4727;
 }
 
-
-
+/* Page Admin */
+.pageAdmin {
+	color: white;
+	font-family: serif;
+	font-size: 5em;
+}
+.btnAdd{
+	color: black;
+	background-color: lime;
+}

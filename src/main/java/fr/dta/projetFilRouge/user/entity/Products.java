@@ -52,9 +52,6 @@ public class Products implements Serializable{
 	@NotBlank
 	private String type;
 	
-	@Transient
-	private MultipartFile file;
-	
 	@Column
 	private String url;
 	
@@ -118,14 +115,6 @@ public class Products implements Serializable{
 		this.type = type;
 	}
 
-	public MultipartFile getFile() {
-		return file;
-	}
-
-	public void setFile(MultipartFile file) {
-		this.file = file;
-	}
-
 	public String getUrl() {
 		return url;
 	}
@@ -137,7 +126,7 @@ public class Products implements Serializable{
 	@Override
 	public String toString() {
 		return "Products [id=" + id + ", title=" + title + ", price=" + price + ", gamePublisher=" + gamePublisher
-				+ ", pegi=" + pegi + ", type=" + type + ", file=" + file + ", url=" + url + "]";
+				+ ", pegi=" + pegi + ", type=" + type + ", url=" + url + "]";
 	}
 	
 }

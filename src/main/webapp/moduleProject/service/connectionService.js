@@ -27,6 +27,7 @@ angular.module('project').service('connectionService', ['$http','$q', function($
 			.then(function(response){
 				isAuth = false;
 				user = {};
+				isAdmin = false;
 			});
 	};
 	

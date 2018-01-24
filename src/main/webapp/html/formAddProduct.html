@@ -1,0 +1,31 @@
+<div class="modal-body">
+	<form name="form" class="css-form" novalidate>
+		
+		<label>Titre</label><br>
+			<input ng-model="jeu.title" type="text" placeholder="Titre"><br><br>
+		<label>Editeur</label><br>
+			<input ng-model="jeu.gamePublisher" type="text" placeholder="Editeur"><br><br>
+		<label>Pegi</label>
+			<select ng-model="jeu.pegi" ng-options="x for x in pegis">
+			</select>
+	   <br>
+	   <br>
+	  	<label>Type</label>
+		   <select ng-model="jeu.type" ng-options="x for x in types">
+			</select>
+	   <br>
+	   <br>
+	   <div role = "alert">
+	   	<label>Prix</label>
+		<input type="number" ng-model="jeu.price"><br>
+	   </div>
+	   <br>
+	   <br>
+	   <label>Image</label>
+	   	<input type="file" file-directive="file">
+	</form>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addGame(jeu,file)">Send</button>
+	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>

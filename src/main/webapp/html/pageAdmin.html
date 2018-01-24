@@ -1,6 +1,20 @@
-<p>Page Administrateur</p>
+<meta charset="utf-8">
+<br>
+<br>
+<br>
+<br>
+<p class="pageAdmin" align="center">Page Administrateur</p>
 
-<div>
-	<label>Créer un produit</label>
-	
+<div >
+	<button type="button" class="btn btn-default btn-lg btnAdd" ng-click="openModal()">
+		<span class="glyphicon glyphicon-plus"></span>  Ajouter un jeu
+	</button>
+</div>
+
+<br>
+<hr>
+<br>
+
+	<br>
+	<div ng-include src="'../html/gameList.html'"></div>
 </div>
