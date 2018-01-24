@@ -1,4 +1,4 @@
-angular.module('project').service('productsService','searchService', function ($scope, $http,$searchService) {
+angular.module('project').service('productsService', ['$http', 'searchService', function ($http,$searchService) {
 
     var addGame = function (jeu) {
         return $http.post('/api/products/create', jeu).then(function(response){
@@ -8,8 +8,4 @@ angular.module('project').service('productsService','searchService', function ($
         });
     };
 
-    $scope.ajout = function (jeu) {
-        console.log(jeu);
-        addGame(jeu).then();
-    };
-});
+}]);
