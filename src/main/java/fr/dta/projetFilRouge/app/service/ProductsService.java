@@ -54,6 +54,17 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     	return null;
     }
     
+    public Products getById(long id) {
+    	Products p = productsRepository.findById(id);
+    	return p;
+    }
+    
+    public void updateById(String game_publisher, Pegi pegi, float price, String title, String type, MultipartFile file, long id) {
+    	String url = file.getOriginalFilename();
+    	
+    	productsRepository.updateById(game_publisher, pegi, price, title, type, url, id);
+    }
+    
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// CREATE FILE
     public boolean store(long id, MultipartFile file) {
