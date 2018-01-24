@@ -9,9 +9,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.multipart.MultipartFile;
 
 import fr.dta.projetFilRouge.user.enumeration.Pegi;
 import lombok.Getter;
@@ -50,6 +52,8 @@ public class Products implements Serializable{
 	@NotBlank
 	private String type;
 	
+	@Transient
+	private MultipartFile file;
 	
 	@Column
 	private String url;
@@ -64,12 +68,6 @@ public class Products implements Serializable{
 	}
 
 	public Products() {
-	}
-
-	@Override
-	public String toString() {
-		return "Products [id=" + id + ", title=" + title + ", price=" + price + ", gamePublisher=" + gamePublisher
-				+ ", pegi=" + pegi + ", type=" + type + "]";
 	}
 
 	public Long getId() {
@@ -118,8 +116,16 @@ public class Products implements Serializable{
 
 	public void setType(String type) {
 		this.type = type;
-	}		
-	
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
 	public String getUrl() {
 		return url;
 	}
@@ -128,5 +134,10 @@ public class Products implements Serializable{
 		this.url = url;
 	}
 
+	@Override
+	public String toString() {
+		return "Products [id=" + id + ", title=" + title + ", price=" + price + ", gamePublisher=" + gamePublisher
+				+ ", pegi=" + pegi + ", type=" + type + ", file=" + file + ", url=" + url + "]";
+	}
 	
 }
