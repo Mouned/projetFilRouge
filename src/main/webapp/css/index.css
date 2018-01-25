@@ -202,3 +202,17 @@ hr{
 	color: black;
 	background-color: lime;
 }
+
+
+.table-game{
+	width: 100%; /* à adapter selon vos contraintes */
+  table-layout: fixed; 
+}
+
+.table-game td{
+	max-width: 100px;
+    word-wrap: break-word; 
+}
+ 
+
+
