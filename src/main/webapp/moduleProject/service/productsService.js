@@ -27,18 +27,15 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
         });
     };    
     this.updateGame = function(jeu, file){
-    	console.log('test update');
-    	
         	var fd = new FormData();
         	fd.append('file',file);
-        	return $http.post('/api/products/upload/'+jeu.id, fd, {
+        	return $http.post('/api/products/update/image/'+jeu.id, fd, {
         			headers: {'Content-Type': undefined}
         	}).then(function(){
         			return searchService.getAll().then(function(data){
                         return data;
-        		}); 		
-        	});
-        
+        		}); 		 
+        	});            
     };
     
     this.deleteGame = function(id){

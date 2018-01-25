@@ -63,9 +63,8 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     public Products updateById(String game_publisher, Pegi pegi, float price, String title, String type, MultipartFile file, long id) {
     	String url = file.getOriginalFilename()+""+new Timestamp(System.currentTimeMillis());
     	
-    	productsRepository.updateById(game_publisher, pegi, price, title, type, url, id);
-    	
-    	Products p = this.getById(id);
+    	Products p = new Products();
+    	p.setId(id);
     	p.setGamePublisher(game_publisher);
     	p.setPegi(pegi);
     	p.setPrice(price);

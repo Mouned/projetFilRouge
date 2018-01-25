@@ -52,7 +52,7 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	        		console.log('UPDATE');
 	        		$scope.$close({jeu : angular.copy($scope.jeu), file : $scope.file});
 	        	};
-	        	$scope.jeu = item;
+	        	$scope.jeu = angular.copy(item);
 	        	$scope.pegis = [];
 	        	$scope.types = ["Survie", "Stratégie", "Action", "FPS", "Course","Monde ouvert","Découverte","Aventure"];
 	        	productsService.getPegis().then(function(response) {
