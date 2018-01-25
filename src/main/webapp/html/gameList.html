@@ -32,12 +32,14 @@
                 <span ng-bind="jeux.price"></span>
             </td>
             <td>
-            	<a href="#!/game-search/{{jeux.id}}"><span class="fa fa-search-plus" data-toggle="tooltip" data-placement="bottom" title="Details"></span></a>
+            	<a href=""><span class="fa fa-search-plus" data-placement="bottom" title="Details" ng-click="openModalDetail(jeux)"></span></a>
             </td>
-            <td ng-show="isAdmin()">
-            	<a href="#!/edit/{{jeux.id}}"><span class="fa fa-pencil-square-o" data-toggle="tooltip" data-placement="bottom" title="Edit"></span></a>
+            <td><!--  ng-show="isAdmin()" -->
+            	<a href=""><span class="fa fa-pencil-square-o" data-placement="bottom" title="Edit" ng-click="openModalEdit(jeux)" ></span></a>
             	<a href="#!/delete/{{jeux.id}}"><span class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Delete"></span></a>
             </td>
         </tr>
     </tbody>
 </table>
+
+

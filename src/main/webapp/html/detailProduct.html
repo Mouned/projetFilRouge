@@ -1,0 +1,22 @@
+<div class="modal-header">
+	<span ng-bind="jeu.title"></span>
+</div>
+<div class="modal-body">
+	<ul>
+		<li>
+			Prix : <span ng-bind="jeu.price"></span>
+		</li>
+		<li>
+			Type : <span ng-bind="jeu.type"></span>
+		</li>
+		<li>
+			Editeur : <span ng-bind="jeu.gamePublisher"></span>
+		</li>
+		<li>
+			Pegi : <span ng-bind="jeu.pegi"></span>
+		</li>
+	</ul>
+</div>
+<div class="modal-footer">
+	<button onclick="style.display='none'" type="button" id="btncancel" class="btn btn-default">Fermer</button>
+</div>
