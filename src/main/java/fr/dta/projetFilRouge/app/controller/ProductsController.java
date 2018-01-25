@@ -138,9 +138,12 @@ public class ProductsController {
 		{
 			Products p = productsService.getById(id);
 			
+			System.out.println(p);
+			
 			productsService.store(id, file);
 			
-			productsService.updateById(p.getGamePublisher(), p.getPegi(), p.getPrice(), p.getTitle(), p.getType(), file, id);
+			System.out.println(productsService.updateById(p.getGamePublisher(), p.getPegi(), p.getPrice(), p.getTitle(), p.getType(), file, id));
+			
 			
 		}else {
 			System.out.println("Fichier refusé.");
