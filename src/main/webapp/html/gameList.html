@@ -32,34 +32,14 @@
                 <span ng-bind="jeux.price"></span>
             </td>
             <td>
-            	<a href=""><span class="fa fa-search-plus" data-placement="bottom" title="Details" ng-click="openModalDetail()"></span></a>
+            	<a href=""><span class="fa fa-search-plus" data-placement="bottom" title="Details" ng-click="openModalDetail(jeux)"></span></a>
             </td>
-            <td ng-show="isAdmin()">
-            	<a href=""><span class="fa fa-pencil-square-o" data-placement="bottom" title="Edit" ng-click="openModalEdit()" ></span></a>
+            <td><!--  ng-show="isAdmin()" -->
+            	<a href=""><span class="fa fa-pencil-square-o" data-placement="bottom" title="Edit" ng-click="openModalEdit(jeux)" ></span></a>
             	<a href="#!/delete/{{jeux.id}}"><span class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Delete"></span></a>
             </td>
         </tr>
     </tbody>
 </table>
-
-
-<!-- DETAIL MODAL -->
-<div class="modal fade bs-detail-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
-</div>
-
-<!-- EDIT MODAL -->
-
-<div class="modal fade bs-edit-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
-</div>
 
 
