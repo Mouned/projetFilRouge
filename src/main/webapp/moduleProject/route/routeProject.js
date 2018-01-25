@@ -16,10 +16,6 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
     		templateUrl: './html/pageAdmin.html',
     		controller: 'pageAdminCtrl'
     	})
-        .when('/test',{
-            templateUrl : './templates/test.html',
-            controller : 'searchCtrl'
-        })
         .when('/details/:id',{
             templateUrl : './templates/gamedetails.html',
             controller : 'searchCtrl'
