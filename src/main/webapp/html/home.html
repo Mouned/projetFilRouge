@@ -48,11 +48,11 @@
 		<a href="" class="hover-box"><i class="fa fa-search-plus invisible" aria-hidden="true"></i></a>
 			<div class="under-box">
 				
-						<h1>Titre</h1>
-						<img class="img-thumbnail" src="https://s1.gaming-cdn.com/images/products/1842/157x218/1842.jpg">
+						<h1>{{game.title}}</h1>
+						<img class="img-thumbnail" ng-src="./images/{{game.id}}/{{game.url}}" alt="pas d'image !"/>
 						<div class="info-box">
-							<p>description...</p>
-							<div class="price-box"><span>59.99</span> <span>&euro;</span></div>
+							<p>{{game.gamePublisher}} - {{game.type}} - {{game.pegi}}</p>
+							<div class="price-box"><span>{{game.price}}</span> <span>&euro;</span></div>
 						</div>
 			</div>			
 		</div>

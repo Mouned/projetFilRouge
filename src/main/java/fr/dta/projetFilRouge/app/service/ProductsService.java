@@ -94,11 +94,10 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     	
     	File folderToDelete = new File(".\\src\\main\\webapp\\images\\"+id+"\\");
     	
-    	if(folderToDelete == null) return false;
-    	
     	String[] listFile = folderToDelete.list();
     	File currentFile;
     	
+    	if(listFile==null)return false;
     	
     	for(String filename : listFile) {
     		currentFile = new File(folderToDelete.getPath(),filename);

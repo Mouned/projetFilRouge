@@ -1,10 +1,10 @@
-angular.module('project').controller('searchCtrl',['$scope','$http','searchService', 'connectionService', function ($scope, $http,searchService, connectionService) {
+angular.module('project').controller('searchCtrl',['$scope','$http','searchService', 'connectionService', '$location', function ($scope, $http,searchService, connectionService, $location) {
     $scope.liste = [];
    // var recherche = {};
     
     $scope.pegis = ["3","7","12","16","18"];
     $scope.types = ["Survie", "Stratégie", "Action", "FPS", "Course","Monde ouvert","Découverte","Aventure"];
-    
+    console.log($location.path());
     $scope.search = function(){
     	
  	   if($scope.recherche === undefined)

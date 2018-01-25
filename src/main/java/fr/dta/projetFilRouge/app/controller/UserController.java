@@ -42,6 +42,7 @@ public class UserController {
 	@RequestMapping(value = "create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 	public Long createUser(@RequestBody User user) {
 		
+		System.out.println(user);
 		Long userId = userService.createUser(user);
 		
 		return userId;
@@ -52,5 +53,10 @@ public class UserController {
 	public User getUserByLogin(@RequestParam("login") String login) {
 		
 		return userService.findByLogin(login);
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void updateUser(@RequestBody User user) {
+		userService.update(user);
 	}
 }

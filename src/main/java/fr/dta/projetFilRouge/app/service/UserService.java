@@ -44,4 +44,10 @@ public class UserService {
 	public User findByLogin(String login) {
 		return userRepository.findByLogin(login);
 	}
+
+	public void update(User user) {
+		
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		userRepository.saveAndFlush(user);
+	}
 }
