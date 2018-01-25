@@ -1,7 +1,22 @@
+<div class="modal-header">
+	<span ng-bind="$ctrl.jeux.title"></span>
+</div>
 <div class="modal-body">
-	
+	<ul>
+		<li>
+			Prix : <span ng-bind="$ctrl.jeux.price"></span>
+		</li>
+		<li>
+			Type : <span ng-bind="$ctrl.jeux.type"></span>
+		</li>
+		<li>
+			Editeur : <span ng-bind="$ctrl.jeux.gamePublisher"></span>
+		</li>
+		<li>
+			Pegi : <span ng-bind="$ctrl.jeux.pegis"></span>
+		</li>
+	</ul>
 </div>
 <div class="modal-footer">
-	<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addGame(jeu,file)">Send</button>
-	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	<button onclick="style.display='none'" type="button" id="btncancel" class="btn btn-default">Fermer</button>
 </div>
