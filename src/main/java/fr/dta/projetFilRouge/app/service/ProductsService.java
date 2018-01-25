@@ -49,6 +49,8 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     
     public void deleteProduct(Products p) {
     	productsRepository.delete(p);
+    	this.deleteImage(p.getId());
+    	
     }
     
     public List<Products> findByCriteria() {
@@ -83,6 +85,21 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
 			System.err.println("Erreur de suavegarde de fichier : " + e.getMessage());
 			return false;
 		} 
+    }
+    
+    public boolean deleteImage(long id) {
+    	
+    	File folderToDelete = new File(".\\src\\main\\webapp\\iamges"+id);
+    	String[] listFile = folderToDelete.list();
+    	File currentFile;
+    	
+    	for(String filename : listFile) {
+    		currentFile = new File(folderToDelete.getPath(),filename);
+    	    currentFile.delete();
+    	}
+    	if(folderToDelete.list().length == 0)
+    		return folderToDelete.delete();
+    	return false;
     }
     
     

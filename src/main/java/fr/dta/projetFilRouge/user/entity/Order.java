@@ -16,6 +16,11 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,12 +42,14 @@ public class Order implements Serializable{
 	private Long id;
 	
 	@NotNull
-	private Long totalPrice;
+	private Float totalPrice;
 	
 	@NotBlank
 	private String orderNumber;
 	
 	@NotNull
+	@JsonDeserialize(using=LocalDateDeserializer.class)
+	@JsonSerialize(using=LocalDateSerializer.class)	
 	private LocalDate orderDate;
 	
 	/*
@@ -65,7 +72,7 @@ public class Order implements Serializable{
 		super();
 	}
 
-	public Order(Long totalPrice, String orderNumber, LocalDate orderDate, User user, List<Products> products) {
+	public Order(Float totalPrice, String orderNumber, LocalDate orderDate, User user, List<Products> products) {
 		super();
 		this.totalPrice = totalPrice;
 		this.orderNumber = orderNumber;
@@ -82,11 +89,11 @@ public class Order implements Serializable{
 		this.id = id;
 	}
 
-	public Long getTotalPrice() {
+	public Float getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(Long totalPrice) {
+	public void setTotalPrice(Float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 

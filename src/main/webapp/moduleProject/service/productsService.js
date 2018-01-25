@@ -20,15 +20,12 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
 			return response.data;
 		});
     }
-<<<<<<< HEAD
     this.getOne = function (id) {
         var p1 = $http.get('/api/products/all'+id);
         var p2 = p1.then(function (response) {
             return response.data;
         });
-    };
-=======
-    
+    };    
     this.updateGame = function(jeu, file){
     	return $http.post('/api/products/update', jeu).then(function(response){
         	var fd = new FormData();
@@ -48,6 +45,4 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
         	         
         });
     }
->>>>>>> 3ce6c8916f648b79a12543ad524f453c74af6528
-
 }]);
