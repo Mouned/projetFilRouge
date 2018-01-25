@@ -20,7 +20,12 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
 			return response.data;
 		});
     }
-    
+    this.getOne = function (id) {
+        var p1 = $http.get('/api/products/all'+id);
+        var p2 = p1.then(function (response) {
+            return response.data;
+        });
+    };    
     this.updateGame = function(jeu, file){
     	console.log('test update');
     	
@@ -41,5 +46,4 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
         	         
         });
     }
-
 }]);

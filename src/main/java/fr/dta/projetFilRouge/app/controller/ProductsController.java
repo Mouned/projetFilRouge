@@ -42,7 +42,6 @@ public class ProductsController {
 		return list;
 	}
 
-	@CrossOrigin
 	@RequestMapping(value = "advanced-search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Products> getProductsByCriteria(
 			@RequestParam(value="title", required=false) String title, 
@@ -57,8 +56,12 @@ public class ProductsController {
 		if(pegi != null) 
 			searchPegi = Pegi.valueByCode(pegi);
 		
-		List<Products> list = productsService.findByCriteria(title, gamePublisher, searchPegi, priceMin, priceMax, type);
-		return list;
+		return productsService.findByCriteria(title, gamePublisher, searchPegi, priceMin, priceMax, type);
+	}
+	
+	@RequestMapping(value = "search-game", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Products> quickGetProductsByCriteria(@RequestParam(value="gameInfo") String gameInfo) {
+		return productsService.quickFindByCriteria(gameInfo);
 	}
 	
 	@CrossOrigin
