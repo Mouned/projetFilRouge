@@ -22,8 +22,8 @@
 			<div class="row">
 				<form id="search-mobile" action="#" method="" class="invisible form form-search col-lg-10 col-md-10 col-sm-10 col-xs-10">
 					<div class="form__field">
-						<input type="search" placeholder="Search …">
-						<input type="submit" value="Search">
+						<input type="search" class="inputmenu" placeholder="Search …" x-ng-model="gameInfo">
+						<input type="submit" class="inputmenu" value="Search" x-ng-click="quickResearch(gameInfo)">
 					</div>
 				</form>
 						
@@ -46,10 +46,10 @@
 						<li><a href="#">Contact</a></li>
 					</ul>
 				    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-				    	<form class="form form-search " novalidate ng-submit>
+				    	<form class="form form-search " action="#" method="" novalidate ng-submit>
 							<div class="form__field">
-						      	<input class="inputmenu" type="search" placeholder="Search …" x-ng-model="gameInfo">
-						    	<input class="inputmenu" type="submit" x-ng-click="quickResearch(gameInfo)">
+						      	<input type="search" class="inputmenu" placeholder="Search …" x-ng-model="gameInfo">
+								<input type="submit" class="inputmenu" value="Search" x-ng-click="quickResearch(gameInfo)">	
 							</div>
 						</form>
 				    </div>

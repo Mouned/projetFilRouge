@@ -17,7 +17,7 @@ window.onload = function (){
 	
 	var btnMobile = $('#button-mobile');
 	btnMobile.on('click', function(){
-		console.log('sfghwsdhsht');
+		console.log('test mobile');
 		if (navMobile.classList.contains('hors-ecran')) {
 			console.log(navMobile.offsetWidth);
 			navMobile.classList.remove('hors-ecran');
