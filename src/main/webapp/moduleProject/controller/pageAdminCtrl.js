@@ -38,20 +38,21 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	    });
 	};
 	
-	//MODAL EDIT
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MODAL EDIT
 	$scope.openModalEdit = function(jeuToEdit){
 		
 		// Controller + Template de la modale
 		var modalInstance = $uibModal.open({
 			templateUrl: './html/editProduct.html',
 			resolve : {
-				item : jeuToEdit
+				item :  angular.copy(jeuToEdit)
 			},
 			controller : function($scope, item, productsService){
-	        	$scope.addGame = function(jeu, file){
+	        	$scope.updateGame = function(jeu, file){
+	        		console.log('UPDATE');
 	        		$scope.$close({jeu : angular.copy($scope.jeu), file : $scope.file});
 	        	};
-	        	$scope.jeu = item;
+	        	$scope.jeu = angular.copy(item);
 	        	$scope.pegis = [];
 	        	$scope.types = ["Survie", "Stratégie", "Action", "FPS", "Course","Monde ouvert","Découverte","Aventure"];
 	        	productsService.getPegis().then(function(response) {
@@ -61,7 +62,7 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	    });
 
 	    modalInstance.result.then(function (response) {
-			productsService.addGame(response.jeu,response.file).then(function(data){
+			productsService.updateGame(response.jeu,response.file).then(function(data){
 				$scope.liste = data;
 				console.log($scope.liste);
 			});
@@ -69,7 +70,7 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	    });
 	};
 	
-	//MODAL DETAIL
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////MODAL DETAIL
 	$scope.openModalDetail = function(jeuToEdit){
 		var modalInstance = $uibModal.open({
 			templateUrl: './html/detailProduct.html',

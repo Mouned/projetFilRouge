@@ -2,16 +2,12 @@ package fr.dta.projetFilRouge.app.service;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.sql.Timestamp;
 import java.util.List;
 
-import org.apache.coyote.http11.OutputFilter;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.result.Output;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,7 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import fr.dta.projetFilRouge.app.repository.*;
+import fr.dta.projetFilRouge.app.repository.AbstractRepository;
+import fr.dta.projetFilRouge.app.repository.ProductsRepository;
+import fr.dta.projetFilRouge.app.repository.ProductsRepositoryCustom;
 import fr.dta.projetFilRouge.user.entity.Products;
 import fr.dta.projetFilRouge.user.enumeration.Pegi;
 
@@ -62,12 +60,17 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     	return p;
     }
     
-    public void updateById(String game_publisher, Pegi pegi, float price, String title, String type, MultipartFile file, long id) {
-    	String url = file.getOriginalFilename()+""+new Timestamp(System.currentTimeMillis());
-    	
-    	productsRepository.updateById(game_publisher, pegi, price, title, type, url, id);
+    public void updateProducts(Products p) {
+    	productsRepository.saveAndFlush(p);
     }
     
+    public void updateById(MultipartFile file, long id) {
+      	String url = file.getOriginalFilename()+""+new Timestamp(System.currentTimeMillis());
+      	
+     	Products p = this.getById(id);
+     	p.setUrl(url);
+     	productsRepository.saveAndFlush(p);
+    }   
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// CREATE FILE
     public boolean store(long id, MultipartFile file) {

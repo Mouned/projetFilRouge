@@ -71,17 +71,7 @@ public class ProductsController {
 		List<Products> products = productsService.getAllProducts();
 
 		return products;
-	}
-	
-//	@CrossOrigin
-//	@RequestMapping(path = "public/products", params = {"page"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//	public Page<Products> getAllProductsByPage(@RequestParam("page") int page) {
-//		
-//		Page<Products> resultPage = productsService.findPaginated(page,sizeElement);
-//
-//		return resultPage;
-//	}
-	
+	}	
 	
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PEGI
@@ -121,7 +111,7 @@ public class ProductsController {
 			
 			Products p = productsService.getById(id);	
 			
-			productsService.updateById(p.getGamePublisher(), p.getPegi(), p.getPrice(), p.getTitle(), p.getType(), file, id);
+			productsService.updateById(file, id);
 		}else {
 			System.out.println("Fichier refusé.");
 		}
@@ -129,7 +119,17 @@ public class ProductsController {
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// UPDATE PRODUCT
 
-	@RequestMapping(value = "update/image/{id}", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void updateImage(@RequestBody Products p)
+	{
+			productsService.updateProducts(p);
+			
+	}	
+	
+	
+	
+	@RequestMapping(value = "image/{id}", method = RequestMethod.POST)
 	public void updateImage(@PathVariable long id, @RequestParam MultipartFile file)
 	{
 		System.out.println("test");
@@ -138,12 +138,8 @@ public class ProductsController {
 				|| file.getContentType().equals("image/tiff") 
 				|| file.getContentType().equals("image/bmp") 
 				|| file.getContentType().equals("image/gif")) 
-		{
-			Products p = productsService.getById(id);
-			
-			productsService.store(id, file);
-			
-			productsService.updateById(p.getGamePublisher(), p.getPegi(), p.getPrice(), p.getTitle(), p.getType(), file, id);
+		{			
+			productsService.updateById(file, id);
 			
 		}else {
 			System.out.println("Fichier refusé.");

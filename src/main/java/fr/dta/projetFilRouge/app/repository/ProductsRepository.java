@@ -30,12 +30,7 @@ public interface ProductsRepository extends JpaRepository<Products, Long>,Paging
 	Products findById(long id);
 	
 	@Modifying
-	@Query("update Products p set p.gamePublisher = :gamePublisher, p.pegi = :pegi, p.price = :price, p.title = :title, p.type = :type, p.url = :url where p.id = :id")
-	void updateById(@Param("gamePublisher") String game_publisher, 
-			@Param("pegi") Pegi pegi, 
-			@Param("price") float price, 
-			@Param("title") String title, 
-			@Param("type") String type, 
-			@Param("url") String url, 
-			@Param("id") long id);
+	@Transactional
+	@Query("update Products p set p.gamePublisher = ?1, p.pegi = ?2, p.price = ?3, p.title = ?4, p.type = ?5, p.url = ?6 where p.id = ?7")
+	void updateById(String game_publisher, Pegi pegi, float price, String title, String type, String url, long id);
 }
