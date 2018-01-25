@@ -1,4 +1,4 @@
-angular.module('project').controller('registerCtrl',['$scope','$http','registerService', 'connectionService', function ($scope, $http,registerService, connectionService) {
+angular.module('project').controller('registerCtrl',['$scope','$http','registerService','$location', 'connectionService', function ($scope, $http, registerService,$location, connectionService) {
 	
 	$scope.addUser = function(adherent){
 		registerService.createUser(adherent).then(function(data){
@@ -8,6 +8,10 @@ angular.module('project').controller('registerCtrl',['$scope','$http','registerS
 	
 	$scope.login = function(user){
 		connectionService.connectUser(user.username,user.password).then(function(response) {
+			if (connectionService.isAdmin())
+				$location.path('/admin');
+			else
+				$location.path('/home');
 		});		
 	}
 	

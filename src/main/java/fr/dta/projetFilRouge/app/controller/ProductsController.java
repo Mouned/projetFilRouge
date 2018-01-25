@@ -1,5 +1,6 @@
 package fr.dta.projetFilRouge.app.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -103,7 +104,7 @@ public class ProductsController {
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// UPLOAD PRODUCT	
 	
-	@RequestMapping(value = "upload/{id}", method = RequestMethod.POST/*, consumes = "multipart/form-data"*/)
+	@RequestMapping(value = "upload/{id}", method = RequestMethod.POST)
 	public void upload(@PathVariable long id, @RequestParam MultipartFile file)
 	{
 		System.out.println("test");
@@ -113,18 +114,41 @@ public class ProductsController {
 				|| file.getContentType().equals("image/bmp") 
 				|| file.getContentType().equals("image/gif")) 
 		{
-			System.out.println("Fichier accepté.");
-			
-			
-			System.out.println(file.getContentType().equals("image/jpeg"));
 			productsService.store(id, file);
+			
+			Products p = productsService.getById(id);	
+			
+			productsService.updateById(p.getGamePublisher(), p.getPegi(), p.getPrice(), p.getTitle(), p.getType(), file, id);
 		}else {
 			System.out.println("Fichier refusé.");
 		}
 	}	
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// DELETE PRODUCT
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// UPDATE PRODUCT
 
+	@RequestMapping(value = "update/image/{id}", method = RequestMethod.POST)
+	public void updateImage(@PathVariable long id, @RequestParam MultipartFile file)
+	{
+		System.out.println("test");
+		if(file.getContentType().equals("image/jpeg") 
+				|| file.getContentType().equals("image/png") 
+				|| file.getContentType().equals("image/tiff") 
+				|| file.getContentType().equals("image/bmp") 
+				|| file.getContentType().equals("image/gif")) 
+		{
+			Products p = productsService.getById(id);
+			
+			productsService.store(id, file);
+			
+			productsService.updateById(p.getGamePublisher(), p.getPegi(), p.getPrice(), p.getTitle(), p.getType(), file, id);
+			
+		}else {
+			System.out.println("Fichier refusé.");
+		}
+	}	
+	
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////DELETE PRODUCT
 	
 	@CrossOrigin
 	@RequestMapping(value = "delete/{id}", method = RequestMethod.POST)

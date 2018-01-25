@@ -7,10 +7,10 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
         	fd.append('file',file);
         	return $http.post('/api/products/upload/'+response.data.id, fd, {
         			headers: {'Content-Type': undefined}
-        	}).then(function(response){
-        		return searchService.getAll().then(function(data){
-                    return data;
-                })
+        	}).then(function(){
+        			return searchService.getAll().then(function(data){
+                        return data;
+        		}); 		
         	});            
         });
     };

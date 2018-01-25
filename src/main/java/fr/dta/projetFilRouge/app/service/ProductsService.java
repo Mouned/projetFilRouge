@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.coyote.http11.OutputFilter;
@@ -60,7 +61,7 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     }
     
     public void updateById(String game_publisher, Pegi pegi, float price, String title, String type, MultipartFile file, long id) {
-    	String url = file.getOriginalFilename();
+    	String url = file.getOriginalFilename()+""+new Timestamp(System.currentTimeMillis());
     	
     	productsRepository.updateById(game_publisher, pegi, price, title, type, url, id);
     }
