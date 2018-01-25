@@ -60,21 +60,17 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     	return p;
     }
     
-    public Products updateById(String game_publisher, Pegi pegi, float price, String title, String type, MultipartFile file, long id) {
-    	String url = file.getOriginalFilename()+""+new Timestamp(System.currentTimeMillis());
-    	
-    	Products p = new Products();
-    	p.setId(id);
-    	p.setGamePublisher(game_publisher);
-    	p.setPegi(pegi);
-    	p.setPrice(price);
-    	p.setTitle(title);
-    	p.setType(type);
-    	p.setUrl(url);
-    	
-    	return productsRepository.saveAndFlush(p);
+    public void updateProducts(Products p) {
+    	productsRepository.saveAndFlush(p);
     }
     
+    public void updateById(MultipartFile file, long id) {
+      	String url = file.getOriginalFilename()+""+new Timestamp(System.currentTimeMillis());
+      	
+     	Products p = this.getById(id);
+     	p.setUrl(url);
+     	productsRepository.saveAndFlush(p);
+    }   
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// CREATE FILE
     public boolean store(long id, MultipartFile file) {
