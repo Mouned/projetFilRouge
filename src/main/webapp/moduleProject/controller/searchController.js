@@ -7,28 +7,33 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
     
     $scope.search = function(){
     	
-    	if($scope.recherche === undefined)
-    		return;
-	   
-    	if($scope.recherche.titre == undefined){
-    		$scope.recherche.titre = '';
-    	}
-    	if($scope.recherche.type == undefined){
-    		$scope.recherche.type = '';
-    	}
-    	if($scope.recherche.editeur == undefined){
-    		$scope.recherche.editeur = '';
-    	}
-    	if($scope.recherche.pegi == undefined){
-    		$scope.recherche.pegi = '';
-    	}
-    	if($scope.recherche.priceMin === undefined){
-    		$scope.recherche.priceMin = '';
-    	}
-    	if($scope.recherche.priceMax === undefined){
-    		$scope.recherche.priceMax = '';
-    	}
-	   
+ 	   if($scope.recherche === undefined)
+		   $scope.recherche = {titre:'',
+			   				   type:'',
+			   				   editeur:'',
+			   				   pegi:'',
+			   				   priceMin:'',
+			   				   priceMax:''}; 
+ 	   else{
+	    	if($scope.recherche.titre == undefined){
+	    		$scope.recherche.titre = '';
+	    	}
+	    	if($scope.recherche.type == undefined){
+	    		$scope.recherche.type = '';
+	    	}
+	    	if($scope.recherche.editeur == undefined){
+	    		$scope.recherche.editeur = '';
+	    	}
+	    	if($scope.recherche.pegi == undefined){
+	    		$scope.recherche.pegi = '';
+	    	}
+	    	if($scope.recherche.priceMin === undefined){
+	    		$scope.recherche.priceMin = '';
+	    	}
+	    	if($scope.recherche.priceMax === undefined){
+	    		$scope.recherche.priceMax = '';
+	    	} 
+ 	   }
     	searchService.search($scope.recherche).then(function(data){
     		$scope.liste = data;
     		$scope.recherche = {};

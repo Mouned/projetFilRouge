@@ -13,7 +13,6 @@ angular.module('project').service('searchService', ['$http', function($http){
 					type:recherche.type
 				}
 				}).then(function(response) {
-					console.log(response);
 				return response.data;
 			});
 	},
