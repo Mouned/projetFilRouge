@@ -68,17 +68,7 @@ public class ProductsController {
 		List<Products> products = productsService.getAllProducts();
 
 		return products;
-	}
-	
-//	@CrossOrigin
-//	@RequestMapping(path = "public/products", params = {"page"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//	public Page<Products> getAllProductsByPage(@RequestParam("page") int page) {
-//		
-//		Page<Products> resultPage = productsService.findPaginated(page,sizeElement);
-//
-//		return resultPage;
-//	}
-	
+	}	
 	
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PEGI
