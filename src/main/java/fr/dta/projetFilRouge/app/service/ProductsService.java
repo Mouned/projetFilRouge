@@ -92,9 +92,13 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     
     public boolean deleteImage(long id) {
     	
-    	File folderToDelete = new File(".\\src\\main\\webapp\\iamges"+id);
+    	File folderToDelete = new File(".\\src\\main\\webapp\\images\\"+id+"\\");
+    	
+    	if(folderToDelete == null) return false;
+    	
     	String[] listFile = folderToDelete.list();
     	File currentFile;
+    	
     	
     	for(String filename : listFile) {
     		currentFile = new File(folderToDelete.getPath(),filename);

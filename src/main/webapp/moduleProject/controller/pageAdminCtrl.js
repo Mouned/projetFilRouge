@@ -12,6 +12,14 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 		});
 	});
 	
+	$scope.deleteProduct = function(id){
+		if(confirm("Etes vous sûr de vouloir supprimer ce jeu ?")){
+			productsService.deleteGame(id).then(function(response){
+				$scope.liste = response;
+			});
+		}
+	}
+	
 	$scope.openModal = function(){
 		
 		// Controller + Template de la modale
