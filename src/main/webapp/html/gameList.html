@@ -12,7 +12,7 @@
     		<th>Editeur</th>
     		<th>Prix</th>
     		<th>Fiche Jeu</th>
-    		<th ng-show='isAdmin()'>Éditer</th>
+    		<th ng-show="isAdmin()">Éditer</th>
     	</tr>
     </thead>
         <tr ng-repeat="jeux in liste">
@@ -34,9 +34,9 @@
             <td>
             	<a href=""><span class="fa fa-search-plus" data-placement="bottom" title="Details" ng-click="openModalDetail(jeux)"></span></a>
             </td>
-            <td><!--  ng-show="isAdmin()" -->
-            	<a href=""><span class="fa fa-pencil-square-o" data-placement="bottom" title="Edit" ng-click="openModalEdit(jeux)" ></span></a>
-            	<a href="#!/delete/{{jeux.id}}"><span class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Delete"></span></a>
+            <td ng-show="isAdmin()">
+            	<span class="fa fa-pencil-square-o" data-placement="bottom" title="Edit" ng-click="openModalEdit(jeux)" ></span>
+            	<span class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Delete" x-ng-click="deleteProduct(jeux.id)"></span>
             </td>
         </tr>
     </tbody>
