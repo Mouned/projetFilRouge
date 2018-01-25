@@ -1,12 +1,11 @@
 /**
  * Controller for menu
  */
-angular.module('project').controller('menuCtrl', ['connectionService', '$scope', function(connectionService, $scope){
+angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location', function(connectionService, $scope, searchService, $location){
 	
 //	menuService.getUser().then(function(data){
 //		$scope.user = data;
 //	});
-	
 	
 	$scope.isAuthenticate = function(){
 		return connectionService.isAuth();
@@ -18,5 +17,13 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 	
 	$scope.deconnect = function(){
 		connectionService.deconnectUser().then(function(){});
+	}
+	
+	$scope.quickResearch = function(gameInfo) {
+		console.log('info');
+		searchService.quickSearch(gameInfo).then(function(response) {
+			searchService.setList(response);
+			$location.path('/research');
+		});
 	}
 }]);

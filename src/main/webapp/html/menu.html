@@ -1,4 +1,5 @@
-		<nav id="nav-banner" class=" navbar-inverse" x-ng-controller="menuCtrl">
+		<meta charset="utf-8">
+		<nav id="nav-banner" class=" navbar-inverse">
 			<div class="container">
 				<div >
 				    <a class="navbar-brand" href="#" id="logo">Master Game  <i class="fa fa-gamepad" aria-hidden="true"></i></a>
@@ -21,7 +22,7 @@
 			<div class="row">
 				<form id="search-mobile" action="#" method="" class="invisible form form-search col-lg-10 col-md-10 col-sm-10 col-xs-10">
 					<div class="form__field">
-						<input type="search" placeholder="Search��">
+						<input type="search" placeholder="Search …">
 						<input type="submit" value="Search">
 					</div>
 				</form>
@@ -45,10 +46,10 @@
 						<li><a href="#">Contact</a></li>
 					</ul>
 				    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-				    	<form action="#" method="" class="form form-search ">
+				    	<form class="form form-search " novalidate ng-submit>
 							<div class="form__field">
-						      	<input class="inputmenu" type="search" placeholder="Search��">
-						     	<input class="inputmenu" type="submit" value="Search">
+						      	<input class="inputmenu" type="search" placeholder="Search …" x-ng-model="gameInfo">
+						    	<input class="inputmenu" type="submit" x-ng-click="quickResearch(gameInfo)">
 							</div>
 						</form>
 				    </div>

@@ -42,5 +42,11 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
    
    	$scope.isAdmin = function(){
 		return connectionService.isAdmin();
+	};
+   	
+	if(searchService.getList() != undefined){
+		$scope.liste = angular.copy(searchService.getList());
+		console.log($scope.liste);
+		searchService.setList(undefined);
 	}
 }]);

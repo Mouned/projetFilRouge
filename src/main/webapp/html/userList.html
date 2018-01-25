@@ -1,0 +1,43 @@
+<meta charset="utf-8">
+<hr>
+<p id="liste">Liste des membres</p>
+<hr>
+<table class = "table" id="policetable">
+    <tbody>
+    <thead>
+    	<tr>
+    		<th>Titre</th>
+    		<th>Type</th>
+    		<th>Pegi</th>
+    		<th>Editeur</th>
+    		<th>Prix</th>
+    		<th>Fiche Jeu</th>
+    		<th ng-show='isAdmin()'>Éditer</th>
+    	</tr>
+    </thead>
+        <tr ng-repeat="jeux in liste">
+            <td>
+                <span ng-bind="jeux.title"></span>
+            </td>
+            <td>
+                <span ng-bind="jeux.type"></span>
+            </td>
+             <td>
+                <span ng-bind="jeux.pegi"></span>
+            </td>
+            <td>
+                <span ng-bind="jeux.gamePublisher"></span>
+            </td>
+            <td>
+                <span ng-bind="jeux.price"></span>
+            </td>
+            <td>
+            	<a href="#!/game-search/{{jeux.id}}"><span class="fa fa-search-plus" data-toggle="tooltip" data-placement="bottom" title="Details"></span></a>
+            </td>
+            <td ng-show="isAdmin()">
+            	<a href="#!/edit/{{jeux.id}}"><span class="fa fa-pencil-square-o" data-toggle="tooltip" data-placement="bottom" title="Edit"></span></a>
+            	<a href="#!/delete/{{jeux.id}}"><span class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Delete"></span></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
