@@ -90,10 +90,10 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
 	public List<Products> findByCriteria(String title, String gamePub, Pegi pegi, Float priceMin, Float priceMax, String type) {
 		Criteria crit = getSession().createCriteria(Products.class);
 		if (!StringUtils.isEmpty(title)) {
-			crit.add(Restrictions.like("title", "%"+title+"%"));
+			crit.add(Restrictions.like("title", "%"+title+"%").ignoreCase());
 		}
 		if (!StringUtils.isEmpty(gamePub)) {
-			crit.add(Restrictions.like("gamePublisher", "%"+gamePub+"%"));
+			crit.add(Restrictions.like("gamePublisher", "%"+gamePub+"%").ignoreCase());
 		}
 		if (pegi != null) {
 			crit.add(Restrictions.eq("pegi", pegi));
@@ -102,9 +102,28 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
 			crit.add(Restrictions.between("price", priceMin, priceMax));
 		}
 		if (!StringUtils.isEmpty(type)) {
-			crit.add(Restrictions.like("type", "%"+type+"%"));
+			crit.add(Restrictions.like("type", "%"+type+"%").ignoreCase());
 		}
 		List<Products> searchResult = crit.list(); 
+		return searchResult;
+	}
+
+	@Override
+	public List<Products> quickFindByCriteria(String gameInfo) {
+		Criteria crity = getSession().createCriteria(Products.class);
+		if (!StringUtils.isEmpty(gameInfo)) {
+			crity.add(Restrictions.disjunction()
+					.add(Restrictions.like("title", "%"+gameInfo+"%").ignoreCase())
+					.add(Restrictions.like("gamePublisher", "%"+gameInfo+"%").ignoreCase())
+					.add(Restrictions.like("type", "%"+gameInfo+"%").ignoreCase()));
+		}
+//		if (!StringUtils.isEmpty(gamePub)) {
+//			crity.add(Restrictions.like("gamePublisher", "%"+gamePub+"%").ignoreCase());
+//		}
+//		if (!StringUtils.isEmpty(type)) {
+//			crity.add(Restrictions.like("type", "%"+type+"%").ignoreCase());
+//		}
+		List<Products> searchResult = crity.list();
 		return searchResult;
 	}
 }
