@@ -20,7 +20,7 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 	}
 	
 	$scope.quickResearch = function(gameInfo) {
-		console.log('info');
+		console.log($location.path());
 		searchService.quickSearch(gameInfo).then(function(response) {
 			searchService.setList(response);
 			$location.path('/research');

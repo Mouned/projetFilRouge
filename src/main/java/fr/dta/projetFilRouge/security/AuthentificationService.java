@@ -35,7 +35,7 @@ public class AuthentificationService implements UserDetailsService {
         
         rules.add(new SimpleGrantedAuthority("CUSTOMER"));
         
-        if (user.isAdmin()) {
+        if (user.getIsAdmin()) {
         	rules.add(new SimpleGrantedAuthority("ADMIN"));
         }
         
