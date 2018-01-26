@@ -6,11 +6,11 @@
 	src: url('SLANT.TTF');
 }
 body{
-    background-image: url("../images/fond2.jpg");
+    /* background-image: url("../images/fond2.jpg");  */
 }
 /* //////////////////////////////////////////////// TEST POUR JULIEN //////////////////////////////////////////////// */
 #text{
-    color: white;
+    color: black;
 }
 hr{
     border: 0;
@@ -33,7 +33,7 @@ hr{
     width: 25%;
 }*/
 #policetable{
-    color: white;
+    color: black;
 }
 .prix:after{
     content: ' €';
@@ -213,6 +213,21 @@ hr{
 	max-width: 100px;
     word-wrap: break-word; 
 }
+
+
+
+/* ############################################################### FORMULAIRE ############################################################### */
+
+
+
+
+
+
+
+
+
+
+
  
 
 

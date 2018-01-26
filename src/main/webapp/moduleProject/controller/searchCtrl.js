@@ -1,4 +1,4 @@
-angular.module('project').controller('searchCtrl',['$scope','$http','searchService', 'connectionService', '$location', function ($scope, $http,searchService, connectionService, $location) {
+angular.module('project').controller('searchCtrl',['$scope','$http','searchService', '$uibModal', 'connectionService', '$location', '$cookies', function ($scope, $http,searchService, $uibModal, connectionService, $location, $cookies) {
     $scope.liste = [];
    // var recherche = {};
     
@@ -49,4 +49,53 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
 		console.log($scope.liste);
 		searchService.setList(undefined);
 	}
+	
+	$scope.openModalDetail = function(jeuToEdit){
+		var modalInstance = $uibModal.open({
+			templateUrl: './html/detailProduct.html',
+			resolve : {
+				item : jeuToEdit
+			},
+			controller : function($scope, item, $cookies){
+				$scope.addGame = function(jeu, file){
+	        		$scope.$close({jeu : angular.copy($scope.jeu), file : $scope.file});
+	        	};
+	        	$scope.cancel = function() {
+	                // Appel à la fonction d'annulation.
+	        		modalInstance.dismiss();
+	            };
+	            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////ACHAT => COOKIE
+	            $scope.addToBasket = function(jeu){
+	            	//Gestion par id de jeux
+	            	var idGame = jeu.id;
+	            	var otherGame = [$cookies.get('panier')];
+	            	otherGame.push(idGame);
+	            	console.log($cookies.get('panier'));
+	            	
+	            	var cookiePanier = $cookies.get('panier');
+	            	var jeuChoice = idGame;
+	            	// Setting a cookie
+	            	$cookies.put('panier', otherGame);
+	            	
+	            	console.log('Mes cookies', $cookies.getAll());
+	            	console.log('Mon panier', $cookies.get('panier'));
+	            	//var notJson = angular.fromJson(jeuString);
+	            	//console.log('NOT JSON ',notJson);
+	            }
+				$scope.jeu = item;
+			}
+	    });
+		
+		modalInstance.result.then(function(){
+		}, function(){
+		})
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }]);

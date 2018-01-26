@@ -31,3 +31,4 @@ dist/
 nbdist/
 .nb-gradle/
 /bin/
+src/main/resources/application.yml

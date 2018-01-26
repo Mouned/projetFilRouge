@@ -60,6 +60,10 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	        		console.log('UPDATE');
 	        		$scope.$close({jeu : angular.copy($scope.jeu), file : $scope.file});
 	        	};
+	        	$scope.cancel = function() {
+	                // Appel à la fonction d'annulation.
+	        		modalInstance.dismiss();
+	            };
 	        	$scope.jeu = angular.copy(item);
 	        	$scope.pegis = [];
 	        	$scope.types = ["Survie", "Stratégie", "Action", "FPS", "Course","Monde ouvert","Découverte","Aventure"];
@@ -89,17 +93,17 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 				$scope.addGame = function(jeu, file){
 	        		$scope.$close({jeu : angular.copy($scope.jeu), file : $scope.file});
 	        	};
+	        	$scope.cancel = function() {
+	                // Appel à la fonction d'annulation.
+	        		modalInstance.dismiss();
+	            };
 				$scope.jeu = item;
+				
 			}
 	    });
-
-//	    modalInstance.result.then(function (response) {
-//			productsService.addGame(response.jeu,response.file).then(function(data){
-//				$scope.liste = data;
-//				console.log($scope.liste);
-//			});
-//	    }, function () {
-//	    });
+		modalInstance.result.then(function(){
+		}, function(){
+		})
 	}
 	
 	/**
