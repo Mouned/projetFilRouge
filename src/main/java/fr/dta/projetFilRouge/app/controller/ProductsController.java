@@ -51,6 +51,12 @@ public class ProductsController {
 		return productsService.getById(id);
     }
 
+// Get List of products by List of ID (for the basket)
+	@RequestMapping(value="getList/{listId}", method = RequestMethod.GET)
+	public List<Products> getProducstsByListOfId(@PathVariable List<Long> listId){
+		return productsService.getProductsByListOfId(listId);
+	}
+
 	@RequestMapping(value = "advanced-search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Products> getProductsByCriteria(
 			@RequestParam(value="title", required=false) String title, 

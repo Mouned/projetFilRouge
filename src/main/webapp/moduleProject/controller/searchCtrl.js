@@ -77,10 +77,6 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
 	            	var jeuChoice = idGame;
 	            	// Setting a cookie
 	            	$cookies.put('panier', otherGame);
-	            	
-	            	
-	            	
-	            	
 	            	var monPanier = $cookies.get('panier').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
 	            	
 	            }

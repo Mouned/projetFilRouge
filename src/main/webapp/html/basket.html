@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="css/payment.css">
 <section>
-	<h1>Mon panier</h1>
 	
 	<div class="content-basket">
 	
@@ -80,3 +79,27 @@
     <input class="button" type="submit" value="Send" />
   </div>
 </form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1 class = >Votre panier</h1>
+<br>
+<br>
+<section class="box-product-list row">
+	<div class="box-product col-lg-3 col-md-3 col-sm-4 col-xs-6" x-ng-repeat="game in listGame">
+		<div>
+		<a href="" class="hover-box"><i class="fa fa-search-plus invisible" aria-hidden="true"></i></a>
+			<div class="under-box">
+				
+						<h1>{{game.title}}</h1>
+						<img class="img-thumbnail" ng-src="./images/{{game.id}}/{{game.url}}" alt="pas d'image !"/>
+						<div class="info-box">
+							<p>{{game.gamePublisher}} - {{game.type}} - {{game.pegi}}</p>
+							<div class="price-box"><span>{{game.price}}</span> <span>&euro;</span></div>
+						</div>
+			</div>			
+		</div>
+	</div>
+</section>
