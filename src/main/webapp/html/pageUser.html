@@ -44,19 +44,19 @@
 	
 	<div role="alert">
 		<label>Password</label><br>
-		<input class="registerText" type="password" x-ng-model="user.password" name="uPassword" required x-ng-empty>
+		<input class="registerText" type="password" x-ng-model="password" name="uPassword" required x-ng-empty>
 		<span class="error remove" x-ng-show="form.uPassword.$error.required">password requis</span>
 	</div>
 	
 	<div role="alert">
 		<label>Entrez à nouveau votre password</label><br>
 		<input class="registerText" type="password" x-ng-model="user.password2" name="uPassword2" required x-ng-empty>
-		<span class="error remove" x-ng-show="user.password!=user.password2">password différent</span>
+		<span class="error remove" x-ng-show="password!=user.password2">password différent</span>
 	</div>
 </form>
 <br>
 <br>
 <div>
-	<button type="button" class="btn btn-default" ng-click="edit(user)" ng-disabled="profile.$invalid">Send</button>
+	<button type="button" class="btn btn-default" ng-click="edit(user, password)" ng-disabled="profile.$invalid">Send</button>
 </div>
 </div>
