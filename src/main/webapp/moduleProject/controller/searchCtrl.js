@@ -69,18 +69,20 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
 	            	//Gestion par id de jeux
 	            	var idGame = jeu.id;
 	            	var otherGame = [$cookies.get('panier')];
+	            	
+	            	
 	            	otherGame.push(idGame);
-	            	console.log($cookies.get('panier'));
 	            	
 	            	var cookiePanier = $cookies.get('panier');
 	            	var jeuChoice = idGame;
 	            	// Setting a cookie
 	            	$cookies.put('panier', otherGame);
 	            	
-	            	console.log('Mes cookies', $cookies.getAll());
-	            	console.log('Mon panier', $cookies.get('panier'));
-	            	//var notJson = angular.fromJson(jeuString);
-	            	//console.log('NOT JSON ',notJson);
+	            	
+	            	
+	            	
+	            	var monPanier = $cookies.get('panier').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
+	            	
 	            }
 				$scope.jeu = item;
 			}

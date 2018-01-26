@@ -59,8 +59,9 @@
 	width: 49%;
 }
 
+
 .image-product img{
-	
+	margin-bottom: 23%;
 }
 
 .btn-pay{
@@ -74,4 +75,21 @@
 
 .modal-porduct{
 	background-color: #fafafa;	
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .image-product{
+		display: block;
+		width: 100%;
+		text-align: center;
+	}
+	.image-product img{
+		margin-bottom: 0;
+	}
+	.information{
+		display: block;
+		width: 100%;
+	}
 }
