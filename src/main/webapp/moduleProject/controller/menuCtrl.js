@@ -30,7 +30,8 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 	//SUPPRESSION COOKIE "PANIER" LORS DU REFRESH
 	window.onbeforeunload = function(){
 		console.log('coucou...');
-		
+		console.log($cookies.get('panier'));
+		$cookies.remove('panier');
 	}
 	
 }]);
