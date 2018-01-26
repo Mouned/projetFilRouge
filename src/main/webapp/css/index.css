@@ -7,11 +7,10 @@
 }
 body{
     /* background-image: url("../images/fond2.jpg");  */
-    
 }
 /* //////////////////////////////////////////////// TEST POUR JULIEN //////////////////////////////////////////////// */
 #text{
-    color: black;
+    color: white;
 }
 
 img {
@@ -40,28 +39,28 @@ hr{
     width: 25%;
 }*/
 #policetable{
-    color: black;
+    color: white;
 }
 .prix:after{
     content: ' €';
 }
 .registerText{
-	color:black;
+	color: black;
 }
 .recherchetitre{
-    color: black;
+    color: white;
 }
 .rechercheprix{
-    color: black;
+    color: white;
 }
 .recherchepegi{
-    color: black;
+    color: white;
 }
 .rechercheediteur{
-    color: black;
+    color: white;
 }
 .recherchetype{
-    color: black;
+    color: white;
 }
 .rechercheprix::after{
     content: '€';
@@ -81,7 +80,7 @@ hr{
 }
 
 #nav-banner{
-	background: black;
+	background: white;
     background: -webkit-radial-gradient(bottom,900px 90%,#3c3c3c,black);
     background: radial-gradient(900px 90% at bottom,#3c3c3c,black);
 }
@@ -238,5 +237,7 @@ hr{
 
 
  
-
+label {
+	color: white;
+}
 

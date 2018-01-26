@@ -6,7 +6,6 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 //	menuService.getUser().then(function(data){
 //		$scope.user = data;
 //	});
-	
 	$scope.isAuthenticate = function(){
 		return connectionService.isAuth();
 	}
