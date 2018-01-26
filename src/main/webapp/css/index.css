@@ -7,11 +7,18 @@
 }
 body{
     /* background-image: url("../images/fond2.jpg");  */
+    
 }
 /* //////////////////////////////////////////////// TEST POUR JULIEN //////////////////////////////////////////////// */
 #text{
     color: black;
 }
+
+img {
+    vertical-align: initial;
+}
+
+
 hr{
     border: 0;
     height: 1px;
@@ -213,6 +220,8 @@ hr{
 	max-width: 100px;
     word-wrap: break-word; 
 }
+
+
 
 
 

@@ -79,6 +79,10 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
 	            	
 	            	console.log('Mes cookies', $cookies.getAll());
 	            	console.log('Mon panier', $cookies.get('panier'));
+	            	
+	            	console.log('#######################');
+	            	
+	            	console.log($cookies.get('panier').length);
 	            	//var notJson = angular.fromJson(jeuString);
 	            	//console.log('NOT JSON ',notJson);
 	            }
