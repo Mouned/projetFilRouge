@@ -1,0 +1,20 @@
+<meta charset="utf-8">
+<p>Commandes</p>
+<div>
+	<table class = "table table-striped col-md-12 col-xs-12">
+		<thead>
+			<tr>
+				<th>Commande n°</th>
+				<th>Date</th>
+				<th>Prix total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr x-ng-repeat="order in orderList" x-ng-show="">
+				<th x-ng-bind="order.orderNumber"></th>
+				<th x-ng-bind="order.orderDate"></th>
+				<th x-ng-bind="order.totalPrice"></th>
+			</tr>
+		</tbody>
+	</table>
+</div>
