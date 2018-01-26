@@ -27,12 +27,12 @@
 		</ul>
 		
 		<div class="price-product">
-			<span ng-bind="jeu.price+20"></span> <span ng-bind="jeu.price"></span> 
+			<span ng-bind="jeu.price+20 | currency : '&euro;' : 2"></span> <span ng-bind="jeu.price | currency : '&euro;' : 2 "></span> 
 		</div>
 	</div>
 </div>
 <div class="modal-footer">
-	<button class="btn btn-pay" ng-click="">Acheter maintenant</button>
+	<button class="btn btn-pay" ng-click="addToBasket(jeu)">Ajouter au panier</button>
 	<button ng-click="cancel()" type="button" id="btncancel" class="btn btn-default">Fermer</button>
 </div>
 
