@@ -1,7 +1,10 @@
 <meta charset="utf-8">
-<p>Commandes</p>
+<br>
+<br>
+<br>
+<br>
 <div>
-	<table class = "table table-striped col-md-12 col-xs-12">
+	<table class = "table col-md-12 col-xs-12">
 		<thead>
 			<tr>
 				<th>Commande n°</th>
@@ -10,7 +13,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr x-ng-repeat="order in orderList" x-ng-show="">
+			<tr x-ng-repeat="order in orderList" x-ng-if="isAdmin() || order.userId == user.id">
 				<th x-ng-bind="order.orderNumber"></th>
 				<th x-ng-bind="order.orderDate"></th>
 				<th x-ng-bind="order.totalPrice"></th>

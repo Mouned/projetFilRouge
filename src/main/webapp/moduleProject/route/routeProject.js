@@ -31,6 +31,10 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
         .when('/basket', {
             templateUrl: './html/basket.html',
             controller: 'basketCtrl'
+        })
+        .when('/orders', {
+            templateUrl: './html/orderList.html',
+            controller: 'orderCtrl'
         });
 
     $routeProvider.otherwise({

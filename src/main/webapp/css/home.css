@@ -1,5 +1,10 @@
-body{
-	background-color:  lightgrey;
+html,
+body {
+	min-height: 100%;
+	font-family: 'Open sans', sans-serif;
+}
+body {
+	background: linear-gradient(50deg, #f3c680, hsla(179,54%,76%,1));
 }
 
 .box-product{

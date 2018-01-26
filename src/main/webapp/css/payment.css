@@ -1,242 +1,330 @@
 
 
+
 body h1, body h2 {
 	font-weight: 400;
 	text-align: center;
 	color : black;
-}
-
-body h1 {
-	margin: 1rem 0 0 0
-}
-
-body h2 {
-	color: #4d4d4d;
-	font-size: .75rem;
-	margin: 0 0 2rem 0
-}
-
-form {
-	margin: 0 auto;
-	max-width: 280px;
-	position: relative;
-	top: 1.5rem;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-form input[type="text"] {
-	border: 1px solid #b3b3b3;
-	border-radius: 3px;
+::before,
+::after {
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	font-size: 1rem;
-	padding: .25rem;
 }
 
-form input[type="text"]:focus {
-	border: 1px solid #33c3f0;
-	outline: none
+html,
+body {
+	min-height: 100%;
+	font-family: 'Open sans', sans-serif;
 }
 
-form input[type="submit"] {
-	background: #33c3f0;
-	border: none;
-	border-radius: 3px;
-	color: #fff;
-	font-size: .75rem;
-	font-weight: 600;
-	letter-spacing: 1.5px;
-	margin: 1em 0 0 0;
-	padding: 10px 30px;
-	text-align: center;
-	text-transform: uppercase;
+body {
+	background: linear-gradient(50deg, #f3c680, #a1e3e2);
 }
 
-form input[type="submit"]:hover {
-	background: #10a7d6
-}
-
-form label {
-	cursor: pointer;
-	font-weight: 600;
-	font-size: .75rem;
-	letter-spacing: 1.5px
-}
-
-form #cvv {
-	width: 50px
-}
-
-form #month, form #year {
-	width: 35px
-}
-
-form #name {
-	width: 232px
-}
-
-form #number {
-	width: 211px
-}
-
-.block {
+/*--------------------
+Buttons
+--------------------*/
+.btn {
 	display: block;
-	margin: .5rem 0
-}
-
-.card {
-	background: #36aade;
-	border-radius: 1rem;
-	color: #f0f0f0;
-	font-weight: 600;
-	height: 220px;
-	position: absolute;
-	width: 340px
-}
-
-.card__expiration {
-	font-size: 1.25rem;
-	left: 14.5rem;
-	position: absolute;
-	top: 8.5rem;
-}
-
-.card__expiration .card__month {
-	display: inline
-}
-
-.card__expiration .card__year {
-	display: inline
-}
-
-.card__little-letter {
-	font-size: .75rem;
-	font-weight: 400;
-	left: 12rem;
-	position: absolute;
-	text-align: center;
-	top: 8.25rem;
-	width: 30px
-}
-
-.card__little-number {
-	font-size: .75rem;
-	font-weight: 400;
-	left: 1.5rem;
-	position: absolute;
-	top: 7.375rem
-}
-
-.card__name {
-	font-size: 1.5rem;
-	left: 1.5rem;
-	letter-spacing: 2.5px;
-	position: absolute;
-	text-transform: uppercase;
-	top: 10.5rem
-}
-
-.card__number {
-	font-size: 1.5rem;
-	letter-spacing: 2.5px;
-	position: absolute;
-	left: 1.5rem;
-	top: 5.75rem
-}
-
-.card__sim {
-	background: #ffce3f;
-	border-radius: .5rem;
-	height: 3.25rem;
-	left: 1.5rem;
-	position: absolute;
-	top: 2rem;
-	width: 3.75rem
-}
-
-.card__type {
-	background: #d6d6d6;
-	border-radius: .375rem;
-	height: 46px;
-	left: 14.625rem;
-	position: absolute;
-	top: 2.25rem;
-	width: 73px;
-}
-
-.card__type #card__image {
-	border-radius: .375rem;
-	height: 46px;
-	width: 73px
-}
-
-.card__black {
-	background: #404040;
-	height: 3rem;
-	position: absolute;
-	top: 2rem;
-	width: 100%
-}
-
-.card__cvv {
-	background: #d7e7f0;
-	color: #404040;
-	height: 2rem;
-	left: 16rem;
-	letter-spacing: 2.5px;
-	line-height: 2rem;
-	position: absolute;
-	text-align: center;
-	top: 6.5rem;
-	width: 3.5rem
-}
-
-.card__skyblue {
-	background: #d7e7f0;
-	height: 2rem;
-	left: 1.5rem;
-	position: absolute;
-	top: 6.5rem;
-	width: 13rem
-}
-
-.flip-container {
-	margin: 0 auto;
-	perspective: 1000;
-	width: 340px
-}
-
-.flip-container.flip .flipper {
-	transform: rotateY(180deg)
-}
-
-.flip-container, .front, .back {
-	height: 220px;
-	width: 340px;
-}
-
-.flip-container .flipper, .front .flipper, .back .flipper {
+	background: #bded7d;
+	color: white;
+	text-decoration: none;
+	margin: 20px 0;
+	padding: 15px 15px;
+	border-radius: 5px;
 	position: relative;
-	transition: .75s;
-	transform-style: preserve-3d;
 }
-
-.flip-container .flipper .back, .front .flipper .back, .back .flipper .back,
-	.flip-container .flipper .front, .front .flipper .front, .back .flipper .front
-	{
-	backface-visibility: hidden;
-	left: 0;
+.btn::after {
+	content: '';
 	position: absolute;
-	top: 0
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+	-webkit-box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0), 0 3px 3px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0), 0 3px 3px rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+}
+.btn:hover::after {
+	background: rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.2);
 }
 
-.flip-container .flipper .back, .front .flipper .back, .back .flipper .back
-	{
-	transform: rotateY(180deg)
+/*--------------------
+Form
+--------------------*/
+.form fieldset {
+	border: none;
+	padding: 0;
+	padding: 10px 0;
+	position: relative;
+	clear: both;
+}
+.form fieldset.fieldset-expiration {
+	float: left;
+	width: 60%;
+}
+.form fieldset.fieldset-expiration .select {
+	width: 84px;
+	margin-right: 12px;
+	float: left;
+}
+.form fieldset.fieldset-ccv {
+	clear: none;
+	float: right;
+	width: 86px;
+}
+.form fieldset label {
+	display: block;
+	text-transform: uppercase;
+	font-size: 11px;
+	color: rgba(0, 0, 0, 0.6);
+	margin-bottom: 5px;
+	font-weight: bold;
+	font-family: Inconsolata;
+}
+.form fieldset input,
+.form fieldset .select {
+	width: 100%;
+	height: 38px;
+	color: #333333;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 15px;
+	outline: none !important;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+.form fieldset input.input-cart-number,
+.form fieldset .select.input-cart-number {
+	width: 82px;
+	display: inline-block;
+	margin-right: 8px;
+}
+.form fieldset input.input-cart-number:last-child,
+.form fieldset .select.input-cart-number:last-child {
+	margin-right: 0;
+}
+.form fieldset .select {
+	position: relative;
+}
+.form fieldset .select::after {
+	content: '';
+	border-top: 8px solid #222;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	position: absolute;
+	z-index: 2;
+	top: 14px;
+	right: 10px;
+	pointer-events: none;
+}
+.form fieldset .select select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	position: absolute;
+	padding: 0;
+	border: none;
+	width: 100%;
+	outline: none !important;
+	top: 6px;
+	left: 6px;
+	background: none;
+}
+.form fieldset .select select :-moz-focusring {
+	color: transparent;
+	text-shadow: 0 0 0 #000;
+}
+.form button {
+	width: 100%;
+	outline: none !important;
+	background: -webkit-gradient(linear, left top, left bottom, from(#49a09b), to(#3d8291));
+	background: linear-gradient(180deg, #49a09b, #3d8291);
+	text-transform: uppercase;
+	font-weight: bold;
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	margin-top: 90px;
+}
+.form button .fa {
+	margin-right: 6px;
 }
 
-.flip-container .flipper .front, .front .flipper .front, .back .flipper .front
-	{
-	transform: rotateY(0);
-	z-index: 2
+/*--------------------
+Checkout
+--------------------*/
+.checkout {
+	margin: 150px auto 30px;
+	position: relative;
+	width: 460px;
+	background: white;
+	border-radius: 15px;
+	padding: 160px 45px 30px;
+	-webkit-box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/*--------------------
+Credit Card
+--------------------*/
+.credit-card-box {
+	-webkit-perspective: 1000;
+	perspective: 1000;
+	width: 400px;
+	height: 280px;
+	position: absolute;
+	top: -112px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+.credit-card-box:hover .flip, .credit-card-box.hover .flip {
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+.credit-card-box .front,
+.credit-card-box .back {
+	width: 400px;
+	height: 250px;
+	border-radius: 15px;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	background: linear-gradient(135deg, #bd6772, #53223f);
+	position: absolute;
+	color: #fff;
+	font-family: Inconsolata;
+	top: 0;
+	left: 0;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+.credit-card-box .front::before,
+.credit-card-box .back::before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: url("http://cdn.flaticon.com/svg/44/44386.svg") no-repeat center;
+	background-size: cover;
+	opacity: .05;
+}
+.credit-card-box .flip {
+	-webkit-transition: 0.6s;
+	transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	position: relative;
+}
+.credit-card-box .logo {
+	position: absolute;
+	top: 9px;
+	right: 20px;
+	width: 60px;
+}
+.credit-card-box .logo svg {
+	width: 100%;
+	height: auto;
+	fill: #fff;
+}
+.credit-card-box .front {
+	z-index: 2;
+	-webkit-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+}
+.credit-card-box .back {
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+.credit-card-box .back .logo {
+	top: 185px;
+}
+.credit-card-box .chip {
+	position: absolute;
+	width: 60px;
+	height: 45px;
+	top: 20px;
+	left: 20px;
+	background: linear-gradient(135deg, #ddccf0 0%, #d1e9f5 44%, #f8ece7 100%);
+	border-radius: 8px;
+}
+.credit-card-box .chip::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	border: 4px solid rgba(128, 128, 128, 0.1);
+	width: 80%;
+	height: 70%;
+	border-radius: 5px;
+}
+.credit-card-box .strip {
+	background: linear-gradient(135deg, #404040, #1a1a1a);
+	position: absolute;
+	width: 100%;
+	height: 50px;
+	top: 30px;
+	left: 0;
+}
+.credit-card-box .number {
+	position: absolute;
+	margin: 0 auto;
+	top: 103px;
+	left: 19px;
+	font-size: 38px;
+}
+.credit-card-box label {
+	font-size: 10px;
+	letter-spacing: 1px;
+	text-shadow: none;
+	text-transform: uppercase;
+	font-weight: normal;
+	opacity: 0.5;
+	display: block;
+	margin-bottom: 3px;
+}
+.credit-card-box .card-holder,
+.credit-card-box .card-expiration-date {
+	position: absolute;
+	margin: 0 auto;
+	top: 180px;
+	left: 19px;
+	font-size: 22px;
+	text-transform: capitalize;
+}
+.credit-card-box .card-expiration-date {
+	text-align: right;
+	left: auto;
+	right: 20px;
+}
+.credit-card-box .ccv {
+	height: 36px;
+	background: #fff;
+	width: 91%;
+	border-radius: 5px;
+	top: 110px;
+	left: 0;
+	right: 0;
+	position: absolute;
+	margin: 0 auto;
+	color: #000;
+	text-align: right;
+	padding: 10px;
+}
+.credit-card-box .ccv label {
+	margin: -25px 0 14px;
+	color: #fff;
 }
