@@ -68,7 +68,6 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
 	            $scope.addToBasket = function(jeu){
 	            	//Gestion par id de jeux
 	            	var idGame = jeu.id;
-	            	console.log($cookies.get('panier'));
 	            	var otherGame = [$cookies.get('panier')];
 	            	
 	            	
@@ -79,12 +78,11 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
 	            	// Setting a cookie
 	            	$cookies.put('panier', otherGame);
 	            	
-	            	console.log('Mon panier COOKIE', $cookies.get('panier'));
 	            	
 	            	
 	            	
 	            	var monPanier = $cookies.get('panier').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
-	            	console.log('Mon panier UTILISABLE', monPanier.length, monPanier);
+	            	
 	            }
 				$scope.jeu = item;
 			}
