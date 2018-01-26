@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<br>
+<br>
+<br>
+<br>
+<div>
+	<table class = "table col-md-12 col-xs-12">
+		<thead>
+			<tr>
+				<th>Commande n°</th>
+				<th>Date</th>
+				<th>Prix total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr x-ng-repeat="order in orderList" x-ng-if="isAdmin() || order.userId == user.id">
+				<th x-ng-bind="order.orderNumber"></th>
+				<th x-ng-bind="order.orderDate"></th>
+				<th x-ng-bind="order.totalPrice"></th>
+			</tr>
+		</tbody>
+	</table>
+</div>

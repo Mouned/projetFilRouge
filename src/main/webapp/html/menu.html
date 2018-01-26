@@ -8,7 +8,7 @@
 				    	<ul class="dropdown-menu">
 				    		<li x-ng-if="isAuthenticate()"><a href="#!/user/user.id">Profil</a></li>
 				    		<li ng-if="isAdmin()"><a href="#!/admin">Page Admin</a></li>
-							<li x-ng-if="isAuthenticate()"><a href="#">Commandes</a></li>
+							<li x-ng-if="isAuthenticate()"><a href="#!/orders">Commandes</a></li>
 							<li ng-if="!isAuthenticate()"><a href="#!/sign">Connexion/Inscription</a></li>
 							<li ng-if="isAuthenticate()"><a href="#" ng-click = 'deconnect()'>Déconnexion</a></li>
 				    	</ul>
