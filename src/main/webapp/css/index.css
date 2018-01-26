@@ -5,10 +5,6 @@
 	font-family: 'slant';
 	src: url('SLANT.TTF');
 }
-body{
-    /* background-image: url("../images/fond2.jpg");  */
-}
-/* //////////////////////////////////////////////// TEST POUR JULIEN //////////////////////////////////////////////// */
 #text{
     color: black;
 }
@@ -193,7 +189,7 @@ hr{
 
 
 .table-game{
-	width: 100%; /* à adapter selon vos contraintes */
+	width: 100%; /* ï¿½ adapter selon vos contraintes */
   table-layout: fixed; 
 }
 
