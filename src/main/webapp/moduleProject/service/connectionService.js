@@ -16,7 +16,7 @@ angular.module('project').service('connectionService', ['$http','$q', function($
 				return $http.get('/api/users/get',{ params : {login:username}}).then(function(response){
 					user = response.data;
 					isAuth = true;
-					isAdmin = user.admin;
+					isAdmin = user.isAdmin;
 					return response;
 				});
 			});
@@ -37,5 +37,9 @@ angular.module('project').service('connectionService', ['$http','$q', function($
 	
 	this.isAdmin = function(){
 		return isAdmin;
+	}
+	
+	this.getUser = function() {
+		return user;
 	}
 }])

@@ -17,7 +17,7 @@ angular.module('project').controller('registerCtrl',['$scope','$http','registerS
 	
 	$scope.logout = function(){
 		connectionService.deconnectUser().then(function(reponse){
-			
+			$location.path('/home');
 		});
 	}
 }]);

@@ -214,5 +214,7 @@ hr{
     word-wrap: break-word; 
 }
  
-
+label {
+	color: white;
+}
 

@@ -1,0 +1,62 @@
+<meta charset="utf-8">
+<hr>
+<p id="liste">{{user.login}}<span x-ng-show="!user.login">Visiteur</span></p>
+<hr>
+<div class="row col-md-offset-5">
+
+<form name="profile" novalidate>
+	<div role="alert">
+		<label>Nom</label><br>
+		<input class="registerText" type="text" x-ng-model="user.firstname" name="uNom" required x-ng-empty>
+		<span class="error remove" x-ng-show="form.uNom.$error.required">nom requis</span>
+	</div>
+	
+	<div role="alert">
+		<label>Prénom</label><br>
+		<input class="registerText" type="text" x-ng-model="user.lastname" name="uPrenom" required x-ng-empty>
+		<span class="error remove" x-ng-show="form.uPrenom.$error.required">prénom requis</span>
+	</div>
+	
+	<div role="alert">
+		<label>Date de naissance</label><br>
+		<input class="registerText" type="date" x-ng-model="user.birthDate" name="uDate" required x-ng-empty>
+		<span class="error remove" x-ng-show="form.uDate.$error.required">date de naissance requise</span>
+	</div>
+	
+	<div role="alert">
+		<label>Email</label><br>
+		<input class="registerText" type="email" x-ng-model="user.email" name="uEmail" required x-ng-empty>	
+     		<span class="error remove" x-ng-show="form.uEmail.$error.email">email invalide</span>
+     		<span class="error remove" x-ng-show="form.uEmail.$error.required">email requis</span>
+   	</div>
+   	
+   	<div role="alert">
+		<label>Numéro de téléphone</label><br>
+		<input class="registerText" type="tel" x-ng-model="user.phoneNumber" name="uPhone" required x-ng-empty onkeypress='return event.charCode >= 48 && event.charCode <= 57'>	
+     		<span class="error remove" x-ng-show="form.uPhone.$error.required">numéro de téléphone requis</span>
+   	</div>
+	
+	<div role="alert">
+		<label>Login</label><br>
+		<input class="registerText" class="registerText" type="text" x-ng-model="user.login" name="uLogin" required x-ng-empty>
+		<span class="error remove" x-ng-show="form.uLogin.$error.required">login requis</span>
+	</div>
+	
+	<div role="alert">
+		<label>Password</label><br>
+		<input class="registerText" type="password" x-ng-model="user.password" name="uPassword" required x-ng-empty>
+		<span class="error remove" x-ng-show="form.uPassword.$error.required">password requis</span>
+	</div>
+	
+	<div role="alert">
+		<label>Entrez à nouveau votre password</label><br>
+		<input class="registerText" type="password" x-ng-model="user.password2" name="uPassword2" required x-ng-empty>
+		<span class="error remove" x-ng-show="user.password!=user.password2">password différent</span>
+	</div>
+</form>
+<br>
+<br>
+<div>
+	<button type="button" class="btn btn-default" ng-click="edit(user)" ng-disabled="profile.$invalid">Send</button>
+</div>
+</div>
