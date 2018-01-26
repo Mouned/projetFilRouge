@@ -1,7 +1,7 @@
 /**
  * Controller for menu
  */
-angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location', function(connectionService, $scope, searchService, $location){
+angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location', '$cookies', function(connectionService, $scope, searchService, $location, $cookies){
 	
 //	menuService.getUser().then(function(data){
 //		$scope.user = data;
@@ -25,4 +25,12 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 			$location.path('/research');
 		});
 	}
+	
+	//SUPPRESSION COOKIE "PANIER" LORS DU REFRESH
+	window.onbeforeunload = function(){
+		console.log('coucou...');
+		console.log($cookies.get('panier'));
+		$cookies.remove('panier');
+	}
+	
 }]);

@@ -6,6 +6,72 @@
     background-color: cornflowerblue;
     color: white;
 }
-#information{
-    margin-right: 10px;
+.information{
+	display: inline-block;
+	width: 50%;
+	background-color: #fdfeff;
+	box-shadow: 0 0 3px rgba(0,0,0,.39);
+}
+
+    
+.modal-porduct .modal-header{
+	text-align: center;
+}
+.modal-porduct .modal-header span{
+	font-size: 2em;
+}
+
+.information ul{
+	list-style-type:none;
+	padding: 20px;
+}
+.information ul li span{
+	font-weight: bold;
+}
+
+
+.information ul .description-product{
+	margin-top: 1em;
+}
+
+
+.price-product {
+	background-color: #4fc42a;
+	text-align: center;
+}
+.price-product span:nth-child(2){
+	font-weight: bold;
+    color: white;
+    font-size: 35px;
+    display: inline-block;
+    margin-top: 7px;
+}
+.price-product span:nth-child(1){
+	font-weight: bold;
+    font-size: 12px;
+    opacity: .5;
+    text-decoration: line-through;
+    color: #616161;
+    margin-left: 6px;
+}
+.image-product{
+	display: inline-block;
+	width: 49%;
+}
+
+.image-product img{
+	
+}
+
+.btn-pay{
+	background-color: #4fc42a;
+	color: #fdfeff;
+}
+.btn-pay:hover{
+	color: white;
+	background-color: #4e9b36;
+}
+
+.modal-porduct{
+	background-color: #fafafa;	
 }

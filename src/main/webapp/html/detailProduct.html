@@ -1,28 +1,39 @@
+
+<meta charset="utf-8">
+
+<div class="modal-porduct">
+
 <div class="modal-header">
 	<span ng-bind="jeu.title"></span>
 </div>
 <div class="modal-body">
-	<div>
-		Jacket du jeu : <br>
+	<div class="image-product">
 		<img ng-src="./images/{{jeu.id}}/{{jeu.url}}">
 	</div>
-	<div id="information">
+	<div class="information">
 		<ul>
-			<li>
-				Prix : <span ng-bind="jeu.price"></span>
-			</li>
-			<li>
+			<li class="type-product">
 				Type : <span ng-bind="jeu.type"></span>
 			</li>
-			<li>
+			<li class="publisher-product">
 				Editeur : <span ng-bind="jeu.gamePublisher"></span>
 			</li>
-			<li>
+			<li class="pegi-product">
 				Pegi : <span ng-bind="jeu.pegi"></span>
 			</li>
+			<li class="description-product">
+				Explorez le vaste monde ou consacrez tous vos efforts en rejoignant un crew pour terminer des missions et gagner de l'argent. Achetez des appartements, des véhicules et des améliorations pour votre personnage, affrontez d'autres joueurs dans des modes de jeu compétitifs classiques et créez du nouveau contenu à partager avec l'ensemble de la communauté.
+			</li>
 		</ul>
+		
+		<div class="price-product">
+			<span ng-bind="jeu.price+20 | currency : '&euro;' : 2"></span> <span ng-bind="jeu.price | currency : '&euro;' : 2 "></span> 
+		</div>
 	</div>
 </div>
 <div class="modal-footer">
-	<button onclick="style.display='none'" type="button" id="btncancel" class="btn btn-default">Fermer</button>
+	<button class="btn btn-pay" ng-click="addToBasket(jeu)">Ajouter au panier</button>
+	<button ng-click="cancel()" type="button" id="btncancel" class="btn btn-default">Fermer</button>
+</div>
+
 </div>
