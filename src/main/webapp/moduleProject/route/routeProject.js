@@ -24,6 +24,10 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
             templateUrl : './templates/gamedetails.html',
             controller : 'searchCtrl'
         })
+        .when('/basket',{
+            templateUrl : './html/basket.html',
+            controller : 'basketCtrl'
+        })
     ;
 
     $routeProvider.otherwise({
