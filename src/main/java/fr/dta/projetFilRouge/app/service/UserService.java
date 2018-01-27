@@ -50,4 +50,8 @@ public class UserService {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userRepository.saveAndFlush(user);
 	}
+	
+	public void delete(Long id){
+		userRepository.delete(id);
+	}
 }
