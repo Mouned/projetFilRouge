@@ -1,17 +1,21 @@
 angular.module('project').controller('registerCtrl',['$scope','$http','registerService','$location', 'connectionService','$cookieStore', function ($scope, $http, registerService,$location, connectionService,$cookieStore) {
 	
+	var config = {
+			secure : true
+	};
+	
 	$scope.addUser = function(adherent){
 		registerService.createUser(adherent).then(function(data){
 			if (connectionService.isAdmin()){
 				$location.path('/admin');
-				$cookieStore.put('Superuser',true);
+				$cookieStore.put('Superuser',true,config);
 			}
 			else{
 				$location.path('/home');
-				$cookieStore.put('Superuser',false);
+				$cookieStore.put('Superuser',false,config);
 			}
-			$cookieStore.put('User',response.id);
-			$cookieStore.put('Login',response.login);
+			$cookieStore.put('User',response.id,config);
+			$cookieStore.put('Login',response.login,config);
 		});
 	}
 	
@@ -19,14 +23,21 @@ angular.module('project').controller('registerCtrl',['$scope','$http','registerS
 		connectionService.connectUser(user.username,user.password).then(function(response) {
 			if (connectionService.isAdmin()){
 				$location.path('/admin');
-				$cookieStore.put('Superuser',true);
+				$cookieStore.put('Superuser',true,config);
 			}
 			else{
 				$location.path('/home');
-				$cookieStore.put('Superuser',false);
+				$cookieStore.put('Superuser',false,config);
 			}
-			$cookieStore.put('User',response.id);
-			$cookieStore.put('Login',response.login);
+			$cookieStore.put('User',response.id,config);
+			$cookieStore.put('Login',response.login,config);
+			
+			var basket = $cookieStore.get('Basket');
+			if(basket != undefined){
+				if(basket.id !== response.id){
+					$cookieStore.remove('Basket');
+				}
+			}
 		});		
 	}
 	

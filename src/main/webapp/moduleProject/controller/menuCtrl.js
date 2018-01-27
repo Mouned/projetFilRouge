@@ -1,7 +1,7 @@
 /**
  * Controller for menu
  */
-angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location', '$cookies','$cookieStore', function(connectionService, $scope, searchService, $location, $cookies,$cookieStore){
+angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location','$cookieStore', function(connectionService, $scope, searchService, $location,$cookieStore){
 	
 //	menuService.getUser().then(function(data){
 //		$scope.user = data;
@@ -21,7 +21,15 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 	$scope.welcomeUser = function(){
 		return $cookieStore.get('Login');
 	}
-	
+
+////////////////////////////////////////////////////Cookie to store the basket//////////////	
+	$scope.$watch(function(){
+		$scope.panier = 0;
+		if($cookieStore.get('Basket') != undefined){ 
+			$scope.panier = $cookieStore.get('Basket').content.length;
+		}
+	})
+///////////////////////////////////////////////////////////////////////////////////////////////////////	
 	$scope.isAuthenticate = function(){
 		return connectionService.isAuth();
 	}
@@ -31,7 +39,11 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 	}
 	
 	$scope.deconnect = function(){
-		connectionService.deconnectUser().then(function(){});
+		connectionService.deconnectUser().then(function(){
+			$cookieStore.remove('User');
+			$cookieStore.remove('Superuser');
+			$cookieStore.remove('Login');
+		});
 	}
 	
 	$scope.quickResearch = function(gameInfo) {
@@ -42,21 +54,21 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 		});
 	}
 	
-	//SUPPRESSION COOKIE "PANIER" LORS DU REFRESH
-	window.onbeforeunload = function(){
-		console.log('coucou...');
-		console.log($cookies.get('panier'));
-		$cookies.remove('panier');
-	}
-	
-	
-	$scope.panier = 0;
-	
-	$scope.$watch(function(){
-		if($cookies.get('panier')){
-			var monPanier = $cookies.get('panier').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
-			$scope.panier = monPanier.length;
-			//console.log('****************************************************************', $scope.panier);
-		}
-	})
+//	//SUPPRESSION COOKIE "PANIER" LORS DU REFRESH
+//	window.onbeforeunload = function(){
+//		console.log('coucou...');
+//		console.log($cookies.get('panier'));
+//		$cookies.remove('panier');
+//	}
+//	
+//	
+//	$scope.panier = 0;
+//	
+//	$scope.$watch(function(){
+//		if($cookies.get('panier')){
+//			var monPanier = $cookies.get('panier').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
+//			$scope.panier = monPanier.length;
+//			//console.log('****************************************************************', $scope.panier);
+//		}
+//	})
 }]);

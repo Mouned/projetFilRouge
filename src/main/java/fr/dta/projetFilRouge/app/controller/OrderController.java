@@ -31,7 +31,7 @@ public class OrderController {
 	@RequestMapping(value = "create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Long create(@RequestBody Order order,
-					   @RequestParam("user") Long userId,
+					   @RequestParam("user") long userId,
 					   @RequestParam("products[]") List<Long> idProducts) {
 		return orderService.createOrder(order, userId, idProducts);
 	}
@@ -58,7 +58,7 @@ public class OrderController {
 	
 	@RequestMapping(value = "search/order/user", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Order> findOrderByUserId(@RequestParam("id") Long userId) {
+	public List<Order> findOrderByUserId(@RequestParam("id") long userId) {
 		return orderService.findOrderByUserId(userId);
 	}
 	

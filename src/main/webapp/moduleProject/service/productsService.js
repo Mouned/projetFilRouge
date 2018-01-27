@@ -47,6 +47,7 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
     		else
     			pathListId+=idList[key]+',';
     	}
+    	console.log(pathListId);
     	return $http.get(path+getList+'/'+pathListId).then(function(response){
     		return response.data;
     	});

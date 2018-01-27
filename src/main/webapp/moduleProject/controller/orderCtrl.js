@@ -10,7 +10,7 @@ angular.module('project').controller('orderCtrl', ['$scope', 'orderService','$co
 		$scope.orderListAdmin = response;
 	})
 	
-	orderService.getOrderUser().then(function(response){
+	orderService.getOrderUser($cookieStore.get('User')).then(function(response){
 		$scope.orderUser = response;
 	})
 	

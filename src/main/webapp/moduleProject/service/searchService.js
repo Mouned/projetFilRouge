@@ -26,7 +26,6 @@ angular.module('project').service('searchService', ['$http', '$q', function($htt
 	}
 
 	this.quickSearch = function(recherche) {
-		console.log(promise)
 		promise = $http.get('/api/products/search-game', {params: {gameInfo: recherche}});
 		promise.resolve;
 		return promise.then(function(response) {
