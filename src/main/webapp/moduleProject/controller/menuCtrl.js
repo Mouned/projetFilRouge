@@ -1,11 +1,27 @@
 /**
  * Controller for menu
  */
-angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location', '$cookies', function(connectionService, $scope, searchService, $location, $cookies){
+angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location', '$cookies','$cookieStore', function(connectionService, $scope, searchService, $location, $cookies,$cookieStore){
 	
 //	menuService.getUser().then(function(data){
 //		$scope.user = data;
 //	});
+	
+////////////////////////////////////////////////////Cookie to store the session user////////////////////////	
+	var userId = $cookieStore.get('User');
+	var superUser = $cookieStore.get('Superuser');
+	
+	if(userId != undefined){
+		if(superUser != undefined){
+			connectionService.setIsAuth(true);
+			connectionService.setIsAdmin(superUser);
+		}
+	}
+	
+	$scope.welcomeUser = function(){
+		return $cookieStore.get('Login');
+	}
+	
 	$scope.isAuthenticate = function(){
 		return connectionService.isAuth();
 	}

@@ -17,7 +17,7 @@ angular.module('project').service('connectionService', ['$http','$q', function($
 					user = response.data;
 					isAuth = true;
 					isAdmin = user.isAdmin;
-					return response;
+					return response.data;
 				});
 			});
 	};
@@ -30,6 +30,14 @@ angular.module('project').service('connectionService', ['$http','$q', function($
 				isAdmin = false;
 			});
 	};
+	
+	this.setIsAuth = function(value){
+		isAuth = value;
+	}
+	
+	this.setIsAdmin = function(value){
+		isAdmin = value;
+	}
 	
 	this.isAuth = function(){
 		return isAuth;

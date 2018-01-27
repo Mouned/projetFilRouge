@@ -13,7 +13,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr x-ng-repeat="order in orderListAdmin" x-ng-if="isAdmin() || order.userId == user.id">
+			<tr x-ng-repeat="order in orderUser"> <!-- x-ng-if="isAdmin() || order.userId == user.id"> -->
 				<th x-ng-bind="order.orderNumber"></th>
 				<th x-ng-bind="order.orderDate"></th>
 				<th x-ng-bind="order.totalPrice"></th>
