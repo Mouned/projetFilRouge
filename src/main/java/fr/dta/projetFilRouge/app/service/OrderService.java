@@ -3,6 +3,8 @@ package fr.dta.projetFilRouge.app.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,12 +78,15 @@ public class OrderService {
 		return results;
 	}
 	
-	public List<Order> findOrderByOrderNumber(String orderNumber) {
+	public List<Products> findProductsByOrderNumber(String orderNumber) {
 		List<Order> results = orderRepository.findByOrderNumber(orderNumber);
 		for(Order o : results)
 			Hibernate.initialize(o.getProducts());
 		
-		return results;
+		// merge de la liste des produits;
+		return results.stream()
+					  .flatMap(x -> x.getProducts().stream())
+					  .collect(Collectors.toList());
 	}
 	
 }

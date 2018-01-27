@@ -35,6 +35,12 @@ angular.module('project').service('searchService', ['$http', '$q', function($htt
 			})
 	}
 	
+	this.getUserById = function(idUser){
+		return $http.get('/api/users/search',{params : {id : idUser}}).then(function(response){
+			return response.data;
+		});
+	}
+	
 	this.getList = function() {
 		return list;
 	}

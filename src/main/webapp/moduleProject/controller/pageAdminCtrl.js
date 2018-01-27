@@ -83,7 +83,6 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 			},
 			controller : function($scope, item, productsService){
 	        	$scope.updateGame = function(jeu, file){
-	        		console.log('UPDATE');
 	        		$scope.$close({jeu : angular.copy($scope.jeu), file : $scope.file});
 	        	};
 	        	$scope.cancel = function() {

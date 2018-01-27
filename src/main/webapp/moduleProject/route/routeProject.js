@@ -40,6 +40,10 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
             templateUrl: './html/orderUser.html',
             controller: 'orderCtrl'
         })
+        .when('/user', {
+            templateUrl: './html/user.html',
+            controller: 'userCtrl'
+        })
         .when('/about', {
             templateUrl: './html/about.html'
         });
