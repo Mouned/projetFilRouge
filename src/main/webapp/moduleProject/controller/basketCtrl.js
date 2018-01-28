@@ -7,7 +7,6 @@ angular.module('project').controller('basketCtrl', ['$scope','$cookieStore', 'pr
 	}
 	
 	$scope.createOrder = function(){
-		console.log("entrée ici");
 		basketService.createOrder($cookieStore.get('Basket').id, $scope.listGame).then(function(response){
 			$cookieStore.remove('Basket');
 			$scope.listGame = [];

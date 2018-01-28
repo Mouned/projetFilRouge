@@ -70,14 +70,14 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
 	            		var listOfGame = [];
 	            		listOfGame.push(jeu.id);
 	            		basketUser = {
-	            				id : $cookieStore.get('User'),
+	            				id : connectionService.getIdUser(),
 	            				content : listOfGame
 	            		};
 	            		$cookieStore.put('Basket',basketUser);
 	            	}else{
 	            		var store = [$cookieStore.get('Basket').content];
 	            		store.push(jeu.id);
-	            		$cookieStore.put('Basket', {id : $cookieStore.get('User'), content : store});
+	            		$cookieStore.put('Basket', {id : connectionService.getIdUser(), content : store});
 	            	}            	
 	            }
 				$scope.jeu = item;

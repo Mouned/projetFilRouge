@@ -41,6 +41,12 @@ angular.module('project').service('searchService', ['$http', '$q', function($htt
 		});
 	}
 	
+	this.getUserByLogin = function(loginUser){
+		return $http.get('/api/users/get',{params : {login : loginUser}}).then(function(response){
+			return response.data;
+		});
+	}
+	
 	this.getList = function() {
 		return list;
 	}

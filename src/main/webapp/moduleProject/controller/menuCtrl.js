@@ -1,26 +1,22 @@
 /**
  * Controller for menu
  */
-angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location','$cookieStore', function(connectionService, $scope, searchService, $location,$cookieStore){
+angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location','$cookies','$cookieStore', function(connectionService, $scope, searchService, $location,$cookies,$cookieStore){
 	
 //	menuService.getUser().then(function(data){
 //		$scope.user = data;
 //	});
 	
 ////////////////////////////////////////////////////Cookie to store the session user////////////////////////	
-	var userId = $cookieStore.get('User');
-	var superUser = $cookieStore.get('Superuser');
-	
-	if(userId != undefined){
-		if(superUser != undefined){
-			connectionService.setIsAuth(true);
-			connectionService.setIsAdmin(superUser);
-		}
-	}
+
+
+	connectionService.getUserDetails().then(function(){
+	});
 	
 	$scope.welcomeUser = function(){
-		return $cookieStore.get('Login');
+		return connectionService.getLogin();
 	}
+	
 
 ////////////////////////////////////////////////////Cookie to store the basket//////////////	
 	$scope.$watch(function(){
@@ -40,9 +36,7 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 	
 	$scope.deconnect = function(){
 		connectionService.deconnectUser().then(function(){
-			$cookieStore.remove('User');
-			$cookieStore.remove('Superuser');
-			$cookieStore.remove('Login');
+			connectionService.clearUser();
 		});
 	}
 	
