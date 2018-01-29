@@ -46,6 +46,10 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
         })
         .when('/about', {
             templateUrl: './html/about.html'
+        })
+        .when('/paiment',{
+            templateUrl : './html/paiment.html',
+            controller : 'searchCtrl'
         });
 
     $routeProvider.otherwise({
