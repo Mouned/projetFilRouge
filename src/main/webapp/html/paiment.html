@@ -116,6 +116,15 @@
       <label for="card-ccv">CCV</label>
       <input type="text" id="card-ccv" maxlength="3" />
     </fieldset>
-    <button type="button" class="btn btn-default" ng-click="createOrder()">Envoyer</button>
+    <button type="button" class="btn btn-default" ng-click="createOrder()" ng-disabled = "!isAuth()">Envoyer</button>
+    <label class = "myLabel" ng-if = "!isAuth()">Veuillez vous connecter</label>
   </form>
 </div>
+
+<style>
+.myLabel{
+	display: block;
+	text-align: center;
+	color : red;
+}
+</style>

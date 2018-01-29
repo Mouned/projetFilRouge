@@ -24,12 +24,12 @@ angular.module('project').controller('registerCtrl',['$scope','$http','registerS
 				$location.path('/home');
 			}
 			
-			var basket = $cookieStore.get('Basket');
-			if(basket != undefined){
-				if(basket.id !== response.id){
-					$cookieStore.remove('Basket');
-				}
-			}
+//			var basket = $cookieStore.get('Basket');
+//			if(basket != undefined){
+//				if(basket.id != undefined && basket.id !== response.id){
+//					$cookieStore.remove('Basket');
+//				}
+//			}
 		});		
 	}
 	

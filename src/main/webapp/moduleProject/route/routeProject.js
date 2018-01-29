@@ -49,7 +49,7 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
         })
         .when('/paiment',{
             templateUrl : './html/paiment.html',
-            controller : 'searchCtrl'
+            controller : 'basketCtrl'
         });
 
     $routeProvider.otherwise({

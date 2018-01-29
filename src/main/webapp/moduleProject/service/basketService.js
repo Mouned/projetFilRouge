@@ -24,6 +24,7 @@ angular.module('project').service('basketService', ['$http', function($http) {
 				orderNumber : numberOrder,
 				totalPrice : priceTotal 
 		};
+		console.log('id : ' + id + ' ; ' + ' order : ' + order + ' products[] : ' + listProducts);
 		return $http.post('/api/orders/create',order,{params : {user : id, 'products[]':listProducts}})
 					.then(function(response){
 						

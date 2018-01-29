@@ -1,4 +1,4 @@
-angular.module('project').controller('basketCtrl', ['$scope','$cookieStore', 'productsService','basketService', function($scope, $cookieStore, productsService,basketService){
+angular.module('project').controller('basketCtrl', ['$scope','$cookieStore', 'productsService','basketService','connectionService', function($scope, $cookieStore, productsService,basketService,connectionService){
 
 	$scope.price = 0;	
 	$scope.listGame = [];
@@ -16,7 +16,7 @@ angular.module('project').controller('basketCtrl', ['$scope','$cookieStore', 'pr
 	}
 	
 	$scope.createOrder = function(){
-		basketService.createOrder($cookieStore.get('Basket').id, $scope.listGame).then(function(response){
+		basketService.createOrder(connectionService.getIdUser(), $scope.listGame).then(function(response){
 			$cookieStore.remove('Basket');
 			$scope.listGame = [];
 		});
@@ -28,5 +28,8 @@ angular.module('project').controller('basketCtrl', ['$scope','$cookieStore', 'pr
 		$scope.price=0;
 	}
 	
+	$scope.isAuth = function(){
+		return connectionService.isAuth();
+	}
 	
 }]);

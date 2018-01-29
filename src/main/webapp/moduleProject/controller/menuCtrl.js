@@ -51,13 +51,13 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 	
 	
 	
-	$scope.panier = 0;
-	
-	$scope.$watch(function(){
-		if($cookies.get('Basket')){
-			var monPanier = $cookies.get('Basket').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
-			$scope.panier = monPanier.length;
-			//console.log('****************************************************************', $scope.panier);
-		}
-	})
+//	$scope.panier = 0;
+//	
+//	$scope.$watch(function(){
+//		if($cookies.get('Basket')){
+//			var monPanier = $cookies.get('Basket').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
+//			$scope.panier = monPanier.length;
+//			//console.log('****************************************************************', $scope.panier);
+//		}
+//	})
 }]);
