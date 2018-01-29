@@ -9,6 +9,7 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	 */	
 	searchService.getAll().then(function(response) {
 		searchService.getAll().then(function(response) {
+			console.log(connectionService.isAdmin());
 			$scope.liste = response;
 		});
 	});
@@ -18,6 +19,7 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	 */
 	
 	pageUserService.getAll().then(function(response){
+		
 		$scope.member = response;
 	});
 	
@@ -26,7 +28,7 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	 */
 	
 	$scope.isChecked = function(checkboxValue){
-		console.log(checkboxValue);
+		//console.log(checkboxValue);
 		return checkboxValue;
 	}
 	
@@ -66,7 +68,7 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	    modalInstance.result.then(function (response) {
 			productsService.addGame(response.jeu,response.file).then(function(data){
 				$scope.liste = data;
-				console.log($scope.liste);
+				//console.log($scope.liste);
 			});
 	    }, function () {
 	    });
@@ -101,7 +103,7 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	    modalInstance.result.then(function (response) {
 			productsService.updateGame(response.jeu,response.file).then(function(data){
 				$scope.liste = data;
-				console.log($scope.liste);
+				//console.log($scope.liste);
 			});
 	    }, function () {
 	    });
@@ -161,4 +163,16 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	$scope.isAdmin = function(){
 		return connectionService.isAdmin();
 	};
+	
+	/**
+	 * To disable or enable a game
+	 */
+	$scope.disableOrEnable = function(id) {
+		return productsService.disableOrEnableGame(id).then(function(response) {
+			return searchService.getAll().then(function(data){
+				return data;
+    		});
+		});
+	};
+	
 }]);

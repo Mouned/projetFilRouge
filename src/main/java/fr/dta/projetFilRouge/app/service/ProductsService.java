@@ -5,7 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -28,23 +30,23 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
 	@Autowired
 	ProductsRepository productsRepository;
 	
-	public List<Products> getProductsByTitle(String title) {
+	public List<Products> getProductsByTitle(String title, boolean isAdmin) {
 		List<Products> list = productsRepository.findByTitle(title);
-		return list;
+		return isAdmin ? list.stream().sorted(Comparator.comparing(Products::getId)).collect(Collectors.toList()) : this.productsAvalaible(list);
 	}
 	
-	public List<Products> getAllProducts() {
+	public List<Products> getAllProducts(boolean isAdmin) {
 		List<Products> list = productsRepository.findAll();
-		return list;
+		return isAdmin ? list.stream().sorted(Comparator.comparing(Products::getId)).collect(Collectors.toList()) : this.productsAvalaible(list);
 	}
 	
-	public List<Products> getProductsByListOfId(List<Long> listId){
+	public List<Products> getProductsByListOfId(List<Long> listId, boolean isAdmin){
 		List<Products> list = new ArrayList<>();
 		
 		for(Long id : listId){
 			list.add(productsRepository.findById(id));
 		}
-		return list;
+		return isAdmin ? list.stream().sorted(Comparator.comparing(Products::getId)).collect(Collectors.toList()) : this.productsAvalaible(list);
 	}
 	
     public Page<Products> findPaginated(int page, int sizeElement) {
@@ -61,13 +63,9 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     	
     }
     
-    public List<Products> findByCriteria() {
-    	return null;
-    }
-    
-    public Products getById(long id) {
+    public Products getById(long id, boolean isAdmin) {
     	Products p = productsRepository.findById(id);
-    	return p;
+    	return (isAdmin ? p : (p.getAvailable() ? p : null));
     }
     
     public void updateProducts(Products p) {
@@ -77,7 +75,7 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     public void updateById(MultipartFile file, long id) {
       	String url = file.getOriginalFilename()+""+new Timestamp(System.currentTimeMillis());
       	
-     	Products p = this.getById(id);
+     	Products p = this.getById(id, true);
      	p.setUrl(url);
      	productsRepository.saveAndFlush(p);
     }   
@@ -120,7 +118,7 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     
     
 	@Override
-	public List<Products> findByCriteria(String title, String gamePub, Pegi pegi, Float priceMin, Float priceMax, String type) {
+	public List<Products> findByCriteria(String title, String gamePub, Pegi pegi, Float priceMin, Float priceMax, String type, boolean isAdmin) {
 		Criteria crit = getSession().createCriteria(Products.class);
 		if (!StringUtils.isEmpty(title)) {
 			crit.add(Restrictions.like("title", "%"+title+"%").ignoreCase());
@@ -137,18 +135,24 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
 		if (!StringUtils.isEmpty(type)) {
 			crit.add(Restrictions.like("type", "%"+type+"%").ignoreCase());
 		}
+		if (!isAdmin) {
+			crit.add(Restrictions.eq("available", true));
+		}
 		List<Products> searchResult = crit.list(); 
-		return searchResult;
+		return searchResult.stream().sorted(Comparator.comparing(Products::getId)).collect(Collectors.toList());
 	}
 
 	@Override
-	public List<Products> quickFindByCriteria(String gameInfo) {
+	public List<Products> quickFindByCriteria(String gameInfo, boolean isAdmin) {
 		Criteria crity = getSession().createCriteria(Products.class);
 		if (!StringUtils.isEmpty(gameInfo)) {
 			crity.add(Restrictions.disjunction()
 					.add(Restrictions.like("title", "%"+gameInfo+"%").ignoreCase())
 					.add(Restrictions.like("gamePublisher", "%"+gameInfo+"%").ignoreCase())
 					.add(Restrictions.like("type", "%"+gameInfo+"%").ignoreCase()));
+		}
+		if (!isAdmin) {
+			crity.add(Restrictions.eq("available", "true"));
 		}
 //		if (!StringUtils.isEmpty(gamePub)) {
 //			crity.add(Restrictions.like("gamePublisher", "%"+gamePub+"%").ignoreCase());
@@ -157,6 +161,28 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
 //			crity.add(Restrictions.like("type", "%"+type+"%").ignoreCase());
 //		}
 		List<Products> searchResult = crity.list();
-		return searchResult;
+		return searchResult.stream().sorted(Comparator.comparing(Products::getId)).collect(Collectors.toList());
+	}
+	
+	public void disableProducts(List<Long> productsId) {
+		for (Long id : productsId) {
+			disableOrEnableProduct(id);
+		}
+	}
+	
+	public void disableOrEnableProduct(Long id) {
+		Products p = productsRepository.findById(id);
+		p.setAvailable(p.getAvailable() ? false : true);
+		productsRepository.saveAndFlush(p);
+	}
+	
+	public List<Products> productsAvalaible(List<Products> list){
+		if(list != null) {
+			return list.stream()
+					   .filter(product -> product.getAvailable())
+					   .sorted(Comparator.comparing(Products::getId))
+					   .collect(Collectors.toList());
+		}
+		return new ArrayList<Products>();
 	}
 }

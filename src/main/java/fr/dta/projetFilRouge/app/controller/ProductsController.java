@@ -39,22 +39,22 @@ public class ProductsController {
 	
 	@CrossOrigin
 	@RequestMapping(value = "search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Products> getProductsByTitle(@RequestParam("title") String title) {
-		List<Products> list = productsService.getProductsByTitle(title);
+	public List<Products> getProductsByTitle(@RequestParam("title") String title, @RequestParam("isAdmin") boolean isAdmin) {
+		List<Products> list = productsService.getProductsByTitle(title, isAdmin);
 		return list;
 	}
 	
 //	Get one product
 	@CrossOrigin
 	@RequestMapping(value = "get", method = RequestMethod.GET)
-	public Products getProductById(@RequestParam("id") Long id) {
-		return productsService.getById(id);
+	public Products getProductById(@RequestParam("id") Long id, @RequestParam("isAdmin") boolean isAdmin) {
+		return productsService.getById(id, isAdmin);
     }
 
 // Get List of products by List of ID (for the basket)
 	@RequestMapping(value="getList/{listId}", method = RequestMethod.GET)
-	public List<Products> getProducstsByListOfId(@PathVariable List<Long> listId){
-		return productsService.getProductsByListOfId(listId);
+	public List<Products> getProducstsByListOfId(@PathVariable List<Long> listId, @RequestParam("isAdmin") boolean isAdmin){
+		return productsService.getProductsByListOfId(listId, isAdmin);
 	}
 
 	@RequestMapping(value = "advanced-search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -64,28 +64,27 @@ public class ProductsController {
 			@RequestParam(value="pegi", required=false) String pegi,
 			@RequestParam(value="priceMin", required=false, defaultValue="0") Float priceMin,
 			@RequestParam(value="priceMax", required=false, defaultValue="1000") Float priceMax,
-			@RequestParam(value="type", required=false) String type) {
+			@RequestParam(value="type", required=false) String type,
+			@RequestParam(value="isAdmin", required=true) boolean isAdmin) {
 		
 		Pegi searchPegi = null;
 		
 		if(pegi != null) 
 			searchPegi = Pegi.valueByCode(pegi);
 		
-		return productsService.findByCriteria(title, gamePublisher, searchPegi, priceMin, priceMax, type);
+		return productsService.findByCriteria(title, gamePublisher, searchPegi, priceMin, priceMax, type, isAdmin);
 	}
 	
 	@RequestMapping(value = "search-game", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Products> quickGetProductsByCriteria(@RequestParam(value="gameInfo") String gameInfo) {
-		return productsService.quickFindByCriteria(gameInfo);
+	public List<Products> quickGetProductsByCriteria(@RequestParam(value="gameInfo") String gameInfo, @RequestParam("isAdmin") boolean isAdmin) {
+		return productsService.quickFindByCriteria(gameInfo, isAdmin);
 	}
 	
 	@CrossOrigin
 	@RequestMapping(value = "all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Products> getAllProducts() {
+	public List<Products> getAllProducts(@RequestParam("isAdmin") boolean isAdmin) {
 		
-		List<Products> products = productsService.getAllProducts();
-
-		return products;
+		return productsService.getAllProducts(isAdmin);
 	}	
 	
 	
@@ -104,7 +103,7 @@ public class ProductsController {
 	@ResponseBody
 	public Products createProduct(@RequestBody Products p)
 	{
-		System.out.println(p);
+		//System.out.println(p);
 			
 		return productsService.createProduct(p);
 			
@@ -115,7 +114,7 @@ public class ProductsController {
 	@RequestMapping(value = "upload/{id}", method = RequestMethod.POST)
 	public void upload(@PathVariable long id, @RequestParam MultipartFile file)
 	{
-		System.out.println("test");
+		//System.out.println("test");
 		if(file.getContentType().equals("image/jpeg") 
 				|| file.getContentType().equals("image/png") 
 				|| file.getContentType().equals("image/tiff") 
@@ -124,7 +123,7 @@ public class ProductsController {
 		{
 			productsService.store(id, file);
 			
-			Products p = productsService.getById(id);	
+			//Products p = productsService.getById(id, true);	
 			
 			productsService.updateById(file, id);
 		}else {
@@ -147,7 +146,7 @@ public class ProductsController {
 	@RequestMapping(value = "image/{id}", method = RequestMethod.POST)
 	public void updateImage(@PathVariable long id, @RequestParam MultipartFile file)
 	{
-		System.out.println("test");
+		//System.out.println("test");
 		if(file.getContentType().equals("image/jpeg") 
 				|| file.getContentType().equals("image/png") 
 				|| file.getContentType().equals("image/tiff") 
@@ -168,11 +167,25 @@ public class ProductsController {
 	@RequestMapping(value = "delete/{id}", method = RequestMethod.POST)
 	@ResponseBody
 	public void deleteProduct(@PathVariable Long id) {
-		Products p = productsService.getById(id);
+		Products p = productsService.getById(id, true);
 		
 		if(p != null) {
 			productsService.deleteProduct(p);
 		}
 		
     }
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////DISABLE OR ENABLE PRODUCTS
+	
+	@RequestMapping(value="disable", method = RequestMethod.POST)
+	@ResponseBody
+	public void disableProducts(@RequestParam("productsId[]") List<Long> productsId) {
+		productsService.disableProducts(productsId);
+	}
+	
+	@RequestMapping(value="disable/{id}", method = RequestMethod.POST)
+	@ResponseBody
+	public void disableOrEnable(@PathVariable Long id) {
+		productsService.disableOrEnableProduct(id);
+	}
 }

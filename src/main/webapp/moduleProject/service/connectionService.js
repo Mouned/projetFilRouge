@@ -1,7 +1,7 @@
 /**
  * Service for connection
  */
-angular.module('project').service('connectionService', ['$http','$q','sessionService','searchService', function($http,$q,sessionService,searchService) {
+angular.module('project').service('connectionService', ['$http','$q','sessionService','searchUserService', function($http,$q,sessionService,searchUserService) {
 	
 	//var promiseUser = $q.defer();
 	
@@ -42,13 +42,13 @@ angular.module('project').service('connectionService', ['$http','$q','sessionSer
 			if(response != 0){
 				isAuth = true;
 				var authorities = response.authorities;
-				IsAdmin = false;
+				isAdmin = false;
 				login = response.username;
 				for(var key in authorities){
 					if(authorities[key].authority == 'ADMIN')
 						isAdmin = true;
 				}
-				searchService.getUserByLogin(login).then(function(response){
+				searchUserService.getUserByLogin(login).then(function(response){
 					idUser = response.id;
 				});
 				

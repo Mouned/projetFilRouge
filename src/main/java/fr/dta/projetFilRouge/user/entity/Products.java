@@ -55,6 +55,8 @@ public class Products implements Serializable{
 	@Column
 	private String url;
 	
+	@NotNull
+	private Boolean available;
 	
 	public Products(String title, Float price, String gamePublisher, Pegi pegi, String type) {
 		this.title = title;
@@ -121,6 +123,14 @@ public class Products implements Serializable{
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public Boolean getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(Boolean available) {
+		this.available = available;
 	}
 
 	@Override

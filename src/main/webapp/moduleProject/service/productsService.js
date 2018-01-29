@@ -7,6 +7,7 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
 	var all = 'all';
 	var update = 'update';
 	var delet = 'delete';
+	var disable = 'disable';
 	var image = 'image';
 	var getList = 'getList';
 	
@@ -32,7 +33,7 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
 		});
     }
     this.getOne = function (id) {
-        var p1 = $http.get(path+get+'/'+id);
+        var p1 = $http.get(path+get+'/'+id, {params: {isAdmin: connectionService.isAdmin()}});
         var p2 = p1.then(function (response) {
             return response.data;
         });
@@ -48,7 +49,7 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
     			pathListId+=idList[key]+',';
     	}
     	console.log(pathListId);
-    	return $http.get(path+getList+'/'+pathListId).then(function(response){
+    	return $http.get(path+getList+'/'+pathListId, {params: {isAdmin: connectionService.isAdmin()}}).then(function(response){
     		return response.data;
     	});
     }
@@ -74,10 +75,16 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
     };
     
     this.deleteGame = function(id){
-    	return $http.post(path+delet+id).then(function(response){
+    	return $http.post(path+delet+'/'+id).then(function(response){
     		return searchService.getAll().then(function(data){
 				return data;
 			}); 
         });
+    }
+    
+    this.disableOrEnableGame = function(id) {
+    	return $http.post(path+disable+'/'+id).then(function(response) {
+    		return response.data;
+    	});
     }
 }]);

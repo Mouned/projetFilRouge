@@ -33,4 +33,5 @@ public interface ProductsRepository extends JpaRepository<Products, Long>,Paging
 	@Transactional
 	@Query("update Products p set p.gamePublisher = ?1, p.pegi = ?2, p.price = ?3, p.title = ?4, p.type = ?5, p.url = ?6 where p.id = ?7")
 	void updateById(String game_publisher, Pegi pegi, float price, String title, String type, String url, long id);
+	
 }

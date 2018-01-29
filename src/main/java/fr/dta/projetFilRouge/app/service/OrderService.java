@@ -33,7 +33,7 @@ public class OrderService {
 		User user = userService.getUserById(userId);
 		
 		for(Long productId : idProducts)
-			list_Products.add(productService.getById(productId));
+			list_Products.add(productService.getById(productId, user.getIsAdmin()));
 		
 		order.setUser(user);
 		order.setProducts(list_Products);

@@ -1,6 +1,6 @@
 
 
-angular.module('project').service('searchService', ['$http', '$q', function($http, $q){
+angular.module('project').service('searchService', ['$http', '$q', 'connectionService', function($http, $q, connectionService){
 	var list = {};
 	var promise = $q.defer();
 	
@@ -12,7 +12,8 @@ angular.module('project').service('searchService', ['$http', '$q', function($htt
 					pegi:recherche.pegi,
 					priceMin:recherche.priceMin,
 					priceMax:recherche.priceMax,
-					type:recherche.type
+					type:recherche.type,
+					isAdmin: connectionService.isAdmin()
 				}
 				}).then(function(response) {
 				return response.data;
@@ -20,31 +21,19 @@ angular.module('project').service('searchService', ['$http', '$q', function($htt
 	},
 	
 	this.getAll = function() {
-		return $http.get('/api/products/all').then(function(response) {
+		return $http.get('/api/products/all', {params: {isAdmin: connectionService.isAdmin()}}).then(function(response) {
 				return response.data;
 	    });
 	}
 
 	this.quickSearch = function(recherche) {
-		promise = $http.get('/api/products/search-game', {params: {gameInfo: recherche}});
+		promise = $http.get('/api/products/search-game', {params: {gameInfo: recherche, isAdmin: connectionService.isAdmin()}});
 		promise.resolve;
 		return promise.then(function(response) {
 				list = response.data;
 				reinitPromise();
 				return list;
 			})
-	}
-	
-	this.getUserById = function(idUser){
-		return $http.get('/api/users/search',{params : {id : idUser}}).then(function(response){
-			return response.data;
-		});
-	}
-	
-	this.getUserByLogin = function(loginUser){
-		return $http.get('/api/users/get',{params : {login : loginUser}}).then(function(response){
-			return response.data;
-		});
 	}
 	
 	this.getList = function() {
