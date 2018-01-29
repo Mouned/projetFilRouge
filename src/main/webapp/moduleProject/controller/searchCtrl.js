@@ -78,7 +78,8 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
 	            		var store = [$cookieStore.get('Basket').content];
 	            		store.push(jeu.id);
 	            		$cookieStore.put('Basket', {id : connectionService.getIdUser(), content : store});
-	            	}            	
+	            	}
+	            	modalInstance.dismiss();
 	            }
 				$scope.jeu = item;
 			}
