@@ -1,7 +1,7 @@
 /**
  * Controller for menu
  */
-angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location','$cookies','$cookieStore', 'productsService', function(connectionService, $scope, searchService, $location,$cookies,$cookieStore, productsService){
+angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location','$cookies','$cookieStore', 'productsService','$route', function(connectionService, $scope, searchService, $location,$cookies,$cookieStore, productsService,$route){
 	
 //	menuService.getUser().then(function(data){
 //		$scope.user = data;
@@ -37,6 +37,7 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 	$scope.deconnect = function(){
 		connectionService.deconnectUser().then(function(){
 			connectionService.clearUser();
+			$route.reload();
 		});
 	}
 	

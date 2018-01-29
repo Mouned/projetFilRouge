@@ -1,4 +1,4 @@
-angular.module('project').service('productsService', ['$http', 'searchService', function ($http,searchService) {
+angular.module('project').service('productsService', ['$http', 'searchService','connectionService', function ($http,searchService,connectionService) {
 
 	var path = '/api/products/';
 	var create = 'create';
@@ -48,7 +48,7 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
     		else
     			pathListId+=idList[key]+',';
     	}
-    	return $http.get(path+getList+'/'+pathListId).then(function(response){
+    	return $http.get(path+getList+'/'+pathListId, {params: {isAdmin: connectionService.isAdmin()}}).then(function(response){
             lengthList = response.data.length;
 			return response.data;
     	});
