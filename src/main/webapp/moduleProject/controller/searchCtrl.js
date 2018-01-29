@@ -1,10 +1,9 @@
-angular.module('project').controller('searchCtrl',['$scope','$http','searchService', '$uibModal', 'connectionService', '$location', '$cookies', function ($scope, $http,searchService, $uibModal, connectionService, $location, $cookies) {
+angular.module('project').controller('searchCtrl',['$scope','$http','searchService', '$uibModal', 'connectionService', '$location', '$cookieStore', function ($scope, $http,searchService, $uibModal, connectionService, $location, $cookieStore) {
     $scope.liste = [];
    // var recherche = {};
     
     $scope.pegis = ["3","7","12","16","18"];
     $scope.types = ["Survie", "Stratégie", "Action", "FPS", "Course","Monde ouvert","Découverte","Aventure"];
-    console.log($location.path());
     $scope.search = function(){
     	
  	   if($scope.recherche === undefined)
@@ -46,7 +45,6 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
    	
 	if(searchService.getList() != undefined){
 		$scope.liste = angular.copy(searchService.getList());
-		console.log($scope.liste);
 		searchService.setList(undefined);
 	}
 	
@@ -66,23 +64,21 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
 	            };
 	            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////ACHAT => COOKIE
 	            $scope.addToBasket = function(jeu){
-	            	//Gestion par id de jeux
-	            	var idGame = jeu.id;
-	            	var otherGame = [$cookies.get('panier')];
-	            	
-	            	
-	            	otherGame.push(idGame);
-	            	
-	            	var cookiePanier = $cookies.get('panier');
-	            	var jeuChoice = idGame;
-	            	// Setting a cookie
-	            	$cookies.put('panier', otherGame);
-	            	
-	            	
-	            	
-	            	
-	            	var monPanier = $cookies.get('panier').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
-	            	
+	            	var basket = $cookieStore.get('Basket');
+	            	if(basket == undefined){
+	            		var basketUser = {};
+	            		var listOfGame = [];
+	            		listOfGame.push(jeu.id);
+	            		basketUser = {
+	            				id : connectionService.getIdUser(),
+	            				content : listOfGame
+	            		};
+	            		$cookieStore.put('Basket',basketUser);
+	            	}else{
+	            		var store = [$cookieStore.get('Basket').content];
+	            		store.push(jeu.id);
+	            		$cookieStore.put('Basket', {id : connectionService.getIdUser(), content : store});
+	            	}            	
 	            }
 				$scope.jeu = item;
 			}

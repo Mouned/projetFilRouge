@@ -1,9 +1,11 @@
-angular.module('project').service('registerService', ['$http', function($http){
+angular.module('project').service('registerService', ['$http','connectionService', function($http,connectionService){
 	
 	
 	this.createUser = function(user){
-		return $http.post('/api/users/create', user).then(function(response) {
-					console.log(response);
+		return $http.post('/api/users/create', user).then(function() {
+					return connectionService.connectUser(user.login,user.password).then(function(response){
+						return response.data;
+					});
 			});
 	}
 }]);

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.dta.projetFilRouge.app.service.OrderService;
 import fr.dta.projetFilRouge.user.entity.Order;
+import fr.dta.projetFilRouge.user.entity.Products;
 
 @RestController
 @RequestMapping(value = "/api/orders")
@@ -31,7 +32,7 @@ public class OrderController {
 	@RequestMapping(value = "create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Long create(@RequestBody Order order,
-					   @RequestParam("user") Long userId,
+					   @RequestParam("user") long userId,
 					   @RequestParam("products[]") List<Long> idProducts) {
 		return orderService.createOrder(order, userId, idProducts);
 	}
@@ -58,7 +59,7 @@ public class OrderController {
 	
 	@RequestMapping(value = "search/order/user", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Order> findOrderByUserId(@RequestParam("id") Long userId) {
+	public List<Order> findOrderByUserId(@RequestParam("id") long userId) {
 		return orderService.findOrderByUserId(userId);
 	}
 	
@@ -70,14 +71,14 @@ public class OrderController {
 	
 	@RequestMapping(value = "search/order/date", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Order> findAllOrder(@RequestParam LocalDate date) {
+	public List<Order> findAllOrderByDate(@RequestParam LocalDate date) {
 		return orderService.findOrderByDate(date);
 	}
 	
 	@RequestMapping(value = "search/order/ordernumber", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Order> findAllOrder(@RequestParam("ordernumber") String orderNumber) {
-		return orderService.findOrderByOrderNumber(orderNumber);
+	public List<Products> findAllProductsByOrderNumber(@RequestParam("ordernumber") String orderNumber) {
+		return orderService.findProductsByOrderNumber(orderNumber);
 	}
 	
 }

@@ -6,9 +6,11 @@
 				    <div id="user-menu" class="pull-right btn-group">
 				    	<i class="fa fa-user dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-hidden="true"></i>
 				    	<ul class="dropdown-menu">
-				    		<li x-ng-if="isAuthenticate()"><a href="#!/user/user.id">Profil</a></li>
+				    		<li x-ng-if="isAuthenticate()"><a href="#">Welcome {{welcomeUser()}}</a></li>
+				    		<li x-ng-if="isAuthenticate()"><a href="#!/user">Profil</a></li>
 				    		<li ng-if="isAdmin()"><a href="#!/admin">Page Admin</a></li>
-							<li x-ng-if="isAuthenticate()"><a href="#!/orders">Commandes</a></li>
+							<li x-ng-if="isAuthenticate() && isAdmin()"><a href="#!/orders">Commandes</a></li>
+							<li x-ng-if="isAuthenticate() && !isAdmin()"><a href="#!/order">Mes Commandes</a></li>
 							<li ng-if="!isAuthenticate()"><a href="#!/sign">Connexion/Inscription</a></li>
 							<li ng-if="isAuthenticate()"><a href="#" ng-click = 'deconnect()'>Déconnexion</a></li>
 				    	</ul>
@@ -41,7 +43,7 @@
 				<div class="collapse navbar-collapse row" id="">
 					<ul class="nav navbar-nav col-lg-6 col-md-6 col-sm-6 col-xs-6">
 				        <li><a href="#!/home">Accueil</a></li>
-				        <li><a href="#">A propos</a></li>
+				        <li><a href="#!/about">A propos</a></li>
 				        <li><a href="#!/research">Recherche</a></li>
 						<li><a href="#!/contact">Contact</a></li>
 					</ul>

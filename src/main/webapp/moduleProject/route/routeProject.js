@@ -38,6 +38,17 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
         .when('/orders', {
             templateUrl: './html/orderList.html',
             controller: 'orderCtrl'
+        })
+        .when('/order', {
+            templateUrl: './html/orderUser.html',
+            controller: 'orderCtrl'
+        })
+        .when('/user', {
+            templateUrl: './html/user.html',
+            controller: 'userCtrl'
+        })
+        .when('/about', {
+            templateUrl: './html/about.html'
         });
 
     $routeProvider.otherwise({

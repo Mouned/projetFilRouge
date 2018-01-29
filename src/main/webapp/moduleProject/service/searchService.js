@@ -26,7 +26,6 @@ angular.module('project').service('searchService', ['$http', '$q', function($htt
 	}
 
 	this.quickSearch = function(recherche) {
-		console.log(promise)
 		promise = $http.get('/api/products/search-game', {params: {gameInfo: recherche}});
 		promise.resolve;
 		return promise.then(function(response) {
@@ -34,6 +33,18 @@ angular.module('project').service('searchService', ['$http', '$q', function($htt
 				reinitPromise();
 				return list;
 			})
+	}
+	
+	this.getUserById = function(idUser){
+		return $http.get('/api/users/search',{params : {id : idUser}}).then(function(response){
+			return response.data;
+		});
+	}
+	
+	this.getUserByLogin = function(loginUser){
+		return $http.get('/api/users/get',{params : {login : loginUser}}).then(function(response){
+			return response.data;
+		});
 	}
 	
 	this.getList = function() {

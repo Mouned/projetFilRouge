@@ -5,6 +5,5 @@ angular.module('project').controller('productsCtrl', function($scope,$http,$rout
     $http.get('/api/products/all/' + id + '/')
         .then(function (response) {
             $scope.jeux = response.data;
-            console.log($scope.jeux);
         });
 });

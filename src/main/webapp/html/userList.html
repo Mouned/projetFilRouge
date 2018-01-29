@@ -6,37 +6,41 @@
     <tbody>
     <thead>
     	<tr>
-    		<th>Titre</th>
-    		<th>Type</th>
-    		<th>Pegi</th>
-    		<th>Editeur</th>
-    		<th>Prix</th>
-    		<th>Fiche Jeu</th>
+    		<th>Prénom</th>
+    		<th>Nom</th>
+    		<th>Date de naissance</th>
+    		<th>Login</th>
+    		<th>Email</th>
+    		<th>Numéro de téléphone</th>
+    		<th>Fiche Utilisateur</th>
     		<th ng-show='isAdmin()'>Éditer</th>
     	</tr>
     </thead>
-        <tr ng-repeat="jeux in liste">
+        <tr ng-repeat="user in member">
             <td>
-                <span ng-bind="jeux.title"></span>
+                <span ng-bind="user.firstname"></span>
             </td>
             <td>
-                <span ng-bind="jeux.type"></span>
+                <span ng-bind="user.lastname"></span>
             </td>
              <td>
-                <span ng-bind="jeux.pegi"></span>
+                <span ng-bind="user.birthDate"></span>
             </td>
             <td>
-                <span ng-bind="jeux.gamePublisher"></span>
+                <span ng-bind="user.login"></span>
             </td>
             <td>
-                <span ng-bind="jeux.price"></span>
+                <span ng-bind="user.email"></span>
             </td>
             <td>
-            	<a href="#!/game-search/{{jeux.id}}"><span class="fa fa-search-plus" data-toggle="tooltip" data-placement="bottom" title="Details"></span></a>
+                <span ng-bind="user.phoneNumber"></span>
             </td>
-            <td ng-show="isAdmin()">
-            	<a href="#!/edit/{{jeux.id}}"><span class="fa fa-pencil-square-o" data-toggle="tooltip" data-placement="bottom" title="Edit"></span></a>
-            	<a href="#!/delete/{{jeux.id}}"><span class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Delete"></span></a>
+            <td>
+            	<a href=""><span class="fa fa-search-plus" data-placement="bottom" title="Details" ng-click="openModalDetailUser(user)"></span></a>
+            </td>
+             <td ng-show="isAdmin()">
+            	<span class="fa fa-pencil-square-o" data-toggle="tooltip" data-placement="bottom" title="Edit"></span>
+            	<span class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Delete" x-ng-click="deleteUser(user.id)"></span>
             </td>
         </tr>
     </tbody>

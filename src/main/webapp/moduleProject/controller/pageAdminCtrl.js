@@ -1,8 +1,9 @@
 /**
  * Controller for page admin
  */
-angular.module('project').controller('pageAdminCtrl', ['connectionService', '$scope', '$uibModal', 'searchService', 'productsService', function(connectionService, $scope, $uibModal, searchService, productsService){
+angular.module('project').controller('pageAdminCtrl', ['connectionService', '$scope', '$uibModal', 'searchService', 'productsService','pageUserService', function(connectionService, $scope, $uibModal, searchService, productsService,pageUserService){
 	$scope.liste = [];
+	$scope.member = [];
 	/**
 	 * Show all games when loading the page
 	 */	
@@ -12,10 +13,35 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 		});
 	});
 	
+	/*
+	 * Show all member
+	 */
+	
+	pageUserService.getAll().then(function(response){
+		$scope.member = response;
+	});
+	
+	/*
+	 * Test Value CheckBox 
+	 */
+	
+	$scope.isChecked = function(checkboxValue){
+		console.log(checkboxValue);
+		return checkboxValue;
+	}
+	
 	$scope.deleteProduct = function(id){
 		if(confirm("Etes vous sûr de vouloir supprimer ce jeu ?")){
 			productsService.deleteGame(id).then(function(response){
 				$scope.liste = response;
+			});
+		}
+	}
+	
+	$scope.deleteUser = function(id){
+		if(confirm("Etes vous sûr de vouloir supprimer cet utilisateur ?")){
+			productsService.deleteUser(id).then(function(response){
+				$scope.member = response;
 			});
 		}
 	}
@@ -57,7 +83,6 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 			},
 			controller : function($scope, item, productsService){
 	        	$scope.updateGame = function(jeu, file){
-	        		console.log('UPDATE');
 	        		$scope.$close({jeu : angular.copy($scope.jeu), file : $scope.file});
 	        	};
 	        	$scope.cancel = function() {
@@ -98,6 +123,30 @@ angular.module('project').controller('pageAdminCtrl', ['connectionService', '$sc
 	        		modalInstance.dismiss();
 	            };
 				$scope.jeu = item;
+				
+			}
+	    });
+		modalInstance.result.then(function(){
+		}, function(){
+		})
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////MODAL DETAIL User
+	$scope.openModalDetailUser = function(user){
+		var modalInstance = $uibModal.open({
+			templateUrl: './html/detailUser.html',
+			resolve : {
+				item : user
+			},
+			controller : function($scope, item){
+				$scope.addGame = function(user){
+	        		$scope.$close({user : angular.copy($scope.user)});
+	        	};
+	        	$scope.cancel = function() {
+	                // Appel à la fonction d'annulation.
+	        		modalInstance.dismiss();
+	            };
+				$scope.user = item;
 				
 			}
 	    });

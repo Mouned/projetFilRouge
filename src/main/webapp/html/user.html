@@ -1,0 +1,52 @@
+
+<meta charset="utf-8">
+
+<div class="information">
+	<ul>
+		<li class="type-product">
+			Login : <span ng-bind="user.login"></span>
+		</li>
+		<li class="type-product">
+			Email : <span ng-bind="user.email"></span>
+		</li>
+		<li class="type-product">
+			Prénom : <span ng-bind="user.firstname"></span>
+		</li>
+		<li class="type-product">
+			Nom : <span ng-bind="user.lastname"></span>
+		</li>
+		<li class="type-product">
+			Date de naissance : <span ng-bind="user.birthDate"></span>
+		</li>
+		<li class="type-product">
+			Numéro de téléphone : <span ng-bind="user.phoneNumber"></span>
+		</li>
+	</ul>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<div>
+	<table class = "table col-md-12 col-xs-12">
+		<thead>
+			<tr>
+				<th>Commande n°</th>
+				<th>Date</th>
+				<th>Prix total</th>
+				<th>Jeux</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr x-ng-repeat="order in orders">
+				<td x-ng-bind="order.orderNumber"></td>
+				<td x-ng-bind="order.orderDate"></td>
+				<td x-ng-bind="order.totalPrice"></td>
+            <td>
+            	<a href=""><span class="fa fa-search-plus" data-placement="bottom" title="Details" ng-click="openModalDetail(order.products)"></span></a>
+            </td>
+			</tr>
+		</tbody>
+	</table>
+</div>

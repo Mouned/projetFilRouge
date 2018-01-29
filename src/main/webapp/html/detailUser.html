@@ -1,0 +1,33 @@
+
+<meta charset="utf-8">
+
+<div class="modal-porduct">
+<div class="modal-body">
+	<div class="information">
+		<ul>
+			<li class="type-product">
+				Login : <span ng-bind="user.login"></span>
+			</li>
+			<li class="type-product">
+				Email : <span ng-bind="user.email"></span>
+			</li>
+			<li class="type-product">
+				Prénom : <span ng-bind="user.firstname"></span>
+			</li>
+			<li class="type-product">
+				Nom : <span ng-bind="user.lastname"></span>
+			</li>
+			<li class="type-product">
+				Date de naissance : <span ng-bind="user.birthDate"></span>
+			</li>
+			<li class="type-product">
+				Numéro de téléphone : <span ng-bind="user.phoneNumber"></span>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="modal-footer">
+	<button ng-click="cancel()" type="button" id="btncancel" class="btn btn-default">Fermer</button>
+</div>
+
+</div>

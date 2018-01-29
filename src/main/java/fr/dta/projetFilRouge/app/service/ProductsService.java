@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -34,6 +35,15 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
 	
 	public List<Products> getAllProducts() {
 		List<Products> list = productsRepository.findAll();
+		return list;
+	}
+	
+	public List<Products> getProductsByListOfId(List<Long> listId){
+		List<Products> list = new ArrayList<>();
+		
+		for(Long id : listId){
+			list.add(productsRepository.findById(id));
+		}
 		return list;
 	}
 	
