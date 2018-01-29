@@ -4,6 +4,8 @@ target/
 #Other files
 image/
 
+application.yml
+
 # Eclipse
 .classpath
 .project
