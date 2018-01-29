@@ -2,6 +2,7 @@ angular.module('project').controller('basketCtrl', ['$scope','$cookieStore', 'pr
 	$scope.listGame = [];
 	if($cookieStore.get('Basket')){
 			productsService.getList($cookieStore.get('Basket').content).then(function(response){
+				console.log(response);
 				$scope.listGame = response;
 		});
 	}

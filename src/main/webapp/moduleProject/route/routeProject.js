@@ -29,10 +29,7 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
             contoller: 'searchCtrl'
         })
         .when('/basket',{
-            templateUrl : './templates/basket.html'
-        })
-        .when('/paiement', {
-            templateUrl: './html/paiment.html',
+            templateUrl : './html/basket.html',
             controller: 'basketCtrl'
         })
         .when('/orders', {
