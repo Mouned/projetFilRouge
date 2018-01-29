@@ -1,4 +1,4 @@
-angular.module('project').controller('userCtrl', ['orderService', 'searchService', '$scope', '$uibModal','connectionService', function(orderService, searchService, $scope, $uibModal,connectionService){
+angular.module('project').controller('userCtrl', ['orderService', 'searchUserService', '$scope', '$uibModal','connectionService', function(orderService, searchUserService, $scope, $uibModal,connectionService){
 	
 
 	connectionService.getUserDetails().then(function(userDetails){
@@ -7,7 +7,7 @@ angular.module('project').controller('userCtrl', ['orderService', 'searchService
 			$scope.orders = response;
 		});
 			
-		searchService.getUserById(connectionService.getIdUser()).then(function(response){
+		searchUserService.getUserById(connectionService.getIdUser()).then(function(response){
 				$scope.user = response;
 		});
 		
