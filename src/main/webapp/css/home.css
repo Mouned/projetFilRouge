@@ -4,7 +4,7 @@ body {
 	font-family: 'Open sans', sans-serif;
 }
 body {
-	background: linear-gradient(50deg, #f3c680, hsla(179,54%,76%,1));
+	background: linear-gradient(180deg, #28c6cd, hsl(217, 80%, 40%));
 }
 
 .box-product{

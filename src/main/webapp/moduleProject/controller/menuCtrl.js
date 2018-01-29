@@ -23,7 +23,6 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 		$scope.panier = 0;
 		if($cookieStore.get('Basket') != undefined){
 			$scope.panier = productsService.getLengthList();
-			console.log($scope.panier);
 		}
 	})
 ///////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -49,21 +48,16 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 		});
 	}
 	
-//	//SUPPRESSION COOKIE "PANIER" LORS DU REFRESH
-//	window.onbeforeunload = function(){
-//		console.log('coucou...');
-//		console.log($cookies.get('panier'));
-//		$cookies.remove('panier');
-//	}
-//	
-//	
-//	$scope.panier = 0;
-//	
-//	$scope.$watch(function(){
-//		if($cookies.get('panier')){
-//			var monPanier = $cookies.get('panier').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
-//			$scope.panier = monPanier.length;
-//			//console.log('****************************************************************', $scope.panier);
-//		}
-//	})
+	
+	
+	
+	$scope.panier = 0;
+	
+	$scope.$watch(function(){
+		if($cookies.get('Basket')){
+			var monPanier = $cookies.get('Basket').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
+			$scope.panier = monPanier.length;
+			//console.log('****************************************************************', $scope.panier);
+		}
+	})
 }]);

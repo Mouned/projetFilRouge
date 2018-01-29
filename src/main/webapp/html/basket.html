@@ -1,5 +1,9 @@
 <br>
-<h1 class = >Votre panier</h1>
+<h1>Votre panier</h1>
+<button class="btn btn-danger" ng-click="removeBasket()">Vider mon panier  <i class="fa fa-times" aria-hidden="true"></i></button>
+<br>
+<br>
+Totale : <span ng-bind="price"></span><span>&euro;</span>
 <br>
 <br>
 <section class="box-product-list row">
@@ -18,4 +22,4 @@
 		</div>
 	</div>
 </section>
-<button><a href="#!/paiment">Payer la commande</a></button>
+<button class="btn btn-success"><a href="#!/paiment">Payer la commande</a></button>
