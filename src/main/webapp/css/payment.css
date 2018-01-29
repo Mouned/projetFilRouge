@@ -1,26 +1,4 @@
 
-
-
-body h1, body h2 {
-	font-weight: 400;
-	text-align: center;
-	color : black;
-::before,
-::after {
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-html,
-body {
-	min-height: 100%;
-	font-family: 'Open sans', sans-serif;
-}
-
-body {
-	background: linear-gradient(50deg, #f3c680, #a1e3e2);
-}
-
 /*--------------------
 Buttons
 --------------------*/
