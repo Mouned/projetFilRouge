@@ -23,7 +23,7 @@ hr{
 }
 
 #logo{
-	color: black;
+	color: white;
 	font-size: 2em;
 	font-family: slant;
 }
@@ -47,7 +47,7 @@ hr{
 }
 
 #user-menu i.fa-user, #nav-mobile .user-icon{
-	color: black;
+	color: white;
 	font-size: 3em;
 }
 #user-menu{
@@ -124,7 +124,7 @@ hr{
   width: 3em;
 }
 .fa-shopping-basket{
-	color: black;
+	color: white;
 	margin-top: 0.57em;
     font-size: 1.4em;
 }

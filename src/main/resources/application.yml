@@ -8,8 +8,8 @@ spring:
       
     datasource:
         dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgresql://192.168.1.36:5432/ecommerce
-        username: admin
+        url: jdbc:postgresql://localhost:5432/ecommerce
+        username: postgres
         password: admin
         
     session:
