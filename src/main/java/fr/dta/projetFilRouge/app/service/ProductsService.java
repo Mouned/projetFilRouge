@@ -152,7 +152,7 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
 					.add(Restrictions.like("type", "%"+gameInfo+"%").ignoreCase()));
 		}
 		if (!isAdmin) {
-			crity.add(Restrictions.eq("available", "true"));
+			crity.add(Restrictions.eq("available", true));
 		}
 //		if (!StringUtils.isEmpty(gamePub)) {
 //			crity.add(Restrictions.like("gamePublisher", "%"+gamePub+"%").ignoreCase());
