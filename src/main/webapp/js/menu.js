@@ -1,5 +1,5 @@
 
-window.onload = function (){
+$(function (){
 	var searchMobile = $('#search-mobile');
 	var navMobile = document.querySelector('#nav-mobile');
 	
@@ -17,7 +17,6 @@ window.onload = function (){
 	
 	var btnMobile = $('#button-mobile');
 	btnMobile.on('click', function(){
-		console.log('test mobile');
 		if (navMobile.classList.contains('hors-ecran')) {
 			console.log(navMobile.offsetWidth);
 			navMobile.classList.remove('hors-ecran');
@@ -29,12 +28,11 @@ window.onload = function (){
 			navMobile.style.left = '-'+userMenuSize+'px';
 		}
 		
-	})
-}
+	});
+	
+});
 
-
-
-window.onresize = function(event) {
+$(window).resize(function(event) {
 	var searchMobile = $('#search-mobile');
 	if (window.innerWidth>767) {
 		searchMobile.addClass('invisible');
@@ -42,5 +40,6 @@ window.onresize = function(event) {
 	else{
 		searchMobile.removeClass('invisible');
 	}
-};
+});
+
 

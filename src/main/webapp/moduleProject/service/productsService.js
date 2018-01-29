@@ -10,7 +10,7 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
 	var disable = 'disable';
 	var image = 'image';
 	var getList = 'getList';
-	
+	var lengthList = 0;
 	
     this.addGame = function (jeu,file) {
     	
@@ -49,8 +49,14 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
     			pathListId+=idList[key]+',';
     	}
     	console.log(pathListId);
+<<<<<<< HEAD
     	return $http.get(path+getList+'/'+pathListId, {params: {isAdmin: connectionService.isAdmin()}}).then(function(response){
     		return response.data;
+=======
+    	return $http.get(path+getList+'/'+pathListId).then(function(response){
+            lengthList = response.data.length;
+			return response.data;
+>>>>>>> 83aeeffd06f7b358bbf1bd93811df60d6e503a34
     	});
     }
     
@@ -81,10 +87,13 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
 			}); 
         });
     }
-    
     this.disableOrEnableGame = function(id) {
     	return $http.post(path+disable+'/'+id).then(function(response) {
     		return response.data;
     	});
     }
+    	this.getLengthList = function () {
+    	return lengthList;
+    }
+    
 }]);

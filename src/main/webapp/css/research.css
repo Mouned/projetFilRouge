@@ -1,0 +1,56 @@
+
+.form-search #contact{
+    padding:10px 0 10px;
+  }
+	
+.form-search h1{
+	text-align: center;
+}
+/* Input Styles */
+
+  .form-research{
+    width: 100%;
+    padding: 2em;
+    background:#2a2730;
+    border:1px solid rgba(0, 0, 0, 0.075);
+    margin-bottom:25px;
+    color: black !important;
+    font-size:13px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+
+/* Generic Button Styles */
+
+.form-research label{
+	color: white;
+}
+
+ .form-research .button:hover{
+    background:#8BC3A3;
+    color:white;
+  }
+
+/* Send Button Styles */
+
+
+.form-research.form-btn:hover{
+    background:#111;
+    color: white;
+    border:none;
+  }
+
+ .form-research .form-btn:active{
+    opacity: 0.9;
+  }
+.form-research center{
+  margin-top:330px;
+}
+.form-research input {
+    position: relative;
+}
+.input-long{
+	width: 100%;
+	padding: 15px
+}

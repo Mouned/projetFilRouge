@@ -45,8 +45,9 @@ angular.module('project').service('connectionService', ['$http','$q','sessionSer
 				isAdmin = false;
 				login = response.username;
 				for(var key in authorities){
-					if(authorities[key].authority == 'ADMIN')
+					if(authorities[key].authority == 'ADMIN'){
 						isAdmin = true;
+					}
 				}
 				searchUserService.getUserByLogin(login).then(function(response){
 					idUser = response.id;

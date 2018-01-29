@@ -1,0 +1,22 @@
+<h1>Voici l'intégralité de votre panier :</h1>
+<br>
+<br>
+<br>
+<div>
+    <table class = "table col-md-12 col-xs-12">
+        <thead>
+        <tr>
+            <th>Nitre du jeu</th>
+            <th>Prix</th>
+            <th>Prix total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr x-ng-repeat="order in orderList" x-ng-if="isAdmin() || order.userId == user.id">
+            <th x-ng-bind="order.orderNumber"></th>
+            <th x-ng-bind="order.orderDate"></th>
+            <th x-ng-bind="order.totalPrice"></th>
+        </tr>
+        </tbody>
+    </table>
+</div>

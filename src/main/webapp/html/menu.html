@@ -43,8 +43,8 @@
 				<div class="collapse navbar-collapse row" id="">
 					<ul class="nav navbar-nav col-lg-6 col-md-6 col-sm-6 col-xs-6">
 				        <li><a href="#!/home">Accueil</a></li>
-				        <li><a href="#!/about">A propos</a></li>
 				        <li><a href="#!/research">Recherche</a></li>
+				        <li><a href="#!/about">A propos</a></li>
 						<li><a href="#!/contact">Contact</a></li>
 					</ul>
 				    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -61,8 +61,8 @@
 		</nav>
 		
 		<div id="nav-mobile" class="hors-ecran">
-			<div class="user-mobile">
-				<div class="user-icon"> <!-- menu-user en JS -->
+			<!-- <div class="user-mobile">
+				<div class="user-icon"> menu-user en JS
 					<i class="fa fa-user" aria-hidden="true"></i>
 				</div>
 				<ul class="">
@@ -71,13 +71,14 @@
 					<li><a href="#">Connexion/Inscription</a></li>
 					<li><a href="#">Deconnexion</a></li>
 				</ul>				
-			</div>
+			</div> -->
 			
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="#!/home">Accueil</a></li>
+				<li><a href="#!/research">Recherche</a></li>
+				<li><a href="#!/about">A propos</a></li>
+				<li><a href="#!/contact">Contact</a></li>
 
-				<li><a href="#">Panier</a></li>
+				<li><span class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a href="#!/basket"><i class="fa fa-shopping-basket" aria-hidden="true"></i><div class="content-panier" ng-bind="panier"></div></a></span></li>
 			</ul>
 		</div>

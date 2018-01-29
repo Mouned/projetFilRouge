@@ -1,7 +1,7 @@
 /**
  * Controller for menu
  */
-angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location','$cookies','$cookieStore', function(connectionService, $scope, searchService, $location,$cookies,$cookieStore){
+angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location','$cookies','$cookieStore', 'productsService', function(connectionService, $scope, searchService, $location,$cookies,$cookieStore, productsService){
 	
 //	menuService.getUser().then(function(data){
 //		$scope.user = data;
@@ -21,8 +21,8 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 ////////////////////////////////////////////////////Cookie to store the basket//////////////	
 	$scope.$watch(function(){
 		$scope.panier = 0;
-		if($cookieStore.get('Basket') != undefined){ 
-			$scope.panier = $cookieStore.get('Basket').content.length;
+		if($cookieStore.get('Basket') != undefined){
+			$scope.panier = productsService.getLengthList();
 		}
 	})
 ///////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -48,21 +48,16 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 		});
 	}
 	
-//	//SUPPRESSION COOKIE "PANIER" LORS DU REFRESH
-//	window.onbeforeunload = function(){
-//		console.log('coucou...');
-//		console.log($cookies.get('panier'));
-//		$cookies.remove('panier');
-//	}
-//	
-//	
-//	$scope.panier = 0;
-//	
-//	$scope.$watch(function(){
-//		if($cookies.get('panier')){
-//			var monPanier = $cookies.get('panier').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
-//			$scope.panier = monPanier.length;
-//			//console.log('****************************************************************', $scope.panier);
-//		}
-//	})
+	
+	
+	
+	$scope.panier = 0;
+	
+	$scope.$watch(function(){
+		if($cookies.get('Basket')){
+			var monPanier = $cookies.get('Basket').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
+			$scope.panier = monPanier.length;
+			//console.log('****************************************************************', $scope.panier);
+		}
+	})
 }]);

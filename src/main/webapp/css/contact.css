@@ -1,76 +1,128 @@
-@import "compass/css3";
-@import url(https://fonts.googleapis.com/css?family=Merriweather);
-
-*,
-*:before,
-*:after {
-@include box-sizing(border-box);
+.contact #contact{
+    padding:10px 0 10px;
+  }
+	
+.contact h1{
+	text-align: center;
 }
-h1 {
-    text-align: center;
-    color: #a8a8a8;
-@include text-shadow(1 px 1 px 0 rgba(white, 1));
-}
+  .contact .contact-text{
+    margin:45px auto;
+  }
 
-input, textarea {
-    border: 0;
-    outline: 0;
-    padding: 1em;
-@include border-radius(8 px);
-    display: block;
+  .contact .mail-message-area{
+    width:100%;
+    padding:0 15px;
+  }
+
+  .contact .mail-message{
     width: 100%;
-    margin-top: 1em;
-    font-family: 'Merriweather', sans-serif;
-@include box-shadow(0 1 px 1 px rgba(black, 0.1));
-    resize: none;
+    background:rgba(255,255,255, 0.8) !important;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    transition: all 0.7s;
+    margin:0 auto;
+    border-radius: 0;
+  }
 
-&
-:focus {
-@include box-shadow(0 0 px 2 px rgba($ red, 1) !important);
+  .contact .not-visible-message{
+    height:0px;
+    opacity: 0;
+  }
+
+  .contact .visible-message{
+    height:auto;
+    opacity: 1;
+    margin:25px auto 0;
+  }
+
+/* Input Styles */
+
+  .contact .form{
+    width: 100%;
+    padding: 15px;
+    background:#f8f8f8;
+    border:1px solid rgba(0, 0, 0, 0.075);
+    margin-bottom:25px;
+    color:#727272 !important;
+    font-size:13px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+
+   .contact .form:hover{
+    border:1px solid #8BC3A3;
+  }
+
+  .contact .form:focus{
+    color: white;
+    outline: none;
+    border:1px solid #8BC3A3;
+  }
+
+  .contact .textarea{
+    height: 200px;
+    max-height: 200px;
+    max-width: 100%;
+  }
+  
+/* Generic Button Styles */
+
+  .contact .button{
+    padding:8px 12px;
+    background:#0A5175;
+    display: block;
+    width:120px;
+    margin:10px 0 0px 0;
+    border-radius:3px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align:center;
+    font-size:0.8em;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+
+ .contact .button:hover{
+    background:#8BC3A3;
+    color:white;
+  }
+
+/* Send Button Styles */
+
+  .contact .form-btn{
+    width:180px;
+    display: block;
+    height: auto;
+    padding:15px;
+    color:#fff;
+    background:#8BC3A3;
+    border:none;
+    border-radius:3px;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin:auto;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+
+.contact .form-btn:hover{
+    background:#111;
+    color: white;
+    border:none;
+  }
+
+ .contact .form-btn:active{
+    opacity: 0.9;
+  }
+.contact center{
+  margin-top:330px;
 }
-
-}
-
-&
-:hover {
-@include box-shadow(0 1 px 1 px 1 px rgba(#aaa, 0.6));
-}
-
-textarea {
-    height: 126px;
-}
-
-}
-
-.half {
-    float: left;
-    width: 48%;
-    margin-bottom: 1em;
-}
-
-.right {
-    width: 50%;
-}
-
-.left {
-    margin-right: 2%;
-}
-
-@media (max-width: 480px) {
-    .half {
-        width: 100%;
-        float: none;
-        margin-bottom: 0;
-    }
-}
-
-/* Clearfix */
-.cf:before,
-.cf:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
-
-.cf:after {
-    clear: both;
+.contact input {
+    position: relative;
 }

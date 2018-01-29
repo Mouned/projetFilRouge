@@ -28,8 +28,8 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
             templateUrl: './templates/contact.html',
             contoller: 'searchCtrl'
         })
-        .when('/basket', {
-            templateUrl: './html/basket.html',
+        .when('/basket',{
+            templateUrl : './html/basket.html',
             controller: 'basketCtrl'
         })
         .when('/orders', {
@@ -46,6 +46,10 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
         })
         .when('/about', {
             templateUrl: './html/about.html'
+        })
+        .when('/paiment',{
+            templateUrl : './html/paiment.html',
+            controller : 'searchCtrl'
         });
 
     $routeProvider.otherwise({

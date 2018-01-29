@@ -23,7 +23,7 @@ hr{
 }
 
 #logo{
-	color: black;
+	color: white;
 	font-size: 2em;
 	font-family: slant;
 }
@@ -45,9 +45,17 @@ hr{
 *{
 	font-size: 16px;
 }
+button a {
+	text-decoration: none;
+	color: white;
+}
+button a:hover {
+	text-decoration: none;
+	color: white;
+}
 
 #user-menu i.fa-user, #nav-mobile .user-icon{
-	color: black;
+	color: white;
 	font-size: 3em;
 }
 #user-menu{
@@ -124,7 +132,7 @@ hr{
   width: 3em;
 }
 .fa-shopping-basket{
-	color: black;
+	color: white;
 	margin-top: 0.57em;
     font-size: 1.4em;
 }
@@ -133,12 +141,14 @@ hr{
 /* NAV-MOBILE */
 
 #nav-mobile{
+	z-index: 2;
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: grey;
+	background-color: #ececef;
 	height: 100%;
 	transition-duration: 0.5s;
+	position: fixed;
 }
 
 #nav-mobile ul{
@@ -146,7 +156,7 @@ hr{
     padding: 0;
 }
 #nav-mobile ul a{
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 #nav-mobile ul li{
@@ -154,7 +164,7 @@ hr{
 }
 
 #nav-mobile ul li:hover{
-	background-color: navy;
+	background-color: #d0d0db;
 	
 }
 .user-mobile{
