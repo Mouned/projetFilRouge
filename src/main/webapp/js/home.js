@@ -1,8 +1,8 @@
 
-
-window.onload = function (){
-	var boxProduct = document.querySelectorAll('.box-product > div');
+$(function (){
 	
+	var boxProduct = document.querySelectorAll('.box-product > div');
+	console.log(boxProduct)
 	for(var i = 0; i<boxProduct.length; i++){
 		boxProduct[i].onmouseover = function(){
 			var H = this.offsetHeight;
@@ -26,4 +26,4 @@ window.onload = function (){
 			}
 		}
 	}
-}
+});
