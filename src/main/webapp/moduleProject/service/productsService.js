@@ -48,15 +48,9 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
     		else
     			pathListId+=idList[key]+',';
     	}
-    	console.log(pathListId);
-<<<<<<< HEAD
-    	return $http.get(path+getList+'/'+pathListId, {params: {isAdmin: connectionService.isAdmin()}}).then(function(response){
-    		return response.data;
-=======
     	return $http.get(path+getList+'/'+pathListId).then(function(response){
             lengthList = response.data.length;
 			return response.data;
->>>>>>> 83aeeffd06f7b358bbf1bd93811df60d6e503a34
     	});
     }
     
