@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserSessionController {
 
 	@RequestMapping(value = "get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public User getUser(Authentication authentication	) {
+	public User getUser(Authentication authentication) {
 		if(authentication != null)
 			return (User) authentication.getPrincipal();
 		return null;
