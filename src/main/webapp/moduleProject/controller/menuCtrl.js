@@ -1,7 +1,7 @@
 /**
  * Controller for menu
  */
-angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location','$cookies','$cookieStore', function(connectionService, $scope, searchService, $location,$cookies,$cookieStore){
+angular.module('project').controller('menuCtrl', ['connectionService', '$scope', 'searchService', '$location','$cookies','$cookieStore', 'productsService', function(connectionService, $scope, searchService, $location,$cookies,$cookieStore, productsService){
 	
 //	menuService.getUser().then(function(data){
 //		$scope.user = data;
@@ -21,8 +21,9 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 ////////////////////////////////////////////////////Cookie to store the basket//////////////	
 	$scope.$watch(function(){
 		$scope.panier = 0;
-		if($cookieStore.get('Basket') != undefined){ 
-			$scope.panier = $cookieStore.get('Basket').content.length;
+		if($cookieStore.get('Basket') != undefined){
+			$scope.panier = productsService.getLengthList();
+			console.log($scope.panier);
 		}
 	})
 ///////////////////////////////////////////////////////////////////////////////////////////////////////	

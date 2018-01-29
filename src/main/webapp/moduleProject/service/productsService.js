@@ -9,7 +9,7 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
 	var delet = 'delete';
 	var image = 'image';
 	var getList = 'getList';
-	
+	var lengthList = 0;
 	
     this.addGame = function (jeu,file) {
     	
@@ -49,7 +49,8 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
     	}
     	console.log(pathListId);
     	return $http.get(path+getList+'/'+pathListId).then(function(response){
-    		return response.data;
+            lengthList = response.data.length;
+			return response.data;
     	});
     }
     
@@ -79,5 +80,8 @@ angular.module('project').service('productsService', ['$http', 'searchService', 
 				return data;
 			}); 
         });
+    }
+    this.getLengthList = function () {
+    	return lengthList;
     }
 }]);
