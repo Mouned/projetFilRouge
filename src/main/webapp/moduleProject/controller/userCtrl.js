@@ -1,6 +1,5 @@
-angular.module('project').controller('userCtrl', ['orderService', 'searchUserService', '$scope', '$uibModal','connectionService', function(orderService, searchUserService, $scope, $uibModal,connectionService){
-	
-
+angular.module('project').controller('userCtrl', ['orderService', 'searchUserService', '$scope', '$uibModal','connectionService', '$location', function(orderService, searchUserService, $scope, $uibModal,connectionService,$location){
+	if(!connectionService.isAuth()) $location.path('/sign');
 	connectionService.getUserDetails().then(function(userDetails){
 
 		orderService.getOrderUser(connectionService.getIdUser()).then(function(response){
@@ -12,8 +11,6 @@ angular.module('project').controller('userCtrl', ['orderService', 'searchUserSer
 		});
 		
 	});
-
-		
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////MODAL DETAIL User
 	$scope.openModalDetail= function(products){

@@ -1,7 +1,8 @@
 /**
  * Controller for page admin
  */
-angular.module('project').controller('pageAdminCtrl', ['connectionService', '$scope', '$uibModal', 'searchService', 'productsService','pageUserService', function(connectionService, $scope, $uibModal, searchService, productsService,pageUserService){
+angular.module('project').controller('pageAdminCtrl', ['connectionService', '$scope', '$uibModal', 'searchService', 'productsService','pageUserService', '$location', function(connectionService, $scope, $uibModal, searchService, productsService,pageUserService,$location){
+	if(!connectionService.isAdmin()) $location.path('/home');
 	$scope.liste = [];
 	$scope.member = [];
 	/**

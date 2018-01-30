@@ -16,7 +16,7 @@ angular.module('project').config(['$routeProvider', function($routeProvider) {
             templateUrl: './html/pageAdmin.html',
             controller: 'pageAdminCtrl'
         })
-        .when('/user/:id', {
+        .when('/user/edit', {
             templateUrl: './html/pageUser.html',
             controller: 'pageUserCtrl'
         })

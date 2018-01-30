@@ -4,7 +4,7 @@ body {
 	font-family: 'Open sans', sans-serif;
 }
 body {
-	background: url(http://s1.dmcdn.net/BFNEf/1280x720-i-t.jpg);
+	background: linear-gradient(50deg, #f3c680, #a1e3e2);
 }
 
 .box-product{
