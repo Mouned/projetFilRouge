@@ -26,6 +26,7 @@ angular.module('project').controller('basketCtrl', ['$scope','$cookieStore', 'pr
 		$cookieStore.remove('Basket');
 		$scope.listGame = [];
 		$scope.price=0;
+		productsService.setLengthList(0);
 	}
 	
 	$scope.isAuth = function(){

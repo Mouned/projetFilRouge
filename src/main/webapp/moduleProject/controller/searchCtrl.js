@@ -1,4 +1,4 @@
-angular.module('project').controller('searchCtrl',['$scope','$http','searchService', '$uibModal', 'connectionService', '$location', '$cookieStore', function ($scope, $http,searchService, $uibModal, connectionService, $location, $cookieStore) {
+angular.module('project').controller('searchCtrl',['$scope','$http','searchService', '$uibModal', 'connectionService', '$location', '$cookieStore','productsService', function ($scope, $http,searchService, $uibModal, connectionService, $location, $cookieStore,productsService) {
     $scope.liste = [];
    // var recherche = {};
     
@@ -74,10 +74,12 @@ angular.module('project').controller('searchCtrl',['$scope','$http','searchServi
 	            				content : listOfGame
 	            		};
 	            		$cookieStore.put('Basket',basketUser);
+	            		productsService.setLengthList(listOfGame.length);
 	            	}else{
 	            		var store = [$cookieStore.get('Basket').content];
 	            		store.push(jeu.id);
 	            		$cookieStore.put('Basket', {id : connectionService.getIdUser(), content : store});
+	            		productsService.setLengthList(store.length);
 	            	}
 	            	modalInstance.dismiss();
 	            }

@@ -18,11 +18,13 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 	}
 	
 
-////////////////////////////////////////////////////Cookie to store the basket//////////////	
+////////////////////////////////////////////////////Cookie to store the basket//////////////
 	$scope.$watch(function(){
-		$scope.panier = 0;
-		if($cookieStore.get('Basket') != undefined){
+		if($cookieStore.get('Basket') !== undefined){
+			console.log('entrée ici');	
 			$scope.panier = productsService.getLengthList();
+		}else{
+			$scope.panier = 0;
 		}
 	})
 ///////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -55,10 +57,11 @@ angular.module('project').controller('menuCtrl', ['connectionService', '$scope',
 //	$scope.panier = 0;
 //	
 //	$scope.$watch(function(){
-//		if($cookies.get('Basket')){
-//			var monPanier = $cookies.get('Basket').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
+//		console.log('aaaa');
+//		if($cookieStore.get('Basket')){
+//			var monPanier = $cookieStore.get('Basket').substring(1).split(','); //supression de la premiere virgule pour TABLEAU PROPRE
 //			$scope.panier = monPanier.length;
-//			//console.log('****************************************************************', $scope.panier);
+//			console.log('****************************************************************', $scope.panier);
 //		}
 //	})
 }]);

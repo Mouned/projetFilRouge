@@ -89,5 +89,9 @@ angular.module('project').service('productsService', ['$http', 'searchService','
     	this.getLengthList = function () {
     	return lengthList;
     }
+    	
+     	this.setLengthList = function (val) {
+        	lengthList = val;
+        }
     
 }]);

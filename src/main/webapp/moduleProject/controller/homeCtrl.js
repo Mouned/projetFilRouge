@@ -1,7 +1,7 @@
 /**
  * Controleur pour la page home
  */
-angular.module('project').controller('homeCtrl', ['$scope','$http','searchService', '$uibModal', 'connectionService', '$location', '$cookieStore', function ($scope, $http,searchService, $uibModal, connectionService, $location, $cookieStore) {
+angular.module('project').controller('homeCtrl', ['$scope','$http','searchService', '$uibModal', 'connectionService', '$location', '$cookieStore','productsService', function ($scope, $http,searchService, $uibModal, connectionService, $location, $cookieStore,productsService) {
 	console.log('controller for home');
 	/**
 	 * Showing the games on home page
@@ -37,10 +37,12 @@ angular.module('project').controller('homeCtrl', ['$scope','$http','searchServic
 	            				content : listOfGame
 	            		};
 	            		$cookieStore.put('Basket',basketUser);
+	            		productsService.setLengthList(listOfGame.length);
 	            	}else{
 	            		var store = [$cookieStore.get('Basket').content];
 	            		store.push(jeu.id);
 	            		$cookieStore.put('Basket', {id : connectionService.getIdUser(), content : store});
+	            		productsService.setLengthList(store.length);
 	            	}
 	            	modalInstance.dismiss();
 	            }
