@@ -20,7 +20,9 @@
     -moz-transition: all 0.4s;
     transition: all 0.4s;
   }
-
+input{
+	width: initial;
+}
 /* Generic Button Styles */
 
 .form-research label{
