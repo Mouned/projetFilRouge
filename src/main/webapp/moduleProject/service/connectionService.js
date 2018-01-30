@@ -23,7 +23,9 @@ angular.module('project').service('connectionService', ['$http','$q','sessionSer
 					idUser = user.id;
 					return response.data;
 				});
-			});
+			}).catch(function onError(response) {
+				return "error";
+		});
 	};
 	
 	this.deconnectUser = function() {

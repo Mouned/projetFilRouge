@@ -6,6 +6,8 @@ angular.module('project').service('registerService', ['$http','connectionService
 					return connectionService.connectUser(user.login,user.password).then(function(response){
 						return response.data;
 					});
+			}).catch(function onError(response) {
+				return "error";
 			});
 	}
 }]);

@@ -58,3 +58,7 @@
 <div>
 	<button type="button" class="btn btn-default" ng-click="addUser(user)" ng-disabled="form.$invalid">Send</button>
 </div>
+
+<label class="remove" ng-if="registerError()">Email ou Login déjà existant</label>
+
+
