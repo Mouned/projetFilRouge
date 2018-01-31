@@ -1,8 +1,10 @@
 <meta charset="utf-8">
+<br>
+<br>
 <hr>
 <p id="liste">{{user.login}}<span x-ng-show="!user.login">Visiteur</span></p>
 <hr>
-<div class="row col-md-offset-5">
+<div class="row col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 col-xs-offset-3 col-xs-6">
 
 	<form name="profile" novalidate>
 		<div role="alert">
@@ -56,8 +58,10 @@
 	</form>
 	<br>
 	<br>
-<div>
-	<button type="button" class="btn btn-default" ng-click="edit(user, user.password)" x-ng-disabled="profile.$invalid || (user.password!=user.password2)">Send</button>
+<div class="center">
+	<button type="button" class="btn btn-success" ng-click="edit(user, user.password)" x-ng-disabled="profile.$invalid || (user.password!=user.password2)">Modifier</button>
 	<a href="#!/user">Annuler</a>
 </div>
 </div>
+
+
