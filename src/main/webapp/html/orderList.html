@@ -2,24 +2,28 @@
 <br>
 <br>
 <br>
-<br>
 <div>
+	<label>Recherche par utilisateur</label><br>
+    <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" x-ng-model="order.user.login" type="text" placeholder="login, aze, Sapho, ..."><br><br><br><br>
+
 	<table class = "table col-md-12 col-xs-12">
 		<thead>
 			<tr>
 				<th>Commande n°</th>
+				<th>Utilisateur</th>
 				<th>Date</th>
 				<th>Prix total</th>
 				<th>Jeux</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr x-ng-repeat="order in orderListAdmin" x-ng-if="isAdmin() || order.userId == user.id">
+			<tr x-ng-repeat="order in orderListAdmin | filter:order" x-ng-if="isAdmin() || order.userId == user.id">
 				<th x-ng-bind="order.orderNumber"></th>
+				<th x-ng-bind="order.user.login"></th>
 				<th x-ng-bind="order.orderDate"></th>
 				<th x-ng-bind="order.totalPrice"></th>
 				<th>
-            		<a href=""><span class="fa fa-search-plus" data-placement="bottom" title="Details" ng-click="openModalDetail(order.products)"></span></a>
+            		<a href=""><span class="fa fa-search-plus" data-placement="bottom" title="Details" x-ng-click="openModalDetail(order.products)"></span></a>
             	</th>
 			</tr>
 		</tbody>
