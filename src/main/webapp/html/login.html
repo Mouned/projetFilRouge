@@ -16,8 +16,8 @@
 			<input type="password" class="registerText" ng-model="user.password" required ng-empty>
 		</div>
 	</form>
-	<div>
-		<button class="btn btn-default" type="submit" ng-click="login(user)" ng-disabled="loginForm.$invalid">Login</button>
+	<div class="center"> 
+		<button class="btn btn-default center" type="submit" ng-click="login(user)" ng-disabled="loginForm.$invalid">Login</button>
 	</div>
 	
 	<label class="remove" ng-if="connectError()">Login ou mot de passe incorrect</label>

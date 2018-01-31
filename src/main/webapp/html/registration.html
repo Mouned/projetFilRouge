@@ -59,13 +59,16 @@
 	
 	</form>
 </div>
-<br>
-<br>
-
-<div>
-	<button type="button" class="btn btn-default" ng-click="addUser(user)" ng-disabled="form.$invalid || (user.password!=user.password2)">Send</button>
+<div class="center">
+	<button type="button" class="btn btn-default center" ng-click="addUser(user)" ng-disabled="form.$invalid || (user.password!=user.password2)">Send</button>
 </div>
 
 <label class="remove" ng-if="registerError()">Email ou Login déjà existant</label>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
