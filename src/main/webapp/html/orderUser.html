@@ -10,6 +10,7 @@
 				<th>Commande n°</th>
 				<th>Date</th>
 				<th>Prix total</th>
+				<th>Jeux</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -17,6 +18,9 @@
 				<th x-ng-bind="order.orderNumber"></th>
 				<th x-ng-bind="order.orderDate"></th>
 				<th x-ng-bind="order.totalPrice"></th>
+				<th>
+            		<a href=""><span class="fa fa-search-plus" data-placement="bottom" title="Details" ng-click="openModalDetail(order.products)"></span></a>
+            	</th>
 			</tr>
 		</tbody>
 	</table>
