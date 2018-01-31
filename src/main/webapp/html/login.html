@@ -1,11 +1,7 @@
 <meta charset="utf-8">
 <br>
 <br>
-<div id="text">
-	<hr>
-	<p id="liste">Connexion</p>
-	<hr>
-	<br>
+<div id="area-login">
 	<form novalidate name="loginForm">
 		<div role="alert">
 			<label>Username</label>
@@ -17,7 +13,7 @@
 		</div>
 	</form>
 	<div class="center"> 
-		<button class="btn btn-default center" type="submit" ng-click="login(user)" ng-disabled="loginForm.$invalid">Login</button>
+		<button class="btn btn-success center" type="submit" ng-click="login(user)" ng-disabled="loginForm.$invalid">Login</button>
 	</div>
 	
 	<label class="remove" ng-if="connectError()">Login ou mot de passe incorrect</label>

@@ -1,11 +1,7 @@
 <meta charset="utf-8">
 <br>
 <br>
-<div id="text">
-	<hr>
-	<p id="liste">Inscription</p>
-	<hr>
-	<br>
+<div id="area-register" class="">
 	<form name="form" class="css-form" novalidate>
 		
 		<div role="alert">
@@ -58,9 +54,9 @@
 		</div>
 	
 	</form>
-</div>
-<div class="center">
-	<button type="button" class="btn btn-default center" ng-click="addUser(user)" ng-disabled="form.$invalid || (user.password!=user.password2)">Send</button>
+	
+	<div class="center">
+	<button type="button" class="btn btn-success center" ng-click="addUser(user)" ng-disabled="form.$invalid || (user.password!=user.password2)">Send</button>
 </div>
 
 <label class="remove" ng-if="registerError()">Email ou Login déjà existant</label>
@@ -71,4 +67,6 @@
 <br>
 <br>
 <br>
+	
+</div>
 

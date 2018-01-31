@@ -1,3 +1,29 @@
+<link rel="stylesheet" href="css/login-register.css">
+
+
 <meta charset="utf-8">
-	<div x-ng-include="'html/registration.html'" class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
-	<div x-ng-include="'html/login.html'" class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+
+<br>
+<br>
+<div class="row">
+	<div id="button-inscription" class="col-lg-6 col-md-6 col-sm-6 col-xs-6" ng-click = "changePageRegister()">
+		<hr>
+			<p id="liste">Inscription</p>
+		<hr>
+	</div>
+	<div id="button-connexion" class="col-lg-6 col-md-6 col-sm-6 col-xs-6" ng-click = "changePageConnect()">
+		<hr>
+			<p id="liste">Connexion</p>
+		<hr>
+	</div>
+	
+	
+	
+	<div lass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div ng-if ="connectedPage()"  x-ng-include="'html/registration.html'"></div>
+	</div>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div ng-if ="!connectedPage()"  x-ng-include="'html/login.html'"></div>	
+	</div>
+	
+</div>

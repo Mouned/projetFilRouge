@@ -16,6 +16,20 @@ angular.module('project').controller('registerCtrl',['$scope','$http','registerS
 		});
 	}
 	
+	$scope.connect = false;
+	
+	$scope.connectedPage = function(){
+		return $scope.connect;
+	}
+	
+	$scope.changePageConnect = function(){
+		$scope.connect = false;
+	}
+	
+	$scope.changePageRegister = function(){
+		$scope.connect = true;
+	}
+	
 	$scope.connectError = function(){
 		return $scope.errorConnect;
 	}
