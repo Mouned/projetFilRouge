@@ -103,7 +103,7 @@ public class ProductsController {
 	@ResponseBody
 	public Products createProduct(@RequestBody Products p)
 	{
-		//System.out.println(p);
+		System.out.println(p);
 			
 		return productsService.createProduct(p);
 			

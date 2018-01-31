@@ -5,7 +5,7 @@ angular.module('project').service('productsService', ['$http', 'searchService','
 	var pegi = 'pegi';
 	var get = 'get';
 	var all = 'all';
-	var update = 'update';
+	var upload = 'upload';
 	var delet = 'delete';
 	var disable = 'disable';
 	var image = 'image';
@@ -13,11 +13,11 @@ angular.module('project').service('productsService', ['$http', 'searchService','
 	var lengthList = 0;
 	
     this.addGame = function (jeu,file) {
-    	
+    	jeu.available = true;
         return $http.post(path+create, jeu).then(function(response){
         	var fd = new FormData();
         	fd.append('file',file);
-        	return $http.post(path+upload+response.data.id, fd, {
+        	return $http.post(path+upload+'/'+response.data.id, fd, {
         			headers: {'Content-Type': undefined}
         	}).then(function(){
         			return searchService.getAll().then(function(data){

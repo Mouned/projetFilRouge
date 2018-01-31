@@ -73,7 +73,7 @@ public class ProductsService extends AbstractRepository implements ProductsRepos
     }
     
     public void updateById(MultipartFile file, long id) {
-      	String url = file.getOriginalFilename()+""+new Timestamp(System.currentTimeMillis());
+      	String url = file.getOriginalFilename();
       	
      	Products p = this.getById(id, true);
      	p.setUrl(url);
